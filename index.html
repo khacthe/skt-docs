@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hướng Dẫn HUMI Workforce – Theo Bộ Phận</title>
+<style>
+:root{
+  --tuyen-dung:#1a73e8;--tuyen-dung-dark:#1558b0;--tuyen-dung-bg:#e8f0fe;
+  --quan-ly:#0f9d58;--quan-ly-dark:#0b7a44;--quan-ly-bg:#e6f4ea;
+  --xe:#f29900;--xe-dark:#c47c00;--xe-bg:#fef3cd;
+  --ke-toan:#7b1fa2;--ke-toan-dark:#5c0f7a;--ke-toan-bg:#f3e5f5;
+  --bg:#f4f6fa;--card:#fff;--border:#dde1e9;--radius:12px;
+  --shadow:0 2px 10px rgba(0,0,0,0.08);--text:#1a202c;--muted:#6b7280;
+  --chung:#455a64;--chung-dark:#263238;--chung-bg:#eceff1;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+
+/* HEADER */
+.page-header{background:#0f1b2d;color:#fff;padding:28px 40px 24px}
+.page-header h1{font-size:24px;font-weight:700;margin-bottom:6px}
+.page-header p{color:#90caf9;font-size:14px}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:#80cbc4;font-size:13px;text-decoration:none;margin-bottom:16px}
+.back-link:hover{color:#fff}
+
+/* DEPT TABS */
+.dept-tabs{display:flex;gap:0;background:#fff;border-bottom:3px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.dept-tab{
+  flex:1;padding:16px 12px;text-align:center;cursor:pointer;text-decoration:none;
+  font-size:14px;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;
+  transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:4px;
+  margin-bottom:-3px;
+}
+.dept-tab .tab-icon{font-size:20px}
+.dept-tab:hover{background:#f8fafc}
+.dept-tab.td:hover,.dept-tab.td.active{color:var(--tuyen-dung);border-bottom-color:var(--tuyen-dung);background:#f0f5ff}
+.dept-tab.ql:hover,.dept-tab.ql.active{color:var(--quan-ly);border-bottom-color:var(--quan-ly);background:#f0faf4}
+.dept-tab.xe:hover,.dept-tab.xe.active{color:var(--xe-dark);border-bottom-color:var(--xe);background:#fffbf0}
+.dept-tab.kt:hover,.dept-tab.kt.active{color:var(--ke-toan);border-bottom-color:var(--ke-toan);background:#fdf4ff}
+
+/* CONTENT */
+.content{max-width:1100px;margin:0 auto;padding:36px 32px}
+
+/* DEPT SECTION */
+.dept-section{display:none}
+.dept-section.active{display:block}
+
+/* DEPT HEADER */
+.dept-header{border-radius:var(--radius);padding:28px 32px;margin-bottom:28px;color:#fff;position:relative;overflow:hidden}
+.dept-header.td{background:linear-gradient(135deg,#1a73e8,#0d47a1)}
+.dept-header.ql{background:linear-gradient(135deg,#0f9d58,#006430)}
+.dept-header.xe{background:linear-gradient(135deg,#f29900,#b06700)}
+.dept-header.kt{background:linear-gradient(135deg,#7b1fa2,#4a0072)}
+.dept-header h2{font-size:22px;font-weight:700;margin-bottom:6px}
+.dept-header p{font-size:13.5px;opacity:.88;margin-bottom:16px}
+.roles-row{display:flex;flex-wrap:wrap;gap:8px}
+.role-chip{background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:4px 14px;font-size:12px;font-weight:600;color:#fff}
+
+/* FLOW CARDS */
+.flows-grid{display:flex;flex-direction:column;gap:20px}
+.flow-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden}
+.flow-card-header{padding:16px 22px;display:flex;align-items:center;gap:14px}
+.flow-card-header.td{background:linear-gradient(90deg,#e8f0fe,#f8faff);border-bottom:1px solid #c5d6fa}
+.flow-card-header.ql{background:linear-gradient(90deg,#e6f4ea,#f4fdf6);border-bottom:1px solid #a8d5b5}
+.flow-card-header.xe{background:linear-gradient(90deg,#fef3cd,#fffdf0);border-bottom:1px solid #f0d080}
+.flow-card-header.kt{background:linear-gradient(90deg,#f3e5f5,#fdf8ff);border-bottom:1px solid #d8a8e8}
+.flow-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff;flex-shrink:0}
+.td .flow-num{background:var(--tuyen-dung)}
+.ql .flow-num{background:var(--quan-ly)}
+.xe .flow-num{background:var(--xe)}
+.kt .flow-num{background:var(--ke-toan)}
+.flow-card-header h3{font-size:15px;font-weight:700;color:#0f1b2d;margin-bottom:2px}
+.flow-card-header p{font-size:12.5px;color:var(--muted)}
+.flow-freq{margin-left:auto;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:700;white-space:nowrap}
+.freq-daily{background:#e6f4ea;color:#0f9d58}
+.freq-monthly{background:#e8f0fe;color:#1a73e8}
+.freq-once{background:#fce4ec;color:#c62828}
+.freq-asneeded{background:#fff3e0;color:#e65100}
+
+/* STEPS */
+.flow-steps{padding:20px 22px;display:flex;flex-direction:column;gap:0}
+.step-row{display:flex;align-items:flex-start;gap:0;position:relative}
+.step-row:not(:last-child) .step-line{position:absolute;left:15px;top:32px;bottom:0;width:2px;background:var(--border)}
+.step-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;position:relative;z-index:1}
+.td .step-dot{background:var(--tuyen-dung-bg);color:var(--tuyen-dung);border:2px solid var(--tuyen-dung)}
+.ql .step-dot{background:var(--quan-ly-bg);color:var(--quan-ly);border:2px solid var(--quan-ly)}
+.xe .step-dot{background:var(--xe-bg);color:var(--xe-dark);border:2px solid var(--xe)}
+.kt .step-dot{background:var(--ke-toan-bg);color:var(--ke-toan);border:2px solid var(--ke-toan)}
+.step-body{flex:1;padding:4px 0 20px 14px}
+.step-body:last-child{padding-bottom:0}
+.step-action{font-size:14px;font-weight:600;color:#0f1b2d;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.step-link{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 12px;border-radius:6px;font-size:12.5px;font-weight:700;
+  text-decoration:none;transition:all .15s;
+}
+.td .step-link{background:var(--tuyen-dung-bg);color:var(--tuyen-dung);border:1px solid #a8c7fa}
+.td .step-link:hover{background:var(--tuyen-dung);color:#fff}
+.ql .step-link{background:var(--quan-ly-bg);color:var(--quan-ly);border:1px solid #a8d5b5}
+.ql .step-link:hover{background:var(--quan-ly);color:#fff}
+.xe .step-link{background:var(--xe-bg);color:var(--xe-dark);border:1px solid #f0c060}
+.xe .step-link:hover{background:var(--xe);color:#fff}
+.kt .step-link{background:var(--ke-toan-bg);color:var(--ke-toan);border:1px solid #d8a8e8}
+.kt .step-link:hover{background:var(--ke-toan);color:#fff}
+.step-desc{font-size:13px;color:var(--muted);margin-top:3px}
+.step-tip{background:#fffbf0;border-left:3px solid #f9a825;padding:8px 12px;border-radius:0 6px 6px 0;font-size:12.5px;color:#92400e;margin-top:6px}
+.step-note{background:#f0f5ff;border-left:3px solid var(--tuyen-dung);padding:8px 12px;border-radius:0 6px 6px 0;font-size:12.5px;color:#1e40af;margin-top:6px}
+
+/* DEPT OVERVIEW TABLE */
+.dept-toc{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:24px;overflow:hidden}
+.dept-toc-title{padding:12px 20px;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.td .dept-toc-title{background:#e8f0fe;color:var(--tuyen-dung)}
+.ql .dept-toc-title{background:#e6f4ea;color:var(--quan-ly)}
+.xe .dept-toc-title{background:#fef3cd;color:var(--xe-dark)}
+.kt .dept-toc-title{background:#f3e5f5;color:var(--ke-toan)}
+.dept-toc table{width:100%;border-collapse:collapse;font-size:13.5px}
+.dept-toc table th{padding:8px 16px;text-align:left;font-size:11px;font-weight:700;color:var(--muted);background:#fafbfc;border-bottom:1px solid var(--border)}
+.dept-toc table td{padding:10px 16px;border-bottom:1px solid #f0f2f5;vertical-align:top}
+.dept-toc table tr:last-child td{border-bottom:none}
+.dept-toc table tr:hover td{background:#fafbfc}
+.toc-num{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+.td .toc-num{background:var(--tuyen-dung)}
+.ql .toc-num{background:var(--quan-ly)}
+.xe .toc-num{background:var(--xe)}
+.kt .toc-num{background:var(--ke-toan)}
+.toc-name{font-weight:700;color:#0f1b2d;margin-bottom:2px}
+.toc-desc{font-size:12px;color:var(--muted)}
+.toc-freq{white-space:nowrap;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:700}
+.toc-freq.daily{background:#e6f4ea;color:#0f9d58}
+.toc-freq.monthly{background:#e8f0fe;color:#1a73e8}
+.toc-freq.once{background:#fce4ec;color:#c62828}
+.toc-freq.asneeded{background:#fff3e0;color:#e65100}
+
+/* SEPARATOR */
+.section-sep{height:1px;background:var(--border);margin:32px 0}
+
+/* CHUNG (General flows) */
+.chung-header{background:linear-gradient(135deg,#455a64,#263238);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px;color:#fff}
+.chung-header h2{font-size:20px;font-weight:700;margin-bottom:4px}
+.chung-header p{font-size:13.5px;opacity:.88}
+.chung-wrap{margin-bottom:32px;padding-bottom:28px;border-bottom:2px solid var(--border)}
+.chung .flow-num{background:var(--chung)}
+.chung .step-dot{background:var(--chung-bg);color:var(--chung);border:2px solid var(--chung)}
+.chung .step-link{background:var(--chung-bg);color:var(--chung);border:1px solid #b0bec5}
+.chung .step-link:hover{background:var(--chung);color:#fff}
+.flow-card-header.chung{background:linear-gradient(90deg,#eceff1,#fafbfc);border-bottom:1px solid #cfd8dc}
+
+@media(max-width:768px){
+  .content{padding:20px 16px}
+  .dept-tab{font-size:12px;padding:12px 6px}
+  .dept-tabs{overflow-x:auto}
+  .dept-header{padding:20px}
+  .dept-header h2{font-size:18px}
+  .flow-card-header{flex-wrap:wrap}
+  .flow-freq{margin-left:0}
+}
+
+/* SCREENSHOT in steps */
+.step-screenshot{
+  margin-top:10px;width:100%;border-radius:8px;border:1px solid rgba(0,0,0,.1);
+  box-shadow:0 3px 12px rgba(0,0,0,.1);display:block;cursor:zoom-in;
+  transition:box-shadow .2s;
+}
+.step-screenshot:hover{box-shadow:0 6px 20px rgba(0,0,0,.18)}
+#ss-overlay2{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;cursor:zoom-out;align-items:center;justify-content:center}
+#ss-overlay2.open{display:flex}
+#ss-overlay2 img{max-width:92vw;max-height:90vh;border-radius:10px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Hướng Dẫn Theo Bộ Phận</h1>
+  <p>Từng luồng công việc cụ thể cho từng bộ phận — nhấn vào tên màn hình ở mỗi bước để xem mô tả chi tiết.</p>
+</div>
+
+<!-- TAB NAV -->
+<div class="dept-tabs" id="tabs">
+  <a class="dept-tab td active" href="#" onclick="show('tuyen-dung');return false">
+    <span class="tab-icon">👤</span>Tuyển dụng
+  </a>
+  <a class="dept-tab ql" href="#" onclick="show('quan-ly');return false">
+    <span class="tab-icon">📋</span>Quản lý
+  </a>
+  <a class="dept-tab xe" href="#" onclick="show('xe-dua-don');return false">
+    <span class="tab-icon">🚌</span>Xe đưa đón
+  </a>
+  <a class="dept-tab kt" href="#" onclick="show('ke-toan');return false">
+    <span class="tab-icon">💰</span>Kế toán
+  </a>
+</div>
+
+<div class="content">
+
+<!-- ═══════════════════════════════════════════════════════
+     LUỒNG CHUNG – XÁC THỰC HỆ THỐNG
+═══════════════════════════════════════════════════════ -->
+<div class="chung-wrap chung">
+  <div class="chung-header">
+    <h2>🔐 Xác thực hệ thống</h2>
+    <p>Áp dụng cho <strong>tất cả bộ phận</strong> — đây là bước đầu tiên khi sử dụng HUMI Workforce</p>
+  </div>
+  <div class="flows-grid">
+
+    <!-- Flow 1: Đăng nhập -->
+    <div class="flow-card">
+      <div class="flow-card-header chung">
+        <div class="flow-num">1</div>
+        <div>
+          <h3>Đăng nhập hệ thống</h3>
+          <p>Xác thực 2 bước: Mật khẩu + OTP gửi qua email</p>
+        </div>
+        <div class="flow-freq freq-daily">Mỗi phiên làm việc</div>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">Truy cập URL hệ thống → Nhập <strong>Email</strong> và <strong>Mật khẩu</strong> → Nhấn <strong>"Đăng nhập"</strong></div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Hệ thống gửi <strong>mã OTP 6 số</strong> qua email → Kiểm tra hộp thư đến</div>
+            <div class="step-tip">⏱️ Mã OTP có hiệu lực <strong>5 phút</strong>. Kiểm tra cả thư mục Spam. Nhấn "Gửi lại mã" sau 60 giây nếu không nhận được.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Nhập mã OTP vào 6 ô xác thực</div>
+            <div class="step-desc">Có thể dán trực tiếp (Ctrl+V) nếu sao chép từ email</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <div class="step-action">✅ Đăng nhập thành công → Vào Dashboard</div>
+            <div class="step-desc">Giao diện và các menu hiển thị theo quyền của từng bộ phận</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 2: Quên mật khẩu -->
+    <div class="flow-card">
+      <div class="flow-card-header chung">
+        <div class="flow-num">2</div>
+        <div>
+          <h3>Quên mật khẩu</h3>
+          <p>Đặt lại mật khẩu qua link gửi email</p>
+        </div>
+        <div class="flow-freq freq-asneeded">Khi cần</div>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">Màn hình đăng nhập → Nhấn <strong>"Quên mật khẩu?"</strong></div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Nhập <strong>email</strong> đã đăng ký trong hệ thống → Nhấn <strong>"Gửi yêu cầu"</strong></div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Kiểm tra email → Nhấn link <strong>"Đặt lại mật khẩu"</strong></div>
+            <div class="step-tip">⏱️ Link có hiệu lực <strong>15 phút</strong>. Kiểm tra cả thư mục Spam nếu không thấy.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <div class="step-action">Nhập <strong>mật khẩu mới</strong> + xác nhận → Nhấn <strong>"Lưu"</strong></div>
+            <div class="step-desc">Tối thiểu 8 ký tự, bao gồm chữ hoa, chữ thường và số</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">5</div>
+          <div class="step-body">
+            <div class="step-action">✅ Quay lại màn hình đăng nhập → Đăng nhập với mật khẩu mới</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     TUYỂN DỤNG
+═══════════════════════════════════════════════════════ -->
+<div class="dept-section active" id="tuyen-dung">
+  <div class="dept-header td">
+    <h2>👤 Bộ phận Tuyển dụng</h2>
+    <p>Chịu trách nhiệm toàn bộ quá trình từ tiếp nhận ứng viên đến khi lao động có hợp đồng chính thức.</p>
+    <div class="roles-row">
+      <span class="role-chip">👔 Trưởng BP Tuyển dụng (TV PM)</span>
+      <span class="role-chip">🔶 Trưởng nhóm TV (Lead TV)</span>
+      <span class="role-chip">📋 Nhân viên TV (TV NV)</span>
+    </div>
+  </div>
+
+  <div class="dept-toc">
+    <div class="dept-toc-title">📋 Tổng quan nghiệp vụ — Tuyển dụng</div>
+    <table>
+      <thead><tr><th>#</th><th>Nghiệp vụ</th><th>Mô tả ngắn</th><th>Tần suất</th></tr></thead>
+      <tbody>
+        <tr><td><span class="toc-num">1</span></td><td><div class="toc-name">Tiếp nhận &amp; Tạo hồ sơ ứng viên mới</div></td><td class="toc-desc">Nhập CCCD → hệ thống tự điền → bổ sung giấy tờ</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
+        <tr><td><span class="toc-num">2</span></td><td><div class="toc-name">Đăng ký ứng viên vào dự án</div></td><td class="toc-desc">Gán ứng viên vào dự án để theo dõi luồng tuyển dụng</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
+        <tr><td><span class="toc-num">3</span></td><td><div class="toc-name">Đăng ký ứng viên vào lịch phỏng vấn</div></td><td class="toc-desc">Thêm ứng viên vào lịch phỏng vấn do Quản lý đã tạo</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
+        <tr><td><span class="toc-num">4</span></td><td><div class="toc-name">Theo dõi hiệu suất tuyển dụng</div></td><td class="toc-desc">Xem báo cáo KPI: tổng ứng viên, tỉ lệ chuyển đổi, nguồn tuyển</td><td><span class="toc-freq monthly">Định kỳ</span></td></tr>
+        <tr style="background:#fff8f0"><td colspan="4" style="font-size:12px;color:#92400e;padding:8px 16px">⚠️ <strong>Lưu ý quyền:</strong> Tuyển dụng chỉ có quyền <strong>View</strong> với Hồ sơ lao động, Hợp đồng và Người phụ thuộc — không có quyền tạo/chỉnh sửa. Các nghiệp vụ đó do <strong>Bộ phận Quản lý</strong> thực hiện.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flows-grid td">
+
+    <!-- Flow 1 -->
+    <div class="flow-card">
+      <div class="flow-card-header td">
+        <div class="flow-num">1</div>
+        <div>
+          <h3>Tiếp nhận &amp; Tạo hồ sơ ứng viên mới</h3>
+          <p>Khi có ứng viên tiếp cận qua các kênh tuyển dụng</p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#candidates" target="_blank">📋 Danh sách ứng viên</a> → Nhấn "+ Thêm mới"
+            </div>
+            <div class="step-desc">Mở trang "Thêm hồ sơ ứng viên mới"</div>
+            <img class="step-screenshot" src="images/thêm mới ứng viên.png" alt="Form thêm mới ứng viên" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Upload ảnh CCCD mặt trước + mặt sau → Nhấn <strong>"Xử lý CCCD"</strong></div>
+            <div class="step-desc">Hệ thống tự điền: Họ tên, ngày sinh, giới tính, số CCCD, địa chỉ thường trú</div>
+            <div class="step-tip">Nếu ảnh mờ/không nhận dạng được → Nhập tay phần "Thông tin cá nhân"</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Điền phần "Nguyện vọng ứng tuyển"</div>
+            <div class="step-desc">Dự án ứng tuyển · Nguồn tuyển dụng · Nhân sự tuyển dụng · Kết quả ban đầu · Xe đưa đón (nếu cần)</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <div class="step-action">Nhấn <strong>"Lưu hồ sơ"</strong></div>
+            <div class="step-desc">Hệ thống cấp mã APL-XXXXXX tự động</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">5</div>
+          <div class="step-body">
+            <div class="step-action">Upload giấy tờ bổ sung (sau khi lưu)</div>
+            <div class="step-desc">Phần "Tình trạng tiếp nhận hồ sơ" xuất hiện sau lần lưu đầu tiên — Upload CCCD bản cứng, ảnh chân dung, giấy khám sức khỏe, CV</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 2 -->
+    <div class="flow-card">
+      <div class="flow-card-header td">
+        <div class="flow-num">2</div>
+        <div>
+          <h3>Đăng ký ứng viên vào dự án</h3>
+          <p>Gán ứng viên vào dự án để bắt đầu theo dõi luồng tuyển dụng</p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#candidates" target="_blank">📋 Danh sách ứng viên</a> → Tìm ứng viên → Nhấn ⋮ → <strong>"Đăng ký dự án"</strong>
+            </div>
+            <img class="step-screenshot" src="images/đăng kí dự án cho ứng viên.png" alt="Đăng ký dự án cho ứng viên" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Chọn dự án + Ngày bắt đầu + Trạng thái</div>
+            <div class="step-desc">Phần trên popup hiển thị các dự án ứng viên đang đăng ký (tránh trùng)</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Nhấn <strong>"Lưu"</strong> để xác nhận đăng ký</div>
+            <div class="step-desc">Ứng viên xuất hiện trong danh sách dự án. Tiếp tục lên lịch phỏng vấn nếu cần.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 3 -->
+    <div class="flow-card">
+      <div class="flow-card-header td">
+        <div class="flow-num">3</div>
+        <div>
+          <h3>Đăng ký ứng viên vào lịch phỏng vấn</h3>
+          <p>Bộ phận Tuyển dụng chỉ thêm ứng viên vào lịch có sẵn — việc tạo lịch do Bộ phận Quản lý thực hiện</p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#interviews" target="_blank">📅 Lịch phỏng vấn</a> → Tìm lịch phỏng vấn do Quản lý đã tạo sẵn
+            </div>
+            <div class="step-desc">Lịch phỏng vấn hiển thị theo ngày, dự án và người phỏng vấn — lọc để tìm đúng lịch phù hợp với ứng viên</div>
+            <div class="step-tip">⚠️ Bộ phận Tuyển dụng <strong>không có quyền tạo lịch mới</strong>. Nếu chưa có lịch phù hợp, liên hệ Quản lý để tạo lịch trước.</div>
+            <img class="step-screenshot" src="images/danh sách lịch phỏng vấn.png" alt="Danh sách lịch phỏng vấn" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Nhấn vào lịch → Nhấn <strong>"Thêm ứng viên"</strong></div>
+            <div class="step-desc">Trong chi tiết lịch phỏng vấn → Chọn ứng viên cần tham dự từ danh sách ứng viên đã đăng ký dự án</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Xác nhận → Ứng viên nhận thông báo qua app</div>
+            <div class="step-desc">Ứng viên thấy ngày giờ, địa điểm/link meeting và tên người phỏng vấn trên app</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <div class="step-action">Sau phỏng vấn: Cập nhật kết quả trong hồ sơ ứng viên</div>
+            <div class="step-desc">Vào hồ sơ ứng viên → Cập nhật "Kết quả ứng viên" (Đậu / Trượt / Hẹn lại) → Lưu</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 4 -->
+    <div class="flow-card">
+      <div class="flow-card-header td">
+        <div class="flow-num">4</div>
+        <div>
+          <h3>Theo dõi hiệu suất tuyển dụng</h3>
+          <p>Xem báo cáo để đánh giá kết quả và phân bổ nguồn lực</p>
+        </div>
+        <span class="flow-freq freq-monthly">Hàng tuần / tháng</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#recruitment-report" target="_blank">📊 Báo cáo tuyển dụng</a>
+            </div>
+            <div class="step-desc">Xem KPI: Tổng ứng viên · Đã PV · Đã nhận việc · Tỉ lệ chuyển đổi — Lọc theo kỳ / dự án / nguồn tuyển dụng</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /flows-grid -->
+</div><!-- /tuyen-dung -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     QUẢN LÝ
+═══════════════════════════════════════════════════════ -->
+<div class="dept-section" id="quan-ly">
+  <div class="dept-header ql">
+    <h2>📋 Bộ phận Quản lý &amp; Vận hành</h2>
+    <p>Lập kế hoạch dự án, điều phối ca làm việc hàng ngày, giám sát quân số và xử lý các yêu cầu từ lao động.</p>
+    <div class="roles-row">
+      <span class="role-chip">🏢 Admin</span>
+      <span class="role-chip">🎯 Giám đốc dự án (GĐ DA)</span>
+      <span class="role-chip">👔 Quản lý PM (QL PM)</span>
+      <span class="role-chip">🔶 Leader / Trưởng ca</span>
+      <span class="role-chip">🏗️ Admin onsite (Ad-onsite)</span>
+    </div>
+  </div>
+
+  <div class="dept-toc">
+    <div class="dept-toc-title">📋 Tổng quan nghiệp vụ — Quản lý &amp; Vận hành</div>
+    <table>
+      <thead><tr><th>#</th><th>Nghiệp vụ</th><th>Mô tả ngắn</th><th>Tần suất</th></tr></thead>
+      <tbody>
+        <tr><td><span class="toc-num">1</span></td><td><div class="toc-name">Khởi tạo dự án mới</div></td><td class="toc-desc">Tạo dự án, cấu hình ca làm việc, chính sách thưởng, mở dự án</td><td><span class="toc-freq once">Khi có dự án mới</span></td></tr>
+        <tr><td><span class="toc-num">2</span></td><td><div class="toc-name">Tạo form đăng ký ca</div></td><td class="toc-desc">Cho phép lao động chủ động đăng ký ca qua app; chia sẻ link</td><td><span class="toc-freq asneeded">Mỗi đợt / tuần</span></td></tr>
+        <tr><td><span class="toc-num">3</span></td><td><div class="toc-name">Booking ca &amp; Xếp ca hàng ngày</div></td><td class="toc-desc">Đặt số lượng ca cần, phân công lao động cụ thể từng vị trí</td><td><span class="toc-freq daily">Hàng ngày</span></td></tr>
+        <tr><td><span class="toc-num">4</span></td><td><div class="toc-name">Giám sát quân số &amp; Cập nhật thực tế</div></td><td class="toc-desc">Theo dõi điểm danh, cập nhật vắng mặt, bổ sung lao động thiếu</td><td><span class="toc-freq daily">Hàng ngày</span></td></tr>
+        <tr><td><span class="toc-num">5</span></td><td><div class="toc-name">Xác nhận bảng chấm công</div></td><td class="toc-desc">Duyệt bảng công cuối tháng làm đầu vào tính lương</td><td><span class="toc-freq monthly">Hàng tháng</span></td></tr>
+        <tr><td><span class="toc-num">6</span></td><td><div class="toc-name">Duyệt nghỉ phép, ứng lương &amp; khiếu nại</div></td><td class="toc-desc">Xem xét và phê duyệt các yêu cầu phát sinh từ lao động</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
+        <tr><td><span class="toc-num">7</span></td><td><div class="toc-name">Xử lý lao động vi phạm</div></td><td class="toc-desc">Ghi nhận vi phạm, cảnh báo, thêm vào danh sách đen nếu cần</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
+        <tr><td><span class="toc-num">8</span></td><td><div class="toc-name">Tạo lịch phỏng vấn</div></td><td class="toc-desc">Tạo lịch phỏng vấn để bộ phận Tuyển dụng đăng ký ứng viên vào</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
+        <tr><td><span class="toc-num">9</span></td><td><div class="toc-name">Tạo hồ sơ lao động</div></td><td class="toc-desc">Chuyển ứng viên đậu thành lao động chính thức; tuyển dụng chỉ View</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
+        <tr><td><span class="toc-num">10</span></td><td><div class="toc-name">Tạo &amp; Phát hành hợp đồng lao động</div></td><td class="toc-desc">Soạn, ký, upload bản đã ký; tuyển dụng không có quyền tạo</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
+        <tr><td><span class="toc-num">11</span></td><td><div class="toc-name">Khai báo người phụ thuộc (NPT)</div></td><td class="toc-desc">Khai báo MST và NPT để giảm trừ thuế TNCN; tuyển dụng chỉ View</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flows-grid ql">
+
+    <!-- Flow 1 -->
+    <div class="flow-card">
+      <div class="flow-card-header ql">
+        <div class="flow-num">1</div>
+        <div>
+          <h3>Khởi tạo dự án mới</h3>
+          <p>Cấu hình đầy đủ dự án trước khi bắt đầu tuyển dụng &amp; vận hành</p>
+        </div>
+        <span class="flow-freq freq-once">Khi có dự án mới</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#project-list" target="_blank">📋 Dự án</a> → Nhấn <strong>"Tạo dự án"</strong>
+            </div>
+            <img class="step-screenshot" src="images/tạo dự án.png" alt="Form tạo dự án mới" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Tab <strong>Dự án</strong>: Điền thông tin cơ bản</div>
+            <div class="step-desc">Tên dự án ✱ · Mô tả ngắn ✱ · Mô tả chi tiết ✱ · Địa điểm · Lương ✱ · Loại công việc ✱ · Tags · Logo ✱</div>
+            <div class="step-tip">Thêm Vị trí công việc trong sidebar phải (VD: Leader, Công nhân) để phân ca sau này</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Tab <strong>Kế hoạch ca</strong>: Cấu hình ca làm việc</div>
+            <div class="step-desc">Định nghĩa các ca (sáng/chiều/đêm), giờ bắt đầu-kết thúc từng ca</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <div class="step-action">Tab <strong>Thưởng</strong>: Thiết lập chính sách thưởng</div>
+            <div class="step-desc">Thưởng chuyên cần, thưởng hiệu suất, thưởng đặc biệt</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">5</div>
+          <div class="step-body">
+            <div class="step-action">Nhấn <strong>"Lưu thay đổi"</strong> → Mở trạng thái dự án</div>
+            <div class="step-desc">Thông báo cho team Tuyển dụng để bắt đầu tiếp nhận ứng viên</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 2 -->
+    <div class="flow-card">
+      <div class="flow-card-header ql">
+        <div class="flow-num">2</div>
+        <div>
+          <h3>Tạo form để lao động tự đăng ký ca</h3>
+          <p>Cho phép lao động linh hoạt chủ động đăng ký ca muốn làm</p>
+        </div>
+        <span class="flow-freq freq-asneeded">Mỗi đợt tuyển / theo tuần</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#shift-register-form" target="_blank">📝 Form đăng ký ca</a> → Nhấn <strong>"+ Tạo form mới"</strong>
+            </div>
+            <img class="step-screenshot" src="images/tạo form đăng kí ca.png" alt="Form tạo form đăng ký ca" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Chọn Dự án ✱ · Ngày bắt đầu ✱ · Ngày kết thúc ✱</div>
+            <div class="step-desc">Thêm Ghi chú để lao động biết quy định ca, lưu ý đặc biệt (tùy chọn)</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Tạo form → Chia sẻ link cho lao động</div>
+            <div class="step-desc">Lao động mở link trên app → Chọn ngày và ca → Hệ thống tự ghi nhận → Quản lý duyệt trong Phân ca lao động</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 3 -->
+    <div class="flow-card">
+      <div class="flow-card-header ql">
+        <div class="flow-num">3</div>
+        <div>
+          <h3>Booking ca &amp; Xếp ca hàng ngày</h3>
+          <p>Lập kế hoạch số lượng ca cần và phân công lao động cụ thể</p>
+        </div>
+        <span class="flow-freq freq-daily">Hàng ngày</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#shift-booking" target="_blank">🗓️ Xếp ca &amp; Booking</a> → Chọn dự án
+            </div>
+            <div class="step-desc">Xem lịch tháng — ô màu đỏ = chưa đủ lao động, xanh = đủ</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Nhấn ✏️ trên ô ca → Nhập số lượng booking</div>
+            <div class="step-desc">Chọn áp dụng Một ngày hoặc Khoảng ngày → Nhập số LĐ cần (Tuyển dụng) + Số ghế xe (Xe đưa đón) → Lưu</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#shift-assignment" target="_blank">👷 Phân ca lao động</a> → Nhấn <strong>"+ Phân ca thủ công"</strong>
+            </div>
+            <img class="step-screenshot" src="images/phân ca thủ công.png" alt="Màn hình phân ca thủ công" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <div class="step-action">Chọn Ngày · Ca làm việc · Vị trí → Tick lao động → Nhấn <strong>"Phân ca"</strong></div>
+            <div class="step-desc">Lao động nhận thông báo ca làm việc trên app tự động</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 4 -->
+    <div class="flow-card">
+      <div class="flow-card-header ql">
+        <div class="flow-num">4</div>
+        <div>
+          <h3>Giám sát quân số &amp; Cập nhật thực tế</h3>
+          <p>Theo dõi số lao động đi làm thực tế mỗi ca trong ngày</p>
+        </div>
+        <span class="flow-freq freq-daily">Cuối mỗi ca</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#daily-report" target="_blank">📈 Báo cáo quân số</a>
+            </div>
+            <div class="step-desc">Xem bảng tổng hợp: Booking / Thực tế / Tỉ lệ / Nghỉ việc / Sự vụ</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Nhập số LĐ thực tế vào ô → Nhấn <strong>"Lưu"</strong> từng hàng</div>
+            <div class="step-desc">Hoặc nhấn <strong>"Lưu toàn bộ báo cáo"</strong> để lưu tất cả cùng lúc</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Nếu có sự cố → Nhấn <strong>"+ Thêm sự vụ"</strong></div>
+            <div class="step-desc">Ghi nhận tai nạn, vi phạm, vắng mặt không phép, sự cố thiết bị trong ca</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 5 -->
+    <div class="flow-card">
+      <div class="flow-card-header ql">
+        <div class="flow-num">5</div>
+        <div>
+          <h3>Xác nhận bảng chấm công</h3>
+          <p>Đối chiếu và xác nhận dữ liệu công trước khi chuyển sang tính lương</p>
+        </div>
+        <span class="flow-freq freq-monthly">Cuối tháng</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#attendance" target="_blank">⏱️ Bảng chấm công</a>
+            </div>
+            <div class="step-desc">Xem dữ liệu check-in/check-out của từng lao động trong tháng</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Kiểm tra sai lệch → Điều chỉnh thủ công nếu cần</div>
+            <div class="step-desc">Trường hợp: quên check-in, lỗi QR, làm thêm giờ được duyệt thêm</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action"><strong>Xác nhận bảng công tháng</strong></div>
+            <div class="step-desc">Sau khi xác nhận, dữ liệu chốt — kế toán dùng để tính lương</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 6 -->
+    <div class="flow-card">
+      <div class="flow-card-header ql">
+        <div class="flow-num">6</div>
+        <div>
+          <h3>Duyệt nghỉ phép, ứng lương &amp; khiếu nại</h3>
+          <p>Xử lý các yêu cầu từ lao động gửi qua app mobile</p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              <a class="step-link" href="huong-dan-nguoi-dung.html#leave" target="_blank">🏖️ Duyệt nghỉ phép</a>: Xem đơn → Kiểm tra số ngày phép còn lại → Duyệt / Từ chối
+            </div>
+            <div class="step-desc">Nếu duyệt: trừ ngày phép + cập nhật bảng công tự động</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">
+              <a class="step-link" href="huong-dan-nguoi-dung.html#salary-advance" target="_blank">💸 Ứng lương</a>: Xem yêu cầu → Duyệt số tiền → Chuyển khoản thực tế
+            </div>
+            <div class="step-desc">Hệ thống tự ghi nhận để khấu trừ vào phiếu lương tháng</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">
+              <a class="step-link" href="huong-dan-nguoi-dung.html#complaints" target="_blank">📣 Khiếu nại</a>: Tiếp nhận → Điều tra → Phản hồi → Đóng khiếu nại
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 7 -->
+    <div class="flow-card">
+      <div class="flow-card-header ql">
+        <div class="flow-num">7</div>
+        <div>
+          <h3>Xử lý lao động vi phạm</h3>
+          <p>Ghi nhận vi phạm và ngăn chặn tái tuyển dụng lao động xấu</p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#blacklist" target="_blank">🚫 Danh sách đen</a> → Nhấn <strong>"+ Thêm mới"</strong>
+            </div>
+            <img class="step-screenshot" src="images/thêm ứng viên vào danh sách đen.png" alt="Form thêm vào danh sách đen" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Chọn lao động → Chọn loại vi phạm → Nhập lý do chi tiết → Lưu</div>
+            <div class="step-desc">Từ thời điểm này, hệ thống tự cảnh báo khi nhân viên tuyển dụng nhập CCCD/SĐT của lao động này</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 8 — Tạo lịch phỏng vấn (chỉ Quản lý) -->
+    <div class="flow-card">
+      <div class="flow-card-header ql">
+        <div class="flow-num">8</div>
+        <div>
+          <h3>Tạo lịch phỏng vấn</h3>
+          <p>Chỉ Bộ phận Quản lý mới có quyền tạo lịch — Bộ phận Tuyển dụng sẽ đăng ký ứng viên vào lịch này</p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi cần phỏng vấn ứng viên</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#interviews" target="_blank">📅 Lịch phỏng vấn</a> → Nhấn <strong>"+ Thêm mới"</strong>
+            </div>
+            <img class="step-screenshot" src="images/tạo lịch phỏng vấn.png" alt="Form tạo lịch phỏng vấn" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Điền thông tin lịch phỏng vấn</div>
+            <div class="step-desc">Dự án ✱ · Ngày + giờ bắt đầu/kết thúc ✱ · Người phỏng vấn ✱ · Hình thức: <strong>Offline tại VP</strong> hoặc <strong>Online</strong> (nhập link meeting)</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Nhấn <strong>"Lưu lịch hẹn"</strong></div>
+            <div class="step-desc">Lịch hiển thị trong danh sách — Thông báo cho Bộ phận Tuyển dụng để thêm ứng viên vào lịch</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <div class="step-action">Sau phỏng vấn: Nhận kết quả từ Bộ phận Tuyển dụng cập nhật trong hồ sơ ứng viên</div>
+            <div class="step-desc">Đậu → Thông báo nhận việc. Trượt → Lưu hồ sơ. Hẹn lại → Tạo lịch mới tương tự.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Flow 9 -->
+    <div class="flow-card">
+      <div class="flow-card-header ql">
+        <div class="flow-num">9</div>
+        <div>
+          <h3>Tạo hồ sơ lao động sau khi ứng viên đậu</h3>
+          <p>Chuyển đổi ứng viên thành lao động chính thức trong hệ thống</p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#worker-profile" target="_blank">📁 Hồ sơ lao động</a> → Nhấn <strong>"Tạo hồ sơ"</strong>
+            </div>
+            <div class="step-desc">Hoặc từ Danh sách ứng viên → ⋮ → "Tạo hồ sơ lao động"</div>
+            <img class="step-screenshot" src="images/tạo hồ sơ lao động.png" alt="Form tạo hồ sơ lao động" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Chọn từ "Lao động đã đăng ký dự án"</div>
+            <div class="step-desc">Hệ thống tự điền thông tin cá nhân từ hồ sơ ứng viên. Kiểm tra lại và bổ sung nếu thiếu.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Điền "Thông tin nội bộ công ty"</div>
+            <div class="step-desc">Loại lao động ✱ · Loại hợp đồng · Bộ phận · Vị trí · Ngày bắt đầu làm việc · Dự án hiện tại</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <div class="step-action">Nhấn <strong>"Lưu hồ sơ"</strong></div>
+            <div class="step-desc">Hệ thống cấp mã WKR-XXXXXX. Lao động sẵn sàng để ký hợp đồng.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 10 -->
+    <div class="flow-card">
+      <div class="flow-card-header ql">
+        <div class="flow-num">10</div>
+        <div>
+          <h3>Tạo &amp; Phát hành hợp đồng lao động</h3>
+          <p>Soạn thảo, xem trước và hoàn thiện hợp đồng ký kết</p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi nhận lao động mới / gia hạn HĐ</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#contracts" target="_blank">📄 Hợp đồng lao động</a> → Nhấn <strong>"+ Tạo HĐ Mới"</strong>
+            </div>
+            <img class="step-screenshot" src="images/tạo hợp đồng lao động.png" alt="Form tạo hợp đồng lao động" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Điền thông tin hợp đồng</div>
+            <div class="step-desc">Chọn lao động ✱ · Chọn mẫu HĐ ✱ · Ngày ký ✱ · Ngày kết thúc ✱ · Lương cơ bản ✱ · Hình thức thanh toán · Điều khoản bổ sung</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Nhấn <strong>"Lưu Nháp"</strong> → xem trước PDF → xuất .docx</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <div class="step-action">In HĐ → Ký tay → Scan → Upload "Bản Đã Ký"</div>
+            <div class="step-desc">HĐ chuyển trạng thái <span style="background:#e8f5e9;color:#2e7d32;padding:1px 8px;border-radius:10px;font-size:12px;font-weight:700">Đang hoạt động</span></div>
+            <div class="step-note">Nếu HĐ sắp hết hạn → Tạo HĐ mới cùng quy trình. Hệ thống tự liên kết lịch sử gia hạn.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 11 -->
+    <div class="flow-card">
+      <div class="flow-card-header ql">
+        <div class="flow-num">11</div>
+        <div>
+          <h3>Khai báo người phụ thuộc (NPT)</h3>
+          <p>Khai báo MST và NPT để tính đúng thuế TNCN trong phiếu lương</p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi lao động có NPT</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#dependents" target="_blank">👨‍👩‍👧 Người phụ thuộc</a> → Nhấn <strong>"Khai báo NPT mới"</strong>
+            </div>
+            <img class="step-screenshot" src="images/thêm người phụ thuộc.png" alt="Form khai báo người phụ thuộc" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Chọn lao động → Nhập Mã số thuế (MST) cá nhân</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Thêm từng người phụ thuộc → <strong>Lưu</strong></div>
+            <div class="step-desc">Dữ liệu NPT được kế toán sử dụng khi tính lương để giảm trừ thuế TNCN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /quan-ly -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     XE ĐƯA ĐÓN
+═══════════════════════════════════════════════════════ -->
+<div class="dept-section" id="xe-dua-don">
+  <div class="dept-header xe">
+    <h2>🚌 Bộ phận Xe đưa đón</h2>
+    <p>Quản lý toàn bộ hệ thống xe đưa đón lao động: thiết lập tuyến, phương tiện, nhà thầu và điều phối chuyến hàng ngày.</p>
+    <div class="roles-row">
+      <span class="role-chip">🚌 Trưởng BP Xe (BP Xe PM)</span>
+      <span class="role-chip">🗺️ Quản lý tuyến (QL Tuyến)</span>
+      <span class="role-chip">📡 Điều phối viên (Dispatcher)</span>
+      <span class="role-chip">🚗 Lái xe (Driver)</span>
+    </div>
+  </div>
+
+  <div class="dept-toc">
+    <div class="dept-toc-title">📋 Tổng quan nghiệp vụ — Xe đưa đón</div>
+    <table>
+      <thead><tr><th>#</th><th>Nghiệp vụ</th><th>Mô tả ngắn</th><th>Tần suất</th></tr></thead>
+      <tbody>
+        <tr><td><span class="toc-num">1</span></td><td><div class="toc-name">Thiết lập hệ thống ban đầu</div></td><td class="toc-desc">Tạo tuyến đường, đăng ký phương tiện và nhà thầu vận tải</td><td><span class="toc-freq once">1 lần / khi thay đổi</span></td></tr>
+        <tr><td><span class="toc-num">2</span></td><td><div class="toc-name">Quản lý booking lao động</div></td><td class="toc-desc">Xem danh sách đăng ký xe, xác nhận số lượng theo tuyến</td><td><span class="toc-freq daily">Hàng ngày</span></td></tr>
+        <tr><td><span class="toc-num">3</span></td><td><div class="toc-name">Tạo &amp; Phát lệnh điều phối</div></td><td class="toc-desc">Tạo lệnh điều xe, gán lái xe và tuyến đường, phát lệnh</td><td><span class="toc-freq daily">Hàng ngày</span></td></tr>
+        <tr><td><span class="toc-num">4</span></td><td><div class="toc-name">Cập nhật &amp; Bảo trì phương tiện</div></td><td class="toc-desc">Ghi nhận sửa chữa, đăng kiểm, cập nhật trạng thái xe</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flows-grid xe">
+
+    <!-- Flow 1 -->
+    <div class="flow-card">
+      <div class="flow-card-header xe">
+        <div class="flow-num">1</div>
+        <div>
+          <h3>Thiết lập hệ thống ban đầu</h3>
+          <p>Cấu hình tuyến đường, nhà thầu và phương tiện trước khi vận hành</p>
+        </div>
+        <span class="flow-freq freq-once">Một lần ban đầu</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#routes" target="_blank">🛣️ Tuyến đường</a> → Nhấn <strong>"+ Tạo tuyến"</strong>
+            </div>
+            <div class="step-desc">Nhập Tên tuyến ✱ · Thời gian dự kiến (phút) ✱ · Điểm bắt đầu ✱ · Điểm kết thúc ✱ · Các điểm dừng trung gian</div>
+            <img class="step-screenshot" src="images/tạo tuyến đường.png" alt="Form tạo tuyến đường" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#contractors" target="_blank">🏢 Nhà thầu</a> → Thêm công ty xe đối tác
+            </div>
+            <div class="step-desc">Tên nhà thầu · Địa chỉ · SĐT liên hệ · Đơn giá xe theo loại (7/16/29/45 chỗ)</div>
+            <img class="step-screenshot" src="images/thêm nhà thầu.png" alt="Form thêm nhà thầu" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#vehicles" target="_blank">🚌 Phương tiện</a> → Thêm từng xe → Gán nhà thầu + Gán lái xe
+            </div>
+            <div class="step-desc">Biển số xe · Loại xe (sức chứa) · Nhà thầu phụ trách · Lái xe được phân công</div>
+            <img class="step-screenshot" src="images/thêm xe.png" alt="Form thêm phương tiện" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 2 -->
+    <div class="flow-card">
+      <div class="flow-card-header xe">
+        <div class="flow-num">2</div>
+        <div>
+          <h3>Quản lý booking lao động</h3>
+          <p>Xem và xử lý các yêu cầu đặt chỗ xe từ lao động</p>
+        </div>
+        <span class="flow-freq freq-daily">Hàng ngày</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#route-booking" target="_blank">🎫 Booking tuyến</a>
+            </div>
+            <div class="step-desc">Xem danh sách lao động đã đặt chỗ theo từng tuyến · ngày · ca</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Đối chiếu số lượng booking với sức chứa xe</div>
+            <div class="step-desc">Nếu vượt sức chứa → Điều thêm xe hoặc thông báo lao động thay tuyến</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Duyệt / Từ chối booking cụ thể nếu cần</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 3 -->
+    <div class="flow-card">
+      <div class="flow-card-header xe">
+        <div class="flow-num">3</div>
+        <div>
+          <h3>Tạo &amp; Phát lệnh điều phối</h3>
+          <p>Phân công xe và lái xe cho từng chuyến trong ngày</p>
+        </div>
+        <span class="flow-freq freq-daily">Hàng ngày</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#dispatch" target="_blank">🚐 Lệnh điều phối</a> → Nhấn <strong>"+ Tạo lệnh"</strong>
+            </div>
+            <img class="step-screenshot" src="images/tạo lệnh điều phối.png" alt="Form tạo lệnh điều phối" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Chọn Tuyến ✱ · Phương tiện ✱ · Lái xe ✱ · Ngày &amp; Ca ✱</div>
+            <div class="step-desc">Hệ thống hiển thị số lao động đã booking trên tuyến đó</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Phát lệnh → Lái xe nhận trên app</div>
+            <div class="step-desc">Lái xe thấy danh sách hành khách, điểm đón, thứ tự dừng</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <div class="step-action">Theo dõi trạng thái chuyến thực tế</div>
+            <div class="step-desc">Chờ khởi hành → Đang chạy → Hoàn thành. Lái xe cập nhật trên app theo từng điểm đón.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 4 -->
+    <div class="flow-card">
+      <div class="flow-card-header xe">
+        <div class="flow-num">4</div>
+        <div>
+          <h3>Cập nhật &amp; Bảo trì danh sách phương tiện</h3>
+          <p>Quản lý trạng thái hoạt động của phương tiện và lái xe</p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#vehicles" target="_blank">🚌 Phương tiện</a> → Chọn xe cần cập nhật
+            </div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Cập nhật trạng thái: Hoạt động / Bảo dưỡng / Ngừng hoạt động</div>
+            <div class="step-desc">Xe đang bảo dưỡng sẽ không hiển thị trong danh sách điều phối</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /xe-dua-don -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     KẾ TOÁN
+═══════════════════════════════════════════════════════ -->
+<div class="dept-section" id="ke-toan">
+  <div class="dept-header kt">
+    <h2>💰 Bộ phận Kế toán &amp; HC-NS</h2>
+    <p>Xử lý bảo hiểm BHXH, tính lương, kiểm tra thuế TNCN và quản lý các khoản ứng lương.</p>
+    <div class="roles-row">
+      <span class="role-chip">💼 HC &amp; Nhân sự (HC NS)</span>
+      <span class="role-chip">📊 Kế toán tổng hợp</span>
+    </div>
+  </div>
+
+  <div class="dept-toc">
+    <div class="dept-toc-title">📋 Tổng quan nghiệp vụ — Kế toán &amp; HC-NS</div>
+    <table>
+      <thead><tr><th>#</th><th>Nghiệp vụ</th><th>Mô tả ngắn</th><th>Tần suất</th></tr></thead>
+      <tbody>
+        <tr><td><span class="toc-num">1</span></td><td><div class="toc-name">Xử lý đề xuất BHXH hàng tháng</div></td><td class="toc-desc">Duyệt danh sách tăng/giảm bảo hiểm, xuất hồ sơ nộp cơ quan</td><td><span class="toc-freq monthly">Hàng tháng</span></td></tr>
+        <tr><td><span class="toc-num">2</span></td><td><div class="toc-name">Kiểm tra NPT trước kỳ lương</div></td><td class="toc-desc">Xác nhận thông tin NPT đã khai báo để tính đúng giảm trừ thuế TNCN</td><td><span class="toc-freq monthly">Đầu mỗi tháng</span></td></tr>
+        <tr><td><span class="toc-num">3</span></td><td><div class="toc-name">Tính lương &amp; Phát hành phiếu lương</div></td><td class="toc-desc">Tổng hợp bảng công, thưởng, khấu trừ → tính lương → phát phiếu</td><td><span class="toc-freq monthly">Hàng tháng</span></td></tr>
+        <tr><td><span class="toc-num">4</span></td><td><div class="toc-name">Xác nhận &amp; Đối soát ứng lương</div></td><td class="toc-desc">Kiểm tra khoản ứng đã duyệt, đối soát ngân hàng, khấu trừ vào lương</td><td><span class="toc-freq monthly">Trước khi chốt lương</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flows-grid kt">
+
+    <!-- Flow 1 -->
+    <div class="flow-card">
+      <div class="flow-card-header kt">
+        <div class="flow-num">1</div>
+        <div>
+          <h3>Xử lý đề xuất BHXH hàng tháng</h3>
+          <p>Duyệt danh sách tăng/giảm tham gia bảo hiểm và xuất hồ sơ nộp cơ quan</p>
+        </div>
+        <span class="flow-freq freq-monthly">Hàng tháng</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#insurance" target="_blank">🛡️ Đề xuất bảo hiểm</a>
+            </div>
+            <div class="step-desc">Xem danh sách đề xuất tháng do HR lập — Tăng tham gia / Giảm tham gia / Thay đổi thông tin</div>
+            <img class="step-screenshot" src="images/thêm đề xuất bảo hiểm thủ công.png" alt="Form thêm đề xuất bảo hiểm" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Review từng đề xuất → Duyệt / Từ chối kèm lý do</div>
+            <div class="step-desc">Kiểm tra: mức lương đóng BH đúng không, ngày bắt đầu/kết thúc hợp lệ không</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action"><strong>Xác nhận kế toán</strong> → Chốt danh sách</div>
+            <div class="step-desc">Vai trò Kế toán mới có quyền bấm "Xác nhận kế toán" — QL PM không có quyền này</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <div class="step-action">Nhấn <strong>"Xuất file"</strong> → Nộp cơ quan BHXH</div>
+            <div class="step-desc">File định dạng theo chuẩn cơ quan BHXH yêu cầu</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 2 -->
+    <div class="flow-card">
+      <div class="flow-card-header kt">
+        <div class="flow-num">2</div>
+        <div>
+          <h3>Kiểm tra NPT trước kỳ lương</h3>
+          <p>Đảm bảo dữ liệu NPT và MST đầy đủ để tính đúng thuế TNCN</p>
+        </div>
+        <span class="flow-freq freq-monthly">Đầu mỗi tháng</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#dependents" target="_blank">👨‍👩‍👧 Người phụ thuộc</a>
+            </div>
+            <div class="step-desc">Xem danh sách lao động đã khai báo MST và số NPT</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Rà soát lao động chưa có MST hoặc chưa khai NPT → Yêu cầu bộ phận Tuyển dụng cập nhật</div>
+            <div class="step-desc">Thiếu MST → Không giảm trừ được thuế TNCN → Lương thực nhận bị ảnh hưởng</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 3 -->
+    <div class="flow-card">
+      <div class="flow-card-header kt">
+        <div class="flow-num">3</div>
+        <div>
+          <h3>Tính lương &amp; Phát hành phiếu lương</h3>
+          <p>Chu trình tính lương đầy đủ từ tổng hợp dữ liệu đến chuyển khoản</p>
+        </div>
+        <span class="flow-freq freq-monthly">Hàng tháng</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Xác nhận <a class="step-link" href="huong-dan-nguoi-dung.html#attendance" target="_blank">⏱️ Bảng chấm công</a> tháng đã được Quản lý xác nhận
+            </div>
+            <div class="step-desc">Bảng công chưa xác nhận → Không tạo được kỳ lương</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#payroll" target="_blank">💰 Bảng tính lương</a> → Nhấn <strong>"Tạo kỳ lương mới"</strong>
+            </div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Chọn tháng · Dự án (hoặc tất cả) → Hệ thống tự tính</div>
+            <div class="step-desc">Công thức: <strong>Số ngày công × Lương ngày + Thưởng − Khấu trừ (ứng lương, thuế TNCN, BH)</strong></div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <div class="step-action">Kiểm tra từng dòng lương → Duyệt từng người hoặc <strong>"Duyệt hàng loạt"</strong></div>
+            <div class="step-desc">Chú ý các trường hợp: nghỉ phép không lương, ứng lương, thưởng đặc biệt</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">5</div>
+          <div class="step-body">
+            <div class="step-action">Nhấn <strong>"Xuất Excel / PDF"</strong> → Chuyển khoản thực tế</div>
+            <div class="step-desc">Chuyển khoản theo danh sách STK ngân hàng trong hồ sơ lao động</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">6</div>
+          <div class="step-body">
+            <div class="step-action">Quay lại hệ thống → Đánh dấu <strong>"Đã thanh toán"</strong></div>
+            <div class="step-desc">Lao động nhận thông báo phiếu lương trên app</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 4 -->
+    <div class="flow-card">
+      <div class="flow-card-header kt">
+        <div class="flow-num">4</div>
+        <div>
+          <h3>Xác nhận &amp; Đối soát ứng lương</h3>
+          <p>Kiểm tra các khoản ứng lương đã duyệt để khấu trừ đúng kỳ</p>
+        </div>
+        <span class="flow-freq freq-monthly">Trước khi chốt lương</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#salary-advance" target="_blank">💸 Ứng lương</a>
+            </div>
+            <div class="step-desc">Xem các khoản ứng lương đã được Quản lý duyệt trong tháng</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Đối soát với sao kê ngân hàng → Xác nhận đã chuyển khoản</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Hệ thống tự khấu trừ vào phiếu lương tháng tương ứng</div>
+            <div class="step-desc">Kiểm tra lại trong Bảng tính lương — cột "Ứng lương" phải khớp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /ke-toan -->
+
+</div><!-- /content -->
+
+<!-- FOOTER NAV -->
+<div style="background:#0f1b2d;margin-top:0;padding:28px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+  <div>
+    <div style="font-size:11px;color:#80cbc4;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">Bộ tài liệu HUMI Workforce</div>
+    <div style="font-size:15px;font-weight:700;color:#fff">📋 Hướng dẫn Theo Bộ Phận</div>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <a href="huong-dan-nguoi-dung.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 20px;border-radius:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#e0e0e0;font-size:13px;font-weight:600;text-decoration:none">📖 Chi tiết màn hình</a>
+  </div>
+</div>
+
+<script>
+function show(id) {
+  // hide all sections
+  document.querySelectorAll('.dept-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.dept-tab').forEach(t => t.classList.remove('active'));
+  // show target
+  document.getElementById(id).classList.add('active');
+  // activate tab
+  const map = {'tuyen-dung':'td','quan-ly':'ql','xe-dua-don':'xe','ke-toan':'kt'};
+  document.querySelectorAll('.dept-tab').forEach(t => {
+    if (t.classList.contains(map[id])) t.classList.add('active');
+  });
+  window.scrollTo({top: 0, behavior:'smooth'});
+}
+
+// Auto-activate tab from URL hash
+const hash = window.location.hash.slice(1);
+if (['tuyen-dung','quan-ly','xe-dua-don','ke-toan'].includes(hash)) show(hash);
+</script>
+
+<!-- SCREENSHOT INJECT for step links -->
+<div id="ss-overlay2" onclick="this.classList.remove('open')"><img id="ss-big2" src="" alt=""></div>
+<script>
+(function(){
+  // Section hash → representative screenshot
+  var hm = {
+    '#candidates':         'images/danh sách ứng viên.png',
+    '#worker-profile':     'images/danh sách hồ sơ lao động.png',
+    '#contracts':          'images/danh sách hợp đồng lao động.png',
+    '#interviews':         'images/danh sách lịch phỏng vấn.png',
+    '#recruitment-report': 'images/báo cáo tuyển dụng.png',
+    '#dependents':         'images/danh sách người phụ thuộc.png',
+    '#project-list':       'images/danh sách dự án.png',
+    '#shift-register-form':'images/danh sách form đăng kí.png',
+    '#shift-booking':      'images/booking ca.png',
+    '#shift-assignment':   'images/Phân ca lao động.png',
+    '#daily-report':       'images/báo cáo ca làm việc.png',
+    '#routes':             'images/danh sách tuyến đường.png',
+    '#vehicles':           'images/danh sách xe.png',
+    '#contractors':        'images/danh sách nhà thầu.png',
+    '#dispatch':           'images/danh sách lệnh điều phối.png',
+    '#route-booking':      'images/danh sách số lượng booking tuyến.png',
+    '#insurance':          'images/màn đề xuất bảo hiểm.png',
+    '#leave':              'images/danh sách nghỉ phép.png',
+    '#salary-advance':     'images/danh sách ứng lương.png',
+    '#complaints':         'images/danh sách khiếu nại.png',
+    '#blacklist':          'images/danh sách đen.png',
+    '#payroll':            'images/danh sách ứng viên.png'
+  };
+
+  var overlay = document.getElementById('ss-overlay2');
+  var bigImg  = document.getElementById('ss-big2');
+
+  // For each flow-card, track which images already shown to avoid duplicates
+  document.querySelectorAll('.flow-card').forEach(function(card){
+    var seen = {};
+    card.querySelectorAll('.step-row').forEach(function(row){
+      var link = row.querySelector('.step-link');
+      if(!link) return;
+      var href = link.getAttribute('href') || '';
+      var hi   = href.indexOf('#');
+      if(hi === -1) return;
+      var hashKey = '#' + href.slice(hi + 1);
+      var src = hm[hashKey];
+      if(!src || seen[src]) return;
+      seen[src] = true;
+      var body = row.querySelector('.step-body');
+      if(!body) return;
+      var img = document.createElement('img');
+      img.src     = src;
+      img.alt     = '';
+      img.className = 'step-screenshot';
+      img.loading = 'lazy';
+      img.setAttribute('onerror', "this.style.display='none'");
+      img.addEventListener('click', function(){
+        bigImg.src = this.src;
+        overlay.classList.add('open');
+      });
+      var existingScreenshot = body.querySelector('.step-screenshot');
+      if (existingScreenshot) {
+        body.insertBefore(img, existingScreenshot);
+      } else {
+        body.appendChild(img);
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
