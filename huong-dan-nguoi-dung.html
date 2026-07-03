@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hướng Dẫn Người Dùng – HUMI Workforce</title>
+<title>Chi tiết màn hình – HUMI Workforce</title>
 <style>
 :root {
   --brand: #1a73e8;
@@ -23,7 +23,8 @@
   --sidebar-w: 260px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);color:var(--text);line-height:1.6;display:flex;min-height:100vh}
+html{width:100%;height:100%}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);color:var(--text);line-height:1.6;display:flex;align-items:stretch;min-height:100vh;width:100%}
 
 /* SIDEBAR */
 #sidebar{
@@ -32,6 +33,13 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
 }
 #sidebar::-webkit-scrollbar{width:4px}
 #sidebar::-webkit-scrollbar-thumb{background:#2d4057;border-radius:4px}
+.home-nav-btn{
+  display:block;margin:0 12px 4px;padding:9px 14px;border-radius:8px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);
+  color:#e0e0e0;font-size:13px;font-weight:600;text-decoration:none;text-align:center;
+  transition:background .15s,color .15s;
+}
+.home-nav-btn:hover{background:rgba(255,255,255,0.2);color:#fff}
 .sidebar-logo{
   padding:20px 20px 16px;border-bottom:1px solid #1e2d42;
   display:flex;align-items:center;gap:12px;
@@ -53,7 +61,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
 .nav-item .nav-icon{margin-right:10px;font-size:14px;opacity:.8}
 
 /* MAIN */
-#main{flex:1;padding:32px 36px;overflow-x:hidden}
+#main{flex:1;min-width:0;width:0;padding:32px 36px;overflow-x:hidden}
 .page-header{margin-bottom:32px}
 .page-header h1{font-size:26px;font-weight:700;color:#0f1b2d;margin-bottom:6px}
 .page-header p{color:var(--text-muted);font-size:15px}
@@ -73,14 +81,14 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
 }
 .screen-card-header{
   padding:16px 20px;background:#f8fafc;border-bottom:1px solid var(--border);
-  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  display:flex;flex-direction:column;gap:10px;
 }
 .screen-card-header h3{font-size:16px;font-weight:700;color:#0f1b2d;margin-bottom:4px}
 .screen-card-header p{font-size:13px;color:var(--text-muted)}
 .screen-card-body{padding:20px}
 
 /* ROLES */
-.roles{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.roles{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
 .role-badge{
   padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;
   display:inline-flex;align-items:center;gap:4px;
@@ -147,24 +155,59 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
 .welcome-card .wc-title{font-size:14px;font-weight:700;color:#0f1b2d}
 .welcome-card .wc-count{font-size:12px;color:var(--text-muted)}
 
+/* MODULE OVERVIEW */
+.module-overview{
+  background:linear-gradient(135deg,#0f1b2d 0%,#1a3a5c 100%);
+  border-radius:var(--radius);padding:24px 28px;margin-bottom:24px;color:#fff;
+}
+.module-overview h2{font-size:17px;font-weight:700;margin-bottom:6px;color:#e3f2fd}
+.module-overview .mo-sub{font-size:13px;color:#90caf9;margin-bottom:20px}
+.mo-flows{display:flex;flex-direction:column;gap:14px}
+.mo-flow{background:rgba(255,255,255,0.07);border-radius:8px;padding:14px 18px}
+.mo-flow-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#80deea;margin-bottom:10px}
+.mo-steps{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.mo-step{
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);
+  border-radius:6px;padding:6px 12px;font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap;
+}
+.mo-step.highlight{background:rgba(26,115,232,0.5);border-color:#1a73e8}
+.mo-arrow{color:#80cbc4;font-size:16px;font-weight:700}
+.mo-note{margin-top:16px;font-size:12.5px;color:#b0bec5;border-top:1px solid rgba(255,255,255,0.1);padding-top:12px}
+
 @media(max-width:768px){
   #sidebar{display:none}
   #main{padding:20px}
 }
+
+/* SCREENSHOT */
+.screenshot-wrap{margin-top:20px;border-top:1px dashed var(--border);padding-top:16px}
+.screenshot-label{font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.screenshot-label::before{content:'📸';font-size:12px}
+.screenshot{width:100%;border-radius:8px;border:1px solid var(--border);box-shadow:0 4px 16px rgba(0,0,0,.09);display:block;cursor:zoom-in;transition:box-shadow .2s}
+.screenshot:hover{box-shadow:0 8px 28px rgba(0,0,0,.16)}
+/* lightbox overlay */
+#ss-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;cursor:zoom-out;align-items:center;justify-content:center}
+#ss-overlay.open{display:flex}
+#ss-overlay img{max-width:92vw;max-height:90vh;border-radius:10px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
 </style>
 </head>
 <body>
 
 <!-- SIDEBAR -->
 <nav id="sidebar">
-  <div class="sidebar-logo">
+  <a class="sidebar-logo" href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:12px;cursor:pointer" title="Về trang chủ">
     <div class="logo-icon">H</div>
     <div>
       <div class="logo-text">HUMI Workforce</div>
-      <div class="logo-sub">Hướng dẫn người dùng</div>
+      <div class="logo-sub">Chi tiết màn hình</div>
     </div>
-  </div>
+  </a>
+  <a href="index.html" class="home-nav-btn">🏠 Về Trang chủ</a>
   <div class="sidebar-nav">
+    <div class="nav-group">Xác thực</div>
+    <a class="nav-item" href="#login"><span class="nav-icon">🔐</span>Đăng nhập & OTP</a>
+    <a class="nav-item" href="#forgot-password"><span class="nav-icon">🔑</span>Quên mật khẩu</a>
+
     <div class="nav-group">Tổng quan</div>
     <a class="nav-item" href="#dashboard"><span class="nav-icon">🏠</span>Bảng điều khiển</a>
 
@@ -217,8 +260,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
 <!-- MAIN CONTENT -->
 <main id="main">
   <div class="page-header">
-    <h1>Hướng Dẫn Sử Dụng HUMI Workforce</h1>
-    <p>Hướng dẫn thao tác từng màn hình theo luồng nghiệp vụ. Nhấn vào module bên trái để điều hướng nhanh.</p>
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;color:#718096;font-size:13px;text-decoration:none;margin-bottom:12px">← Quay lại hướng dẫn theo bộ phận</a>
+    <h1>Chi tiết Từng Màn Hình</h1>
+    <p>Mô tả chi tiết từng màn hình hệ thống — được liên kết từ các bước trong hướng dẫn theo bộ phận. Dùng sidebar trái để tra cứu nhanh.</p>
   </div>
 
   <!-- WELCOME GRID -->
@@ -234,6 +278,98 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
   </div>
 
   <!-- ===================== TỔNG QUAN ===================== -->
+  <!-- ===================== XÁC THỰC ===================== -->
+  <div class="section" id="login">
+    <div class="section-title"><span class="s-icon">🔐</span>Xác thực – Đăng nhập & OTP</div>
+
+    <!-- Màn hình đăng nhập -->
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Màn hình đăng nhập</h3>
+          <p>URL: <code>/login</code> — Bước 1 xác thực: nhập email và mật khẩu</p>
+        </div>
+        <div class="roles">
+          <span class="role-badge role-all">✅ Tất cả người dùng</span>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <p>Màn hình đăng nhập bao gồm 2 trường:</p>
+        <table class="info-table">
+          <tr><th>Trường</th><th>Mô tả</th></tr>
+          <tr><td><strong>Email</strong></td><td>Địa chỉ email đã được cấp tài khoản trong hệ thống</td></tr>
+          <tr><td><strong>Mật khẩu</strong></td><td>Mật khẩu do admin cấp hoặc đã đặt lại</td></tr>
+        </table>
+        <div class="tip">💡 Sau khi nhấn <strong>"Đăng nhập"</strong>, hệ thống tự động gửi mã OTP 6 số về email — không cần thao tác thêm ở màn hình này.</div>
+        <div class="note">Nút <strong>"Quên mật khẩu?"</strong> nằm bên dưới form đăng nhập, điều hướng sang luồng đặt lại mật khẩu.</div>
+      </div>
+    </div>
+
+    <!-- Màn hình nhập OTP -->
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Xác thực OTP</h3>
+          <p>Bước 2 xác thực: nhập mã 6 số gửi qua email</p>
+        </div>
+        <div class="roles">
+          <span class="role-badge role-all">✅ Tất cả người dùng</span>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <p>Màn hình hiển thị tự động sau khi đăng nhập thành công bước 1. Bao gồm:</p>
+        <ul style="list-style:disc;margin-left:20px;margin-top:6px;font-size:14px;line-height:1.9">
+          <li><strong>6 ô nhập OTP</strong> — nhập từng chữ số hoặc dán toàn bộ (Ctrl+V)</li>
+          <li><strong>Đếm ngược 5 phút</strong> — thời gian hiệu lực của mã</li>
+          <li><strong>Nút "Gửi lại mã"</strong> — hiển thị sau 60 giây nếu không nhận được email</li>
+        </ul>
+        <div class="tip">📧 Kiểm tra cả thư mục <strong>Spam / Junk</strong> nếu không thấy email trong hộp thư đến. Tiêu đề email thường là <em>"Mã xác thực đăng nhập HUMI"</em>.</div>
+        <div class="warn">⚠️ Mỗi mã OTP chỉ dùng <strong>một lần</strong>. Sau 5 phút hết hiệu lực, cần nhấn "Gửi lại mã" để lấy mã mới.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== QUÊN MẬT KHẨU ===================== -->
+  <div class="section" id="forgot-password">
+    <div class="section-title"><span class="s-icon">🔑</span>Xác thực – Quên mật khẩu</div>
+
+    <!-- Màn hình quên mật khẩu -->
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Đặt lại mật khẩu</h3>
+          <p>URL: <code>/forgot-password</code> — Gửi link reset qua email</p>
+        </div>
+        <div class="roles">
+          <span class="role-badge role-all">✅ Tất cả người dùng</span>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <p>Luồng đặt lại mật khẩu gồm 3 màn hình liên tiếp:</p>
+        <table class="info-table">
+          <tr><th>#</th><th>Màn hình</th><th>Thao tác</th></tr>
+          <tr>
+            <td>1</td>
+            <td><strong>Nhập email</strong></td>
+            <td>Điền email đã đăng ký → Nhấn "Gửi yêu cầu" → Hệ thống gửi link reset qua email</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Email xác nhận</strong></td>
+            <td>Kiểm tra hộp thư → Nhấn link "Đặt lại mật khẩu" (link có hiệu lực <strong>15 phút</strong>)</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Đặt mật khẩu mới</strong></td>
+            <td>Nhập mật khẩu mới + xác nhận → Nhấn "Lưu" → Tự động chuyển về màn hình đăng nhập</td>
+          </tr>
+        </table>
+        <div class="tip">🔒 Yêu cầu mật khẩu: tối thiểu <strong>8 ký tự</strong>, bao gồm chữ hoa, chữ thường và số.</div>
+        <div class="warn">⚠️ Nếu email không có trong hệ thống, trang sẽ vẫn hiển thị thông báo thành công (bảo mật). Liên hệ Admin nếu không nhận được email sau 5 phút.</div>
+      </div>
+    </div>
+  </div>
+
   <div class="section" id="dashboard">
     <div class="section-title"><span class="s-icon">🏠</span>Tổng quan – Bảng điều khiển</div>
     <div class="screen-card">
@@ -261,39 +397,52 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
   <div class="section" id="project-list">
     <div class="section-title"><span class="s-icon">📋</span>Dự án</div>
 
+
+    <!-- Danh sách dự án -->
     <div class="screen-card">
       <div class="screen-card-header">
         <div>
           <h3>Danh sách dự án tuyển dụng</h3>
-          <p>Xem toàn bộ dự án đang hoạt động trong hệ thống</p>
+          <p>Tổng quan toàn bộ dự án trong hệ thống dưới dạng thẻ (64 dự án)</p>
         </div>
         <div class="roles">
           <span class="role-badge role-all">✅ Admin – All</span>
           <span class="role-badge role-self">🎯 GĐ DA – All(self)</span>
           <span class="role-badge role-all">✅ QL PM – All</span>
-          <span class="role-badge role-view">👁️ Lead/Ad-onsite – View</span>
-          <span class="role-badge role-view">👁️ TV PM/NV – View</span>
+          <span class="role-badge role-view">👁️ Lead / Ad-onsite – View</span>
+          <span class="role-badge role-view">👁️ TV PM / NV – View</span>
           <span class="role-badge role-view">👁️ BP Xe PM – View</span>
         </div>
       </div>
       <div class="screen-card-body">
-        <p>Màn hình liệt kê tất cả dự án dưới dạng thẻ (card), mỗi thẻ gồm: tên dự án, mã dự án, địa điểm, thời gian, số booking/thực tế/còn thiếu, trạng thái.</p>
-        <table class="info-table">
-          <tr><th>Trạng thái dự án</th><th>Ý nghĩa</th></tr>
-          <tr><td><span class="chip chip-green">Đang mở</span></td><td>Dự án đang tuyển dụng, có thể thêm ứng viên</td></tr>
-          <tr><td><span class="chip chip-orange">Tạm dừng</span></td><td>Dự án tạm ngưng, không nhận ứng viên mới</td></tr>
-          <tr><td><span class="chip chip-red">Đã đóng</span></td><td>Dự án kết thúc</td></tr>
-          <tr><td><span class="chip chip-gray">Chờ duyệt</span></td><td>Dự án mới tạo, chờ phê duyệt</td></tr>
+        <p>Màn hình hiển thị lưới thẻ dự án (3 cột), phân trang 12 thẻ/trang. Mỗi thẻ gồm:</p>
+        <ul style="list-style:disc;margin-left:20px;margin-top:6px;font-size:14px;line-height:1.8">
+          <li><strong>Logo + Tên dự án</strong> — góc trên trái</li>
+          <li><strong>Badge trạng thái</strong> — góc trên phải thẻ</li>
+          <li>Thời gian tạo (<em>X ngày trước</em>) · Số liên hệ</li>
+          <li>Thẻ nhãn (Tags): Thường, Bonus, Thời vụ, v.v.</li>
+          <li>Mô tả ngắn công việc</li>
+          <li>Mức lương / ca — góc dưới trái</li>
+          <li>Nút <strong>"Đăng ký"</strong> — góc dưới phải</li>
+          <li>Chấm cam góc thẻ = có hoạt động mới chưa xem</li>
+        </ul>
+        <table class="info-table" style="margin-top:14px">
+          <tr><th>Trạng thái</th><th>Màu</th><th>Ý nghĩa</th></tr>
+          <tr><td><span class="chip chip-blue">Mở dự án</span></td><td>Xanh dương</td><td>Đang tuyển dụng, nhận ứng viên mới</td></tr>
+          <tr><td><span class="chip chip-red">Đóng dự án</span></td><td>Hồng/đỏ</td><td>Đang hoạt động nhưng không nhận thêm</td></tr>
+          <tr><td><span class="chip chip-gray">Đã đóng</span></td><td>Xám</td><td>Dự án kết thúc hoàn toàn</td></tr>
         </table>
-        <div class="tip">Nhấn vào thẻ dự án để xem chi tiết hoặc nhấn nút <strong>"Sửa"</strong> để chỉnh sửa. Quyền sửa: Admin, GĐ DA, QL PM.</div>
+        <p style="margin-top:12px"><strong>Thanh công cụ:</strong> Ô tìm kiếm · Hiển thị (12/trang) · Sắp xếp theo: Mới nhất · Nút <strong>"Tạo dự án"</strong> (xanh, góc phải — <em>chỉ hiển thị với GĐ DA và QL PM; bộ phận Tuyển dụng không có quyền tạo dự án</em>)</p>
+        <div class="tip">Nhấn vào bất kỳ phần nào trên thẻ để vào <strong>Chi tiết dự án</strong>. Nút "Đăng ký" dùng cho ứng viên tự đăng ký từ app/web.</div>
       </div>
     </div>
 
+    <!-- Tạo dự án -->
     <div class="screen-card">
       <div class="screen-card-header">
         <div>
           <h3>Tạo dự án mới</h3>
-          <p>Khởi tạo dự án tuyển dụng lao động mới</p>
+          <p>Khởi tạo dự án tuyển dụng — 3 tab: Dự án · Kế hoạch ca · Thưởng</p>
         </div>
         <div class="roles">
           <span class="role-badge role-self">🎯 GĐ DA – All(self)</span>
@@ -304,49 +453,68 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
         <div class="flow">
           <div class="flow-box">Danh sách dự án</div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">+ Tạo dự án</div>
+          <div class="flow-box">Tạo dự án</div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">Điền thông tin</div>
+          <div class="flow-box">Điền thông tin<br><small>(tab Dự án)</small></div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">Lưu</div>
+          <div class="flow-box">Thêm vị trí<br><small>(sidebar phải)</small></div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box">Lưu thay đổi</div>
         </div>
-        <table class="info-table">
+        <table class="info-table" style="margin-top:12px">
           <tr><th>Trường</th><th>Bắt buộc</th><th>Ghi chú</th></tr>
-          <tr><td>Tên dự án</td><td><span class="req">✱</span></td><td>Tên công trình/khách hàng</td></tr>
-          <tr><td>Mã dự án</td><td><span class="req">✱</span></td><td>Tự sinh hoặc nhập thủ công</td></tr>
-          <tr><td>Địa điểm</td><td><span class="req">✱</span></td><td>Địa chỉ công trình</td></tr>
-          <tr><td>Ngày bắt đầu / Kết thúc</td><td><span class="req">✱</span></td><td>Thời gian thực hiện dự án</td></tr>
-          <tr><td>Số lượng cần tuyển</td><td><span class="req">✱</span></td><td>Tổng số lao động cần bố trí</td></tr>
-          <tr><td>Ca làm việc</td><td><span class="req">✱</span></td><td>Ca sáng / chiều / đêm</td></tr>
-          <tr><td>Quản lý dự án</td><td><span class="req">✱</span></td><td>Chọn QL PM phụ trách</td></tr>
-          <tr><td>Nhân viên tuyển dụng</td><td></td><td>Gán TV PM/NV phụ trách</td></tr>
-          <tr><td>Ghi chú</td><td></td><td>Thông tin bổ sung</td></tr>
+          <tr><td>Tên dự án</td><td><span class="req">✱</span></td><td>Tên công trình / khách hàng</td></tr>
+          <tr><td>Mô tả ngắn gọn</td><td><span class="req">✱</span></td><td>Hiển thị ngay dưới tên trên thẻ dự án</td></tr>
+          <tr><td>Mô tả chi tiết công việc</td><td><span class="req">✱</span></td><td>Mô tả đầy đủ yêu cầu, quyền lợi</td></tr>
+          <tr><td>Mã dự án</td><td><span class="req">✱</span></td><td>Mã định danh (nhập thủ công)</td></tr>
+          <tr><td>Địa điểm làm việc</td><td></td><td>Địa chỉ công trình / kho</td></tr>
+          <tr><td>Lương</td><td><span class="req">✱</span></td><td>Mức lương/ca hiển thị trên thẻ</td></tr>
+          <tr><td>Loại công việc</td><td><span class="req">✱</span></td><td>Thời vụ / Bán thời gian</td></tr>
+          <tr><td>Giới tính</td><td></td><td>Nam / Nữ / Không yêu cầu</td></tr>
+          <tr><td>Thẻ (Tags)</td><td></td><td>VD: Thường, Bonus, Thời vụ, Chuyên cần</td></tr>
+          <tr><td>Hồ sơ yêu cầu</td><td></td><td>Tick: CCCD · Ảnh chân dung · Giấy KSK · CV</td></tr>
+          <tr><td>Logo</td><td><span class="req">✱</span></td><td>Upload logo hiển thị trên thẻ dự án</td></tr>
         </table>
-        <div class="warn">Chỉ GĐ DA và QL PM mới có quyền tạo dự án. GĐ DA chỉ tạo được dự án thuộc phạm vi quản lý của mình.</div>
+        <p style="margin-top:12px"><strong>Sidebar phải gồm 3 phần:</strong></p>
+        <ul style="list-style:disc;margin-left:20px;font-size:14px;line-height:1.8">
+          <li><strong>Màn hình xem trước (App &amp; web)</strong> — cập nhật trực tiếp khi nhập liệu</li>
+          <li><strong>Vị trí công việc</strong> — nút "+ Quản lý vị trí" để thêm chức danh (VD: Leader, Công nhân)</li>
+          <li><strong>Quản lý dự án</strong> — chọn người phụ trách dự án</li>
+        </ul>
+        <div class="warn">GĐ DA chỉ tạo được dự án trong phạm vi quản lý của mình. Sau khi tạo, vào tab <strong>Kế hoạch ca</strong> để cấu hình ca làm việc và tab <strong>Thưởng</strong> để thiết lập chính sách thưởng.</div>
       </div>
     </div>
 
+    <!-- Chi tiết / Chỉnh sửa dự án -->
     <div class="screen-card">
       <div class="screen-card-header">
         <div>
-          <h3>Đóng / Mở dự án</h3>
-          <p>Thay đổi trạng thái hoạt động của dự án</p>
+          <h3>Chi tiết &amp; Chỉnh sửa dự án</h3>
+          <p>Xem và cập nhật thông tin dự án đã tạo</p>
         </div>
         <div class="roles">
-          <span class="role-badge role-self">🎯 GĐ DA – All(self) (duy nhất có quyền)</span>
+          <span class="role-badge role-self">🎯 GĐ DA – All(self)</span>
+          <span class="role-badge role-all">✅ QL PM – All</span>
+          <span class="role-badge role-all">✅ Admin – All</span>
         </div>
       </div>
       <div class="screen-card-body">
-        <p>Chỉ <strong>Giám đốc dự án</strong> mới có quyền đóng hoặc mở lại dự án. Thao tác từ màn hình chi tiết hoặc nút hành động trên thẻ dự án.</p>
-        <div class="warn">Khi đóng dự án, hệ thống sẽ ngừng nhận booking mới. Cần xác nhận trước khi thực hiện.</div>
+        <p>Từ danh sách dự án, nhấn vào thẻ → vào trang <strong>Chi tiết dự án</strong> với layout giống Tạo dự án, nhưng hiển thị dữ liệu hiện tại.</p>
+        <ul style="list-style:disc;margin-left:20px;margin-top:8px;font-size:14px;line-height:1.8">
+          <li>Sidebar phải hiển thị <strong>Vị trí công việc</strong> đã tạo kèm nút sửa ✏️ / xóa 🗑️ và trạng thái (Đang hoạt động)</li>
+          <li>Trường bổ sung khi chỉnh sửa: <strong>Giám đốc dự án</strong></li>
+          <li>Nhấn <strong>"Lưu thay đổi"</strong> để lưu, hoặc chuyển tab Kế hoạch ca / Thưởng</li>
+        </ul>
+        <div class="note">Trạng thái "Mở/Đóng" dự án được điều chỉnh qua badge trên thẻ danh sách — chỉ GĐ DA mới có quyền đóng/mở lại dự án.</div>
       </div>
     </div>
 
+    <!-- Form đăng ký ca -->
     <div class="screen-card" id="shift-register-form">
       <div class="screen-card-header">
         <div>
           <h3>Form đăng ký ca</h3>
-          <p>Tạo form để lao động đăng ký ca làm việc trong khoảng thời gian nhất định</p>
+          <p>Tạo form để lao động đăng ký ca làm việc trong khoảng thời gian</p>
         </div>
         <div class="roles">
           <span class="role-badge role-all">✅ Admin – All</span>
@@ -357,11 +525,11 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
       </div>
       <div class="screen-card-body">
         <p>Danh sách form hiển thị: Dự án · Thời gian bắt đầu–kết thúc · Trạng thái · Người tạo · Thời gian tạo · Thao tác (xóa / xem / chia sẻ link).</p>
-        <table class="info-table">
-          <tr><th>Trạng thái</th><th>Ý nghĩa</th></tr>
-          <tr><td><span class="chip chip-red">Đã đóng (hết hạn)</span></td><td>Form đã quá thời gian đăng ký</td></tr>
-          <tr><td><span class="chip chip-gray">Đã đóng (thủ công)</span></td><td>Người tạo chủ động đóng form sớm</td></tr>
-          <tr><td><span class="chip chip-green">Đang mở</span></td><td>Lao động có thể đăng ký ca</td></tr>
+        <table class="info-table" style="margin-top:10px">
+          <tr><th>Trạng thái form</th><th>Ý nghĩa</th></tr>
+          <tr><td><span class="chip chip-green">Đang mở</span></td><td>Lao động đang có thể đăng ký ca</td></tr>
+          <tr><td><span class="chip chip-red">Đã đóng (hết hạn)</span></td><td>Form quá thời gian đăng ký</td></tr>
+          <tr><td><span class="chip chip-gray">Đã đóng (thủ công)</span></td><td>Người tạo chủ động đóng sớm</td></tr>
         </table>
         <div class="flow" style="margin-top:14px">
           <div class="flow-box">+ Tạo form mới</div>
@@ -376,7 +544,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
           <span class="flow-arrow">→</span>
           <div class="flow-box">Tạo form</div>
         </div>
-        <div class="note">Lao động sẽ thấy nội dung ghi chú khi mở form đăng ký ca trên ứng dụng. Dùng để thông báo quy định giờ làm, nghỉ phép v.v.</div>
+        <div class="note">Ghi chú trong form sẽ hiển thị với lao động khi họ mở form đăng ký ca trên app. Dùng để thông báo quy định ca, lưu ý đặc biệt.</div>
       </div>
     </div>
   </div>
@@ -385,11 +553,13 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
   <div class="section" id="candidates">
     <div class="section-title"><span class="s-icon">👤</span>Tuyển dụng</div>
 
+
+    <!-- Danh sách ứng viên -->
     <div class="screen-card">
       <div class="screen-card-header">
         <div>
           <h3>Danh sách ứng viên</h3>
-          <p>Tất cả ứng viên đang có trong hệ thống (1626+ bản ghi)</p>
+          <p>Tất cả ứng viên trong hệ thống — 1.626+ bản ghi</p>
         </div>
         <div class="roles">
           <span class="role-badge role-all">✅ Admin – All</span>
@@ -401,25 +571,22 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
         </div>
       </div>
       <div class="screen-card-body">
-        <p>Bảng ứng viên gồm: avatar + tên + mã APL-XXXXXX · ngày sinh · giới tính · số điện thoại · nhân viên tuyển dụng · ngày tạo · thao tác ⋮</p>
-        <p style="margin-top:10px"><strong>Bộ lọc:</strong></p>
-        <ul style="list-style:disc;margin-left:20px;margin-top:4px;font-size:14px">
-          <li>Tìm theo tên, SĐT, email hoặc mã ứng viên</li>
-          <li>Tình trạng PV · Kết quả · Dự án · NV tuyển dụng</li>
-          <li>Ngày tạo từ – đến</li>
-          <li>Checkbox: <strong>Nghỉ ≥ 90 ngày</strong> · <strong>Cần tạo hồ sơ lao động</strong></li>
-        </ul>
-        <p style="margin-top:10px"><strong>Tabs:</strong> Tất cả · Hôm nay · Tuần này · Tháng này</p>
-        <p style="margin-top:10px">Thao tác ⋮ trên từng dòng: xem chi tiết · đăng ký dự án · tạo hồ sơ lao động · thêm vào danh sách đen.</p>
-        <div class="tip">Nhấn <strong>"Xuất Excel"</strong> để tải danh sách ứng viên theo bộ lọc hiện tại.</div>
+        <p><strong>Bảng danh sách:</strong> Avatar + Họ và tên + Mã APL-XXXXXX · Ngày sinh · Giới tính · Số điện thoại · Nhân viên tuyển dụng · Ngày tạo · Thao tác ⋮</p>
+        <p style="margin-top:10px"><strong>Bộ lọc (hàng 1):</strong> Tìm theo tên / SĐT / email / mã ứng viên → <strong>Tìm kiếm</strong></p>
+        <p style="margin-top:4px"><strong>Bộ lọc (hàng 2):</strong> Tất cả tình trạng PV · Tất cả kết quả · Tất cả dự án · Tất cả NV tuyển dụng</p>
+        <p style="margin-top:4px"><strong>Bộ lọc (hàng 3):</strong> Ngày tạo từ · Ngày tạo đến · ☑ Nghỉ ≥ 90 ngày · ☑ Cần tạo hồ sơ lao động → <strong>Xóa bộ lọc</strong></p>
+        <p style="margin-top:10px"><strong>Tabs thời gian:</strong> Tất cả · Hôm nay · Tuần này · Tháng này</p>
+        <p style="margin-top:10px"><strong>Thao tác ⋮</strong> trên từng dòng: Xem chi tiết · Đăng ký dự án · Tạo hồ sơ lao động · Thêm vào danh sách đen</p>
+        <div class="tip">Nút <strong>"Xuất Excel"</strong> (góc phải) tải danh sách ứng viên theo bộ lọc đang áp dụng. Nút <strong>"Thêm mới"</strong> mở trang tạo ứng viên mới.</div>
       </div>
     </div>
 
+    <!-- Thêm ứng viên mới -->
     <div class="screen-card">
       <div class="screen-card-header">
         <div>
           <h3>Thêm hồ sơ ứng viên mới</h3>
-          <p>Tạo mới ứng viên bằng quét CCCD hoặc nhập tay</p>
+          <p>Tạo ứng viên bằng quét CCCD tự động hoặc nhập tay — trang đầy đủ (full page)</p>
         </div>
         <div class="roles">
           <span class="role-badge role-all">✅ Admin – All</span>
@@ -430,44 +597,48 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
       </div>
       <div class="screen-card-body">
         <div class="flow">
-          <div class="flow-box">Danh sách ứng viên</div>
-          <span class="flow-arrow">→</span>
           <div class="flow-box">+ Thêm mới</div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">Upload ảnh CCCD 2 mặt</div>
+          <div class="flow-box">Upload CCCD<br>2 mặt</div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">"Xử lý CCCD" (tự điền)</div>
+          <div class="flow-box">Nhấn<br>"Xử lý CCCD"</div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">Kiểm tra &amp; bổ sung</div>
+          <div class="flow-box">Kiểm tra &amp;<br>bổ sung thông tin</div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">Điền nguyện vọng</div>
+          <div class="flow-box">Điền nguyện<br>vọng ứng tuyển</div>
           <span class="flow-arrow">→</span>
           <div class="flow-box">Lưu hồ sơ</div>
         </div>
-        <table class="info-table">
+        <p style="margin-top:14px"><strong>Phần 1 — Xác thực CCCD:</strong> Kéo thả hoặc chọn ảnh CCCD mặt trước + mặt sau → nhấn <strong>"Xử lý CCCD"</strong> để hệ thống tự điền thông tin cá nhân.</p>
+        <table class="info-table" style="margin-top:10px">
           <tr><th>Phần</th><th>Trường</th><th>Bắt buộc</th></tr>
-          <tr><td rowspan="7">Thông tin cá nhân</td><td>Họ và tên</td><td><span class="req">✱</span></td></tr>
+          <tr><td rowspan="9">2 — Thông tin cá nhân</td><td>Họ và tên</td><td><span class="req">✱</span></td></tr>
           <tr><td>Số điện thoại</td><td><span class="req">✱</span></td></tr>
           <tr><td>Email</td><td></td></tr>
-          <tr><td>Giới tính (Nam/Nữ/Khác)</td><td></td></tr>
+          <tr><td>Giới tính (Nam / Nữ / Khác)</td><td></td></tr>
           <tr><td>Ngày sinh</td><td></td></tr>
-          <tr><td>Số CCCD/CMND</td><td></td></tr>
-          <tr><td>Địa chỉ hiện tại + thường trú</td><td></td></tr>
-          <tr><td rowspan="4">Nguyện vọng ứng tuyển</td><td>Dự án ứng tuyển</td><td></td></tr>
+          <tr><td>Số CCCD / CMND</td><td></td></tr>
+          <tr><td>Nơi cấp CCCD · Ngày cấp</td><td></td></tr>
+          <tr><td>Ngày bắt đầu dự kiến</td><td></td></tr>
+          <tr><td>Địa chỉ hiện tại · Địa chỉ thường trú</td><td></td></tr>
+          <tr><td rowspan="6">3 — Nguyện vọng ứng tuyển</td><td>Dự án ứng tuyển</td><td></td></tr>
           <tr><td>Nhân sự tuyển dụng</td><td></td></tr>
           <tr><td>Nguồn tuyển dụng</td><td></td></tr>
           <tr><td>Kết quả ứng viên</td><td></td></tr>
-          <tr><td>Tùy chọn</td><td>Thuộc bộ phận xe đưa đón / Đăng ký xe đưa đón</td><td></td></tr>
+          <tr><td>Ghi chú</td><td></td></tr>
+          <tr><td>☑ Thuộc bộ phận xe đưa đón · ☑ Đăng ký xe đưa đón</td><td></td></tr>
+          <tr><td>4 — Tiếp nhận hồ sơ</td><td colspan="2">Tải lên các giấy tờ ứng viên — <em>chỉ khả dụng sau khi Lưu hồ sơ lần đầu</em></td></tr>
         </table>
-        <div class="note">Hệ thống tự gán mã APL-XXXXXX sau khi lưu. Phần "Tình trạng tiếp nhận hồ sơ" (tải giấy tờ ứng viên) chỉ khả dụng sau khi lưu lần đầu.</div>
+        <div class="note">Hệ thống tự gán mã <strong>APL-XXXXXX</strong> sau khi lưu. Nút <strong>"← Quay lại danh sách"</strong> ở trên cùng để hủy và quay về.</div>
       </div>
     </div>
 
+    <!-- Đăng ký dự án cho ứng viên -->
     <div class="screen-card">
       <div class="screen-card-header">
         <div>
           <h3>Đăng ký dự án cho ứng viên</h3>
-          <p>Gán ứng viên vào dự án tuyển dụng cụ thể</p>
+          <p>Gán ứng viên vào dự án tuyển dụng cụ thể — mở qua menu ⋮ trong danh sách</p>
         </div>
         <div class="roles">
           <span class="role-badge role-all">✅ TV PM – All</span>
@@ -476,28 +647,31 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
         </div>
       </div>
       <div class="screen-card-body">
-        <p>Popup "Đăng ký dự án" mở từ: Danh sách ứng viên → ⋮ → Đăng ký dự án.</p>
-        <p style="margin-top:8px">Phần trên popup hiển thị danh sách dự án ứng viên đang đăng ký (để tránh trùng).</p>
-        <table class="info-table">
+        <p>Popup <strong>"Đăng ký dự án · [Tên ứng viên] (APL-XXXXXX)"</strong> gồm 2 phần:</p>
+        <p style="margin-top:8px"><strong>Phần trên — Danh sách dự án đang đăng ký:</strong> Bảng hiển thị các dự án ứng viên đã đăng ký trước đó (Dự án · Ngày bắt đầu · Trạng thái · Mã lao động dự án · Thao tác). Nếu chưa có → hiển thị "Trống".</p>
+        <p style="margin-top:8px"><strong>Phần dưới — Thêm đăng ký dự án:</strong></p>
+        <table class="info-table" style="margin-top:6px">
           <tr><th>Trường</th><th>Bắt buộc</th><th>Ghi chú</th></tr>
           <tr><td>Dự án</td><td><span class="req">✱</span></td><td>Tìm theo tên hoặc mã dự án</td></tr>
-          <tr><td>Ngày bắt đầu</td><td><span class="req">✱</span></td><td>Ngày ứng viên dự kiến bắt đầu làm</td></tr>
-          <tr><td>Trạng thái</td><td><span class="req">✱</span></td><td>Chưa duyệt / Đã duyệt / …</td></tr>
+          <tr><td>Ngày bắt đầu</td><td><span class="req">✱</span></td><td>Mặc định ngày hôm nay</td></tr>
+          <tr><td>Trạng thái</td><td><span class="req">✱</span></td><td>Chưa duyệt (mặc định)</td></tr>
           <tr><td>Mã lao động theo dự án</td><td></td><td>Có thể để trống</td></tr>
-          <tr><td>Bảo lãnh – chưa có mã lao động</td><td></td><td>Tick nếu ứng viên chưa có mã WKR</td></tr>
+          <tr><td>Bảo lãnh — chưa có mã lao động</td><td></td><td>Tick nếu ứng viên chưa có mã WKR</td></tr>
         </table>
-        <p style="margin-top:10px">Nhấn <strong>"Lưu"</strong> để xác nhận đăng ký. Nhấn <strong>"Đóng"</strong> để hủy.</p>
+        <p style="margin-top:10px">Nhấn <strong>"Lưu"</strong> để xác nhận · <strong>"Đóng"</strong> để thoát không lưu.</p>
       </div>
     </div>
   </div>
 
-  <!-- Hồ sơ lao động -->
+  <!-- ===================== HỒ SƠ LAO ĐỘNG ===================== -->
   <div class="section" id="worker-profile">
+
+    <!-- Danh sách hồ sơ lao động -->
     <div class="screen-card">
       <div class="screen-card-header">
         <div>
           <h3>Hồ sơ lao động</h3>
-          <p>Quản lý hồ sơ đầy đủ của lao động đã được nhận vào (1582+ bản ghi)</p>
+          <p>Quản lý hồ sơ đầy đủ của lao động đã được nhận vào — 1.582+ bản ghi</p>
         </div>
         <div class="roles">
           <span class="role-badge role-all">✅ Admin – All</span>
@@ -505,181 +679,310 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
           <span class="role-badge role-lead">🔶 Lead – All(lead-Self)</span>
           <span class="role-badge role-self">🎯 Ad-onsite – All(self)</span>
           <span class="role-badge role-all">✅ HC NS – All</span>
+          <span class="role-badge role-view">👁️ TV PM – View</span>
+          <span class="role-badge role-view">👁️ Lead TV – View(lead-Self)</span>
+          <span class="role-badge role-view">👁️ TV NV – View(self)</span>
         </div>
       </div>
       <div class="screen-card-body">
-        <p>Danh sách hồ sơ: tên + SĐT + email · mã lao động WKR-XXXXXX · loại hợp đồng · bộ phận/vị trí · ngày bắt đầu · HR phụ trách · thao tác (xem 👁️ / sửa ✏️)</p>
-        <p style="margin-top:10px"><strong>Bộ lọc:</strong> Loại hợp đồng · Trạng thái · Bộ phận · Dự án · NV tuyển dụng · Ngày làm việc từ–đến · Ngày tạo từ–đến · Nút "Áp dụng" / "Đặt lại"</p>
-        <div class="flow" style="margin-top:14px">
-          <div class="flow-box">Nút "Tạo hồ sơ"</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-box">Chọn từ danh sách tuyển dụng<br><small>(hoặc nhập thủ công)</small></div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-box">Upload CCCD + Quét</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-box">Điền thông tin cá nhân</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-box">Điền thông tin nội bộ</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-box">Lưu hồ sơ</div>
-        </div>
-        <table class="info-table">
-          <tr><th>Phần</th><th>Các trường chính</th></tr>
-          <tr><td>Thông tin cá nhân</td><td>Họ tên ✱, ngày sinh, giới tính, SĐT ✱, email, CCCD, nơi cấp, ngày cấp, địa chỉ thường trú/khai sinh/tạm trú, xã/phường, tỉnh/thành phố, quốc tịch, dân tộc, người thân liên hệ + SĐT + quan hệ</td></tr>
-          <tr><td>Thông tin nội bộ</td><td>Loại lao động ✱, loại hợp đồng, bộ phận, vị trí, ngày bắt đầu làm việc, dự án hiện tại, nhân viên tuyển dụng</td></tr>
-          <tr><td>Phép năm &amp; tài chính</td><td>Tổng ngày phép năm, ngày phép đã dùng, ngày phép còn lại, lương cơ bản (VNĐ), tên chủ tài khoản, STK ngân hàng, ngân hàng, chi nhánh, mã số BHXH, bệnh viện KCB ban đầu, nguồn tuyển dụng, ghi chú hồ sơ</td></tr>
-        </table>
-        <div class="tip">Khi chọn "Lao động đã đăng ký dự án", hệ thống tự điền thông tin từ hồ sơ ứng viên sẵn có — chỉ cần kiểm tra và bổ sung.</div>
+        <p><strong>Bảng danh sách:</strong> Avatar + Họ tên + SĐT + Email · Mã lao động <em>WKR-XXXXXX</em> · Loại hợp đồng · Bộ phận / Vị trí · Ngày bắt đầu ↕ · HR phụ trách · Thao tác (👁️ xem / ✏️ sửa)</p>
+        <p style="margin-top:8px">Badge <span class="chip chip-orange" style="font-size:11px">Thử v.</span> trên hàng = lao động đang trong thời gian thử việc.</p>
+        <p style="margin-top:10px"><strong>Bộ lọc:</strong> Tìm theo tên / SĐT / email / CCCD · Loại hợp đồng · Trạng thái · Bộ phận · Dự án · Nhân viên tuyển dụng · Ngày làm việc từ–đến · Ngày tạo từ–đến → <strong>Đặt lại</strong> / <strong>Áp dụng</strong></p>
+        <div class="tip">Nhấn <strong>"Tạo hồ sơ"</strong> (góc trên phải) để mở popup tạo hồ sơ lao động mới — <em>chỉ hiển thị với Admin, QL PM và HC NS; Tuyển dụng chỉ có quyền View.</em></div>
       </div>
     </div>
-  </div>
 
-  <!-- Hợp đồng lao động -->
-  <div class="section" id="contracts">
+    <!-- Tạo hồ sơ lao động -->
     <div class="screen-card">
       <div class="screen-card-header">
         <div>
-          <h3>Hợp đồng lao động</h3>
-          <p>Quản lý toàn bộ hợp đồng ký với lao động (107+ bản ghi)</p>
+          <h3>Tạo hồ sơ lao động</h3>
+          <p>Popup 4 phần — có thể điền từ dữ liệu ứng viên có sẵn hoặc nhập mới</p>
         </div>
         <div class="roles">
-          <span class="role-badge role-all">✅ TGĐ – All</span>
-          <span class="role-badge role-all">✅ GĐ Cty – All</span>
           <span class="role-badge role-all">✅ Admin – All</span>
-          <span class="role-badge role-all">✅ GĐ DA – All</span>
           <span class="role-badge role-all">✅ QL PM – All</span>
-          <span class="role-badge role-lead">🔶 Lead – All(lead-Self)</span>
           <span class="role-badge role-all">✅ HC NS – All</span>
+          <span class="role-badge role-view">👁️ TV PM – View</span>
+          <span class="role-badge role-view">👁️ Lead TV – View(lead-Self)</span>
+          <span class="role-badge role-view">👁️ TV NV – View(self)</span>
         </div>
       </div>
       <div class="screen-card-body">
-        <p><strong>Tổng quan:</strong> <span class="chip chip-blue">Tổng HĐ hiệu lực: 88</span> <span class="chip chip-orange">Chờ LĐ ký: 13</span> <span class="chip chip-red">Sắp/đã hết hạn: 6</span></p>
-        <p style="margin-top:10px"><strong>Bộ lọc:</strong> Tên, CCCD, mã lao động, mã ứng viên · Tất cả/loại HĐ · Loại hợp đồng · Hiệu lực ngày · Dự án · NV tuyển dụng</p>
-        <p style="margin-top:10px">Danh sách: tên LĐ + CCCD · loại HĐ + mã CTR-XXXXXX · trạng thái · thời gian hiệu lực + lương · thao tác (👁️ · 📄 export · ⬇️ tải)</p>
-        <table class="info-table" style="margin-top:10px">
-          <tr><th>Trạng thái</th><th>Ý nghĩa</th></tr>
-          <tr><td><span class="chip chip-gray">Nháp</span></td><td>HĐ đang soạn, chưa ký</td></tr>
-          <tr><td><span class="chip chip-green">Đang hoạt động</span></td><td>HĐ đã ký, còn hiệu lực</td></tr>
-          <tr><td><span class="chip chip-orange">Đã gia hạn</span></td><td>HĐ đã được gia hạn</td></tr>
-        </table>
-        <div class="flow" style="margin-top:14px">
-          <div class="flow-box">+ Tạo HĐ Mới</div>
+        <div class="flow">
+          <div class="flow-box">Tạo hồ sơ</div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">Chọn ứng viên/LĐ ✱</div>
+          <div class="flow-box">Chọn lao động<br>từ tuyển dụng<br><small>(tùy chọn)</small></div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">Chọn mẫu HĐ ✱</div>
+          <div class="flow-box">Upload CCCD<br>+ Quét CCCD</div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">Điều khoản lao động</div>
+          <div class="flow-box">Bổ sung<br>thông tin</div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">Lưu Nháp</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-box">Xem trước PDF</div>
-          <span class="flow-arrow">→</span>
-          <div class="flow-box">Phát hành ký</div>
+          <div class="flow-box">Lưu hồ sơ</div>
         </div>
-        <table class="info-table">
-          <tr><th>Trường tạo HĐ</th><th>Bắt buộc</th><th>Ghi chú</th></tr>
-          <tr><td>Chọn ứng viên / người lao động</td><td><span class="req">✱</span></td><td>Tìm theo tên, SĐT, CCCD</td></tr>
-          <tr><td>Dự án</td><td></td><td>Dự án áp dụng HĐ</td></tr>
-          <tr><td>Mẫu hợp đồng</td><td><span class="req">✱</span></td><td>Toàn thời gian / Bán thời gian / …</td></tr>
-          <tr><td>Ngày ký</td><td><span class="req">✱</span></td><td>Ngày ký kết</td></tr>
-          <tr><td>Ngày kết thúc</td><td><span class="req">✱</span></td><td>Ngày hết hạn HĐ</td></tr>
-          <tr><td>Lương cơ bản (VNĐ)</td><td><span class="req">✱</span></td><td>Mức lương thỏa thuận</td></tr>
-          <tr><td>Hình thức thanh toán</td><td></td><td>Chuyển khoản ngân hàng</td></tr>
-          <tr><td>Ngày trả lương</td><td></td><td>Kỳ trả lương</td></tr>
-          <tr><td>Điều khoản bổ sung</td><td></td><td>Tối đa 1000 ký tự</td></tr>
-          <tr><td>Đính kèm bản cam kết nội quy</td><td></td><td>Tự ghép vào file HĐ khi tick</td></tr>
+        <table class="info-table" style="margin-top:12px">
+          <tr><th>Phần</th><th>Các trường chính</th></tr>
+          <tr><td><strong>Chọn từ tuyển dụng</strong></td><td>Dropdown "Lao động đã đăng ký dự án" — chọn để tự điền dữ liệu từ hồ sơ ứng viên</td></tr>
+          <tr><td><strong>1 — Thông tin cá nhân</strong></td><td>Upload CCCD mặt trước/sau + <strong>Quét CCCD</strong> (tự điền) · Họ tên ✱ · Ngày sinh · Giới tính · SĐT ✱ · Email · CCCD/CMND · Ngày &amp; nơi cấp · Địa chỉ thường trú / khai sinh / tạm trú · Xã–Phường · Tỉnh–Thành phố · Quốc tịch · Dân tộc · Người thân liên hệ (tên + SĐT + quan hệ)</td></tr>
+          <tr><td><strong>2 — Thông tin nội bộ</strong></td><td>Loại lao động ✱ · Loại hợp đồng · Bộ phận · Vị trí · Ngày bắt đầu làm việc · Dự án hiện tại · Nhân viên tuyển dụng</td></tr>
+          <tr><td><strong>3 — Phép năm &amp; tài chính</strong></td><td>Tổng ngày phép · Đã dùng · Còn lại · Lương cơ bản (VNĐ) · Tên chủ TK · Số TK ngân hàng · Ngân hàng · Chi nhánh · Mã số BHXH · Bệnh viện KCB ban đầu · Nguồn tuyển dụng · Ghi chú hồ sơ</td></tr>
         </table>
-        <div class="note">Panel bên phải "Xem Trước Document" — Lưu Nháp trước để kích hoạt xem trước PDF và xuất file. Quyền Tạo/Sửa HĐ giới hạn hơn Xem: TGĐ · GĐ Cty · Admin · GĐ DA(self) · QL PM · HC NS.</div>
+        <div class="note">Khi chọn "Lao động đã đăng ký dự án", hệ thống tự điền thông tin CCCD và cá nhân từ hồ sơ ứng viên — chỉ cần kiểm tra và bổ sung phần nội bộ.</div>
       </div>
     </div>
   </div>
 
-  <!-- Lịch phỏng vấn -->
+  <!-- ===================== HỢP ĐỒNG LAO ĐỘNG ===================== -->
+  <div class="section" id="contracts">
+
+    <!-- Danh sách hợp đồng -->
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Hợp đồng lao động — Danh sách</h3>
+          <p>Quản lý toàn bộ hợp đồng ký với lao động — 107+ bản ghi</p>
+        </div>
+        <div class="roles">
+          <span class="role-badge role-all">✅ TGĐ / GĐ Cty / Admin</span>
+          <span class="role-badge role-all">✅ GĐ DA / QL PM</span>
+          <span class="role-badge role-lead">🔶 Lead – All(lead-Self)</span>
+          <span class="role-badge role-all">✅ HC NS – All</span>
+          <span class="role-badge role-view">👁️ TV PM – View</span>
+          <span class="role-badge role-view">👁️ Lead TV – View(lead-Self)</span>
+          <span class="role-badge role-view">👁️ TV NV – View(self)</span>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <p><strong>Thống kê đầu trang (3 thẻ):</strong></p>
+        <p style="margin-top:6px">
+          <span class="chip chip-blue">Tổng HĐ Hiệu Lực: 88</span> &nbsp;
+          <span class="chip chip-orange">Chờ LĐ Ký: 13</span> &nbsp;
+          <span class="chip chip-red">Sắp / Đã Hết Hạn: 6</span>
+        </p>
+        <p style="margin-top:12px"><strong>Bộ lọc:</strong> Tìm theo tên / CCCD / mã lao động / mã ứng viên · Tất cả (trạng thái) · Loại hợp đồng · Hiệu lực ngày · Tất cả dự án · Tất cả NV tuyển dụng</p>
+        <p style="margin-top:10px"><strong>Bảng danh sách:</strong> Lao động (tên + CCCD) · Hợp đồng (loại + mã CTR-XXXXXX) · Trạng thái · Hiệu lực (ngày bắt đầu–kết thúc + lương) · Thao tác (👁️ xem / 📄 export / ⬇️ tải bản ký)</p>
+        <table class="info-table" style="margin-top:10px">
+          <tr><th>Trạng thái HĐ</th><th>Ý nghĩa</th></tr>
+          <tr><td><span class="chip chip-gray">Nháp</span></td><td>Đang soạn thảo, chưa upload bản ký</td></tr>
+          <tr><td><span class="chip chip-green">Đang hoạt động</span></td><td>Đã ký, còn hiệu lực</td></tr>
+          <tr><td><span class="chip chip-orange">Đã gia hạn</span></td><td>HĐ cũ đã được gia hạn bằng HĐ mới</td></tr>
+        </table>
+        <div class="tip">Nút <strong>"+ Tạo HĐ Mới"</strong> ở góc trên phải để mở trang soạn hợp đồng mới.</div>
+      </div>
+    </div>
+
+    <!-- Tạo hợp đồng -->
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Tạo hợp đồng lao động</h3>
+          <p>Soạn hợp đồng — layout 2 cột: form trái + xem trước tài liệu phải</p>
+        </div>
+        <div class="roles">
+          <span class="role-badge role-all">✅ TGĐ / GĐ Cty / Admin</span>
+          <span class="role-badge role-self">🎯 GĐ DA – All(self)</span>
+          <span class="role-badge role-all">✅ QL PM / HC NS</span>
+          <span class="role-badge" style="background:#fce4ec;color:#c62828">🚫 Tuyển dụng – No Access</span>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="flow">
+          <div class="flow-box">+ Tạo HĐ Mới</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box">Chọn LĐ ✱<br>+ Dự án</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box">Chọn mẫu HĐ ✱</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box">Điền<br>điều khoản</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box"><strong>Lưu Nháp</strong></div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box">Xem trước<br>/ Xuất file</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box">Upload<br>Bản Đã Ký</div>
+        </div>
+        <table class="info-table" style="margin-top:12px">
+          <tr><th>Trường</th><th>Bắt buộc</th><th>Ghi chú</th></tr>
+          <tr><td>Chọn ứng viên / người lao động</td><td><span class="req">✱</span></td><td>Tìm theo tên, SĐT hoặc CCCD</td></tr>
+          <tr><td>Dự án</td><td></td><td>Gắn HĐ với dự án cụ thể</td></tr>
+          <tr><td>Mẫu hợp đồng</td><td><span class="req">✱</span></td><td>Toàn thời gian / Bán thời gian / …</td></tr>
+          <tr><td>Ngày ký</td><td><span class="req">✱</span></td><td>Ngày ký kết hợp đồng</td></tr>
+          <tr><td>Ngày kết thúc</td><td><span class="req">✱</span></td><td>Ngày hết hạn HĐ</td></tr>
+          <tr><td>Lương cơ bản (VNĐ)</td><td><span class="req">✱</span></td><td>Mức lương thỏa thuận</td></tr>
+          <tr><td>Hình thức thanh toán</td><td></td><td>Mặc định: Chuyển khoản ngân hàng</td></tr>
+          <tr><td>Ngày trả lương</td><td></td><td>Kỳ trả lương hàng tháng</td></tr>
+          <tr><td>Điều khoản bổ sung</td><td></td><td>Tối đa 1.000 ký tự</td></tr>
+          <tr><td>Đính kèm bản Cam kết tuân thủ nội quy</td><td></td><td>✓ mặc định — hệ thống tự ghép file cam kết</td></tr>
+        </table>
+        <p style="margin-top:10px"><strong>Sidebar phải — Xem Trước Document:</strong></p>
+        <ul style="list-style:disc;margin-left:20px;font-size:14px;line-height:1.8">
+          <li>Nút <em>"Hợp Đồng Lao Động"</em> và <em>"Bản Cam Kết"</em> — xám cho đến khi Lưu Nháp</li>
+          <li>Nút <strong>"Xuất File Hợp Đồng Nháp"</strong> — tải file .docx nháp</li>
+          <li>Nút <strong>"Lưu Nháp"</strong> (xanh dương) — lưu và kích hoạt xem trước</li>
+        </ul>
+        <div class="warn">Phải <strong>Lưu Nháp</strong> trước khi xem trước hoặc xuất file. Sau khi có bản ký vật lý, quay lại nhấn <strong>"Upload Bản Đã Ký"</strong> để kích hoạt HĐ → trạng thái "Đang hoạt động".</div>
+      </div>
+    </div>
+
+    <!-- Chi tiết hợp đồng -->
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Chi tiết hợp đồng lao động</h3>
+          <p>Xem đầy đủ thông tin HĐ, tài liệu đính kèm và lịch sử gia hạn</p>
+        </div>
+        <div class="roles">
+          <span class="role-badge role-all">✅ Tất cả vai trò có quyền xem HĐ</span>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <p><strong>Thanh hành động trên cùng:</strong></p>
+        <ul style="list-style:disc;margin-left:20px;font-size:14px;line-height:1.8">
+          <li><strong>Tải template</strong> — tải file mẫu HĐ gốc (.docx)</li>
+          <li><strong>Xem trước</strong> — xem preview HĐ trong trình duyệt</li>
+          <li><strong>Chỉnh Sửa</strong> — mở form chỉnh sửa điều khoản</li>
+          <li><strong>Upload Bản Đã Ký</strong> — tải lên bản ký vật lý → HĐ chuyển "Đang hoạt động"</li>
+          <li><strong>Xóa HĐ Nháp</strong> (đỏ) — xóa nếu HĐ còn ở trạng thái Nháp</li>
+        </ul>
+        <p style="margin-top:10px"><strong>Nội dung chính (cột trái):</strong></p>
+        <ul style="list-style:disc;margin-left:20px;font-size:14px;line-height:1.8">
+          <li>Card đầu: Loại HĐ · Mã CTR · Thời hạn HĐ · Trạng thái · Đếm ngược hết hạn</li>
+          <li><strong>Các Bên Ký Kết:</strong> Bên A — Công ty (tên, MST, đại diện) | Bên B — Lao động (tên, CCCD, SĐT)</li>
+          <li><strong>Điều Khoản Hợp Đồng:</strong> Ngày ký · Ngày kết thúc · Thời hạn · Dự án · Vị trí · Lương · Hình thức thanh toán · Đính kèm cam kết</li>
+        </ul>
+        <p style="margin-top:10px"><strong>Cột phải — 2 thẻ:</strong></p>
+        <ul style="list-style:disc;margin-left:20px;font-size:14px;line-height:1.8">
+          <li><strong>Tài Liệu Đính Kèm:</strong> BẢN NHÁP (HD-CTR-xxx.docx, CamKet-CTR-xxx.docx) hoặc BẢN CHÍNH THỨC sau khi upload ký</li>
+          <li><strong>Lịch Sử Gia Hạn:</strong> Timeline các lần ký (Ký lần đầu → Gia hạn lần 1 → …)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Chỉnh sửa hợp đồng -->
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Chỉnh sửa hợp đồng lao động</h3>
+          <p>Cập nhật điều khoản — bên ký kết không thể thay đổi</p>
+        </div>
+        <div class="roles">
+          <span class="role-badge role-all">✅ TGĐ / GĐ Cty / Admin</span>
+          <span class="role-badge role-self">🎯 GĐ DA – All(self)</span>
+          <span class="role-badge role-all">✅ QL PM / HC NS</span>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <p><strong>Phần 1 — Bên Ký Kết (Không thể thay đổi):</strong> Hiển thị thông tin lao động (tên, mã WKR, ngày sinh, SĐT, CCCD, nơi cấp, thường trú) — chỉ đọc.</p>
+        <p style="margin-top:10px"><strong>Phần 2 — Điều Khoản Có Thể Chỉnh Sửa:</strong></p>
+        <table class="info-table" style="margin-top:6px">
+          <tr><th>Trường</th><th>Bắt buộc</th></tr>
+          <tr><td>Ngày kết thúc</td><td><span class="req">✱</span></td></tr>
+          <tr><td>Lương cơ bản (VNĐ)</td><td><span class="req">✱</span></td></tr>
+          <tr><td>Hình thức thanh toán</td><td></td></tr>
+          <tr><td>Ngày trả lương</td><td></td></tr>
+          <tr><td>Điều khoản bổ sung (0/1000)</td><td></td></tr>
+          <tr><td>☑ Đính kèm bản Cam kết tuân thủ nội quy</td><td></td></tr>
+        </table>
+        <p style="margin-top:10px">Nút <strong>"Lưu Thay Đổi"</strong> (xanh, góc phải) · <strong>"Hủy"</strong> để quay về chi tiết.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== LỊCH PHỎNG VẤN ===================== -->
   <div class="section" id="interviews">
     <div class="screen-card">
       <div class="screen-card-header">
         <div>
-          <h3>Lịch phỏng vấn</h3>
-          <p>Lên lịch và theo dõi các buổi phỏng vấn ứng viên</p>
+          <h3>Quản lý lịch phỏng vấn</h3>
+          <p>Theo dõi lịch phỏng vấn ứng viên theo 2 chế độ: Lịch (calendar) và Danh sách</p>
         </div>
         <div class="roles">
-          <span class="role-badge role-all">✅ Admin – All</span>
-          <span class="role-badge role-all">✅ QL PM – All</span>
-          <span class="role-badge role-all">✅ TV PM – All</span>
+          <span class="role-badge role-all">✅ Admin / QL PM / TV PM</span>
           <span class="role-badge role-lead">🔶 Lead TV – All(lead-Self)</span>
           <span class="role-badge role-self">🎯 TV NV – All(self)</span>
         </div>
       </div>
       <div class="screen-card-body">
-        <p><strong>2 chế độ xem:</strong> Tab <strong>Lịch</strong> (calendar tháng) và tab <strong>Danh sách</strong>.</p>
-        <p style="margin-top:8px"><strong>Tổng quan tháng (06/2026 ví dụ):</strong> Tổng lịch: 8 · Lịch hôm nay: 0 · 7 ngày tới: 0 · Từ chối: 0 · Hẹn lại/Hủy: 4</p>
-        <table class="info-table" style="margin-top:10px">
-          <tr><th>Màu/Trạng thái</th><th>Ý nghĩa</th></tr>
-          <tr><td><span class="chip chip-blue">Đang chờ phản hồi</span></td><td>Ứng viên chưa xác nhận</td></tr>
-          <tr><td><span class="chip chip-green">Đã chốt lịch</span></td><td>Ứng viên đã xác nhận tham gia</td></tr>
-          <tr><td><span class="chip chip-orange">Sắp diễn ra</span></td><td>Trong vòng 24h tới</td></tr>
-          <tr><td><span class="chip chip-purple">Đã phỏng vấn</span></td><td>Hoàn thành buổi phỏng vấn</td></tr>
-          <tr><td><span class="chip chip-red">Hủy / Hẹn lại</span></td><td>Đã hủy hoặc dời lịch</td></tr>
+        <p><strong>Thống kê đầu trang (5 thẻ):</strong> Tổng lịch trong tháng · Lịch hôm nay · 7 ngày tới · Từ chối · Hẹn lại / Hủy</p>
+        <p style="margin-top:10px"><strong>Chú thích màu sắc trên lịch:</strong></p>
+        <table class="info-table" style="margin-top:6px">
+          <tr><th>Màu</th><th>Trạng thái</th><th>Ý nghĩa</th></tr>
+          <tr><td><span class="chip chip-blue">●</span></td><td>Đang chờ phản hồi</td><td>Ứng viên chưa xác nhận</td></tr>
+          <tr><td><span class="chip chip-green">●</span></td><td>Đã chốt lịch</td><td>Ứng viên xác nhận tham gia</td></tr>
+          <tr><td><span class="chip chip-orange">●</span></td><td>Sắp diễn ra</td><td>Trong vòng 24h tới</td></tr>
+          <tr><td><span class="chip chip-purple">●</span></td><td>Đã phỏng vấn</td><td>Đã hoàn thành buổi PV</td></tr>
+          <tr><td><span class="chip chip-red">●</span></td><td>Hủy / Hẹn lại</td><td>Đã hủy hoặc dời lịch</td></tr>
         </table>
-        <div class="flow" style="margin-top:14px">
+        <p style="margin-top:12px"><strong>Tạo lịch phỏng vấn mới</strong> (popup, nhấn "+ Thêm mới"):</p>
+        <div class="flow" style="margin-top:8px">
           <div class="flow-box">+ Thêm mới</div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">Chọn dự án</div>
+          <div class="flow-box">Chọn dự án<br><small>(tùy chọn)</small></div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">Ngày + giờ bắt đầu/kết thúc ✱</div>
+          <div class="flow-box">Ngày + giờ<br>bắt đầu ✱</div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">Người phỏng vấn</div>
+          <div class="flow-box">Giờ kết<br>thúc ✱</div>
           <span class="flow-arrow">→</span>
-          <div class="flow-box">Hình thức ✱ + Địa điểm/Link</div>
+          <div class="flow-box">Hình thức ✱<br>+ Địa điểm/Link</div>
           <span class="flow-arrow">→</span>
           <div class="flow-box">Lưu lịch hẹn</div>
         </div>
-        <table class="info-table">
+        <table class="info-table" style="margin-top:10px">
           <tr><th>Trường</th><th>Bắt buộc</th><th>Ghi chú</th></tr>
           <tr><td>Dự án</td><td></td><td>Gắn lịch với dự án cụ thể</td></tr>
-          <tr><td>Khách hàng phỏng vấn</td><td></td><td>Tick nếu có khách hàng tham dự</td></tr>
-          <tr><td>Ngày bắt đầu + giờ</td><td><span class="req">✱</span></td><td>Thời điểm bắt đầu PV</td></tr>
+          <tr><td>Khách hàng phỏng vấn</td><td></td><td>Tick nếu có khách hàng tham dự trực tiếp</td></tr>
+          <tr><td>Ngày bắt đầu + giờ bắt đầu</td><td><span class="req">✱</span></td><td>Thời điểm bắt đầu buổi PV</td></tr>
           <tr><td>Giờ kết thúc</td><td><span class="req">✱</span></td><td>Thời điểm kết thúc</td></tr>
           <tr><td>Người phỏng vấn</td><td></td><td>HR hoặc chuyên môn tham gia PV</td></tr>
-          <tr><td>Hình thức</td><td><span class="req">✱</span></td><td>Offline tại VP / Online (Google Meet/Zoom)</td></tr>
-          <tr><td>Địa điểm / Link</td><td></td><td>Phòng PV hoặc link online</td></tr>
+          <tr><td>Hình thức phỏng vấn</td><td><span class="req">✱</span></td><td>Offline tại VP / Online (Google Meet / Zoom)</td></tr>
+          <tr><td>Địa điểm / Link</td><td></td><td>Phòng PV hoặc link meeting online</td></tr>
         </table>
+        <div class="note">Tab <strong>"Danh sách"</strong> bên cạnh tab Lịch hiển thị tất cả lịch phỏng vấn dưới dạng bảng — tiện cho việc lọc và xuất báo cáo.</div>
       </div>
     </div>
   </div>
 
-  <!-- Báo cáo tuyển dụng -->
+  <!-- ===================== BÁO CÁO TUYỂN DỤNG ===================== -->
   <div class="section" id="recruitment-report">
     <div class="screen-card">
       <div class="screen-card-header">
         <div>
           <h3>Báo cáo tuyển dụng</h3>
-          <p>Theo dõi hiệu suất tuyển dụng theo team và dự án</p>
+          <p>Theo dõi hiệu suất tuyển dụng theo team và dự án — có biểu đồ trực quan</p>
         </div>
         <div class="roles">
-          <span class="role-badge role-all">✅ Admin – All</span>
-          <span class="role-badge role-all">✅ TV PM – All</span>
-          <span class="role-badge role-self">🎯 GĐ DA/QL PM/Lead/Ad-onsite – All(self) hoặc All(lead-Self)</span>
-          <span class="role-badge role-all">✅ HC NS – All</span>
+          <span class="role-badge role-all">✅ Admin / TV PM / HC NS</span>
+          <span class="role-badge role-self">🎯 GĐ DA / QL PM / Lead / Ad-onsite – All(self)</span>
         </div>
       </div>
       <div class="screen-card-body">
-        <p><strong>KPIs tổng hợp:</strong> Tổng ứng viên · Đã phỏng vấn (Chờ PV) · Đã nhận việc · Tỉ lệ chuyển đổi (%)</p>
-        <p style="margin-top:8px"><strong>Bộ lọc:</strong> Kỳ báo cáo (Tháng/Tuần/Ngày) · Thời gian · Dự án · Nguồn tuyển dụng · Nút "Làm mới dữ liệu"</p>
-        <p style="margin-top:8px"><strong>Biểu đồ:</strong> Hiệu suất theo team tuyển dụng (tổng UV vs đã nhận việc) · Phân bổ tuyển dụng theo dự án (đã PV vs đã nhận việc)</p>
-        <p style="margin-top:8px"><strong>Bảng chi tiết team/dự án:</strong> Team tuyển dụng · Dự án · Tổng UV · Đã PV · Không PV · Chờ PV · Hẹn lại · Đã nhận việc · Chờ nhận việc · Từ chối</p>
+        <p><strong>Bộ lọc:</strong> Kỳ báo cáo (Tháng / Tuần / Ngày) · Thời gian (tháng/năm) · Dự án · Nguồn tuyển dụng → <strong>"Làm mới dữ liệu"</strong></p>
+        <p style="margin-top:10px"><strong>4 thẻ KPI tổng hợp:</strong></p>
+        <table class="info-table" style="margin-top:6px">
+          <tr><th>KPI</th><th>Ý nghĩa</th></tr>
+          <tr><td>Tổng ứng viên</td><td>Tổng số UV trong kỳ lọc (kèm khoảng thời gian)</td></tr>
+          <tr><td>Đã phỏng vấn</td><td>Số UV đã PV · phụ đề: Chờ phỏng vấn: X</td></tr>
+          <tr><td>Đã nhận việc</td><td>Số UV đã chốt nhận việc trong kỳ</td></tr>
+          <tr><td>Tỉ lệ chuyển đổi (%)</td><td>Từ ứng viên → nhận việc</td></tr>
+        </table>
+        <p style="margin-top:12px"><strong>2 biểu đồ cột:</strong></p>
+        <ul style="list-style:disc;margin-left:20px;font-size:14px;line-height:1.8">
+          <li><strong>Hiệu suất theo team tuyển dụng</strong> — Tổng UV (xanh nhạt) vs Đã nhận việc (xanh đậm) theo từng nhóm tuyển dụng</li>
+          <li><strong>Phân bổ tuyển dụng theo dự án</strong> — Đã phỏng vấn (tím) vs Đã nhận việc (xanh) theo từng dự án</li>
+        </ul>
+        <p style="margin-top:12px"><strong>Bảng chi tiết team / dự án</strong> — các cột: Team tuyển dụng · Dự án · Tổng UV · Đã PV · Không PV · Chờ PV · Hẹn lại · Đã nhận việc · Chờ nhận việc · Từ chối</p>
+        <div class="tip">Chọn kỳ <strong>"Tuần"</strong> hoặc <strong>"Ngày"</strong> để xem số liệu chi tiết hơn. Nhấn <strong>"Làm mới dữ liệu"</strong> sau khi thay bộ lọc để cập nhật biểu đồ.</div>
       </div>
     </div>
   </div>
 
-  <!-- Người phụ thuộc -->
+  <!-- ===================== NGƯỜI PHỤ THUỘC ===================== -->
   <div class="section" id="dependents">
     <div class="screen-card">
       <div class="screen-card-header">
         <div>
-          <h3>Người phụ thuộc</h3>
-          <p>Quản lý mã số thuế cá nhân và NPT theo hồ sơ lao động</p>
+          <h3>Người phụ thuộc (NPT)</h3>
+          <p>Quản lý mã số thuế cá nhân và danh sách NPT theo hồ sơ lao động</p>
         </div>
         <div class="roles">
           <span class="role-badge role-all">✅ Admin – All</span>
@@ -688,9 +991,21 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
         </div>
       </div>
       <div class="screen-card-body">
-        <p>Danh sách lao động đã đăng ký MST và có NPT. Cột: Lao động + SĐT · MST cá nhân · Số NPT · Thao tác ✏️</p>
-        <p style="margin-top:10px">Nhấn <strong>"Khai báo NPT mới"</strong> để khai báo người phụ thuộc cho lao động cụ thể.</p>
-        <div class="note">Thông tin NPT ảnh hưởng đến tính thuế TNCN khi tính bảng lương. Cần cập nhật chính xác mã số thuế cá nhân.</div>
+        <p><strong>Thông tin tổng:</strong> "Tổng cộng X lao động đã đăng ký MST và có NPT"</p>
+        <p style="margin-top:8px"><strong>Bảng danh sách:</strong> Lao động (tên + SĐT) · MST cá nhân · Số NPT · Thao tác ✏️</p>
+        <p style="margin-top:8px"><strong>Tìm kiếm:</strong> Tìm theo tên lao động hoặc MST</p>
+        <div class="flow" style="margin-top:12px">
+          <div class="flow-box">Khai báo NPT mới</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box">Chọn lao động</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box">Nhập MST cá nhân</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box">Thêm người<br>phụ thuộc</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-box">Lưu</div>
+        </div>
+        <div class="note">Thông tin NPT và MST cá nhân ảnh hưởng trực tiếp đến tính thuế TNCN khi xuất bảng lương. Cần cập nhật chính xác trước khi chốt lương hàng tháng.</div>
       </div>
     </div>
   </div>
@@ -698,6 +1013,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
   <!-- ===================== VẬN HÀNH LAO ĐỘNG ===================== -->
   <div class="section" id="shift-booking">
     <div class="section-title"><span class="s-icon">🗓️</span>Vận hành lao động</div>
+
 
     <div class="screen-card">
       <div class="screen-card-header">
@@ -802,6 +1118,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
   <!-- ===================== LOGISTICS ===================== -->
   <div class="section" id="routes">
     <div class="section-title"><span class="s-icon">🚌</span>Logistics</div>
+
 
     <div class="screen-card">
       <div class="screen-card-header">
@@ -961,6 +1278,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
   <div class="section" id="attendance">
     <div class="section-title"><span class="s-icon">⏱️</span>Chấm công</div>
 
+
     <div class="screen-card">
       <div class="screen-card-header">
         <div>
@@ -1030,6 +1348,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
   <div class="section" id="payroll">
     <div class="section-title"><span class="s-icon">💰</span>Tài chính</div>
 
+
     <div class="screen-card">
       <div class="screen-card-header">
         <div>
@@ -1055,6 +1374,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
   <!-- ===================== CSKH LAO ĐỘNG ===================== -->
   <div class="section" id="insurance">
     <div class="section-title"><span class="s-icon">🛡️</span>CSKH lao động</div>
+
 
     <div class="screen-card">
       <div class="screen-card-header">
@@ -1176,6 +1496,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
   <!-- ===================== PHÁP LÝ & RỦI RO ===================== -->
   <div class="section" id="blacklist">
     <div class="section-title"><span class="s-icon">🚫</span>Pháp lý &amp; Rủi ro</div>
+
 
     <div class="screen-card">
       <div class="screen-card-header">
@@ -1313,6 +1634,67 @@ navItems.forEach(item => {
     item.classList.add('active');
   });
 });
+</script>
+
+<!-- SCREENSHOT INJECT -->
+<div id="ss-overlay" onclick="this.classList.remove('open')"><img id="ss-big" src="" alt=""></div>
+<script>
+(function(){
+  var M = {
+    'Danh sách dự án tuyển dụng':           'images/danh sách dự án.png',
+    'Tạo dự án mới':                         'images/tạo dự án.png',
+    'Chi tiết & Chỉnh sửa dự án':            'images/chỉnh sửa dự án.png',
+    'Form đăng ký ca':                        'images/tạo form đăng kí ca.png',
+    'Danh sách ứng viên':                     'images/danh sách ứng viên.png',
+    'Thêm hồ sơ ứng viên mới':               'images/thêm mới ứng viên.png',
+    'Đăng ký dự án cho ứng viên':            'images/đăng kí dự án cho ứng viên.png',
+    'Hồ sơ lao động':                         'images/danh sách hồ sơ lao động.png',
+    'Tạo hồ sơ lao động':                    'images/tạo hồ sơ lao động.png',
+    'Hợp đồng lao động — Danh sách':         'images/danh sách hợp đồng lao động.png',
+    'Tạo hợp đồng lao động':                 'images/tạo hợp đồng lao động.png',
+    'Chi tiết hợp đồng lao động':            'images/chi tiết hợp đồng lao động.png',
+    'Chỉnh sửa hợp đồng lao động':           'images/chỉnh sửa hợp đồng lao động.png',
+    'Quản lý lịch phỏng vấn':                'images/danh sách lịch phỏng vấn.png',
+    'Báo cáo tuyển dụng':                    'images/báo cáo tuyển dụng.png',
+    'Người phụ thuộc (NPT)':                 'images/danh sách người phụ thuộc.png',
+    'Xếp ca & Booking':                      'images/booking ca.png',
+    'Phân ca lao động':                      'images/Phân ca lao động.png',
+    'Báo cáo quân số hàng ngày':             'images/báo cáo ca làm việc.png',
+    'Tuyến đường':                           'images/danh sách tuyến đường.png',
+    'Phương tiện':                           'images/danh sách xe.png',
+    'Nhà thầu':                              'images/danh sách nhà thầu.png',
+    'Lệnh điều phối xe':                     'images/danh sách lệnh điều phối.png',
+    'Booking tuyến':                         'images/danh sách số lượng booking tuyến.png',
+    'Đề xuất bảo hiểm':                      'images/màn đề xuất bảo hiểm.png',
+    'Quy trình duyệt nghỉ phép':             'images/danh sách nghỉ phép.png',
+    'Ứng lương':                             'images/danh sách ứng lương.png',
+    'Tiếp nhận phản ánh & khiếu nại':        'images/danh sách khiếu nại.png',
+    'Danh sách đen':                         'images/danh sách đen.png',
+    'Quản lý thông báo':                     'images/danh sách thông báo.png',
+    'Quản lý quản trị viên':                 'images/danh sách quản trị viên.png'
+  };
+  var overlay = document.getElementById('ss-overlay');
+  var bigImg  = document.getElementById('ss-big');
+
+  document.querySelectorAll('.screen-card').forEach(function(card){
+    var h3  = card.querySelector('.screen-card-header h3');
+    if(!h3) return;
+    var src = M[h3.textContent.trim()];
+    if(!src) return;
+    var body = card.querySelector('.screen-card-body');
+    if(!body) return;
+    var w = document.createElement('div');
+    w.className = 'screenshot-wrap';
+    w.innerHTML = '<div class="screenshot-label">Màn hình thực tế</div>'
+      + '<img src="' + src + '" alt="" class="screenshot" loading="lazy" '
+      + 'onerror="this.closest(\'.screenshot-wrap\').style.display=\'none\'">';
+    body.appendChild(w);
+    w.querySelector('img').addEventListener('click', function(){
+      bigImg.src = this.src;
+      overlay.classList.add('open');
+    });
+  });
+})();
 </script>
 </body>
 </html>
