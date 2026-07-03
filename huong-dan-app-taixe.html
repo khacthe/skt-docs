@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hướng Dẫn App Tài Xế – HUMI Workforce</title>
+<style>
+:root {
+  --brand: #e65100;
+  --brand-dark: #bf360c;
+  --sidebar-bg: #1a0a00;
+  --sidebar-text: #bcaaa4;
+  --sidebar-active: #ffffff;
+  --sidebar-hover: #3e1a00;
+  --sidebar-group: #8d6e63;
+  --content-bg: #f5f7fa;
+  --card-bg: #ffffff;
+  --border: #e0e6ed;
+  --text: #1a202c;
+  --text-muted: #718096;
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --sidebar-w: 260px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{width:100%;height:100%}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);color:var(--text);line-height:1.6;display:flex;align-items:stretch;min-height:100vh;width:100%}
+
+/* SIDEBAR */
+#sidebar{
+  width:var(--sidebar-w);min-width:var(--sidebar-w);background:var(--sidebar-bg);
+  height:100vh;position:sticky;top:0;overflow-y:auto;display:flex;flex-direction:column;flex-shrink:0;
+}
+#sidebar::-webkit-scrollbar{width:4px}
+#sidebar::-webkit-scrollbar-thumb{background:#3e1a00;border-radius:4px}
+
+.home-nav-btn{
+  display:block;margin:0 12px 4px;padding:9px 14px;border-radius:8px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);
+  color:#e0e0e0;font-size:13px;font-weight:600;text-decoration:none;text-align:center;
+  transition:background .15s,color .15s;
+}
+.home-nav-btn:hover{background:rgba(255,255,255,0.2);color:#fff}
+
+.sidebar-logo{
+  padding:20px 16px 12px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:8px;
+  display:flex;align-items:center;gap:12px;text-decoration:none;
+}
+.sidebar-logo .logo-icon{
+  width:36px;height:36px;border-radius:8px;background:var(--brand);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;
+}
+.sidebar-logo .logo-text{color:#fff;font-weight:700;font-size:15px;line-height:1.2}
+.sidebar-logo .logo-sub{color:var(--sidebar-text);font-size:11px}
+.sidebar-nav{padding:12px 0;flex:1}
+.nav-group{padding:8px 16px 4px;font-size:10px;font-weight:700;letter-spacing:1.2px;color:var(--sidebar-group);text-transform:uppercase}
+.nav-item{
+  display:block;padding:9px 16px 9px 20px;color:var(--sidebar-text);text-decoration:none;
+  font-size:13px;border-left:3px solid transparent;transition:all .15s;
+}
+.nav-item:hover{background:var(--sidebar-hover);color:#fff}
+.nav-item.active{background:var(--sidebar-hover);color:var(--sidebar-active);border-left-color:var(--brand);font-weight:600}
+.nav-item .nav-icon{margin-right:10px;font-size:14px;opacity:.8}
+
+/* MAIN */
+#main{flex:1 1 0;min-width:0;width:0;padding:32px 36px;overflow-x:hidden}
+
+.page-header{margin-bottom:32px}
+.page-header h1{font-size:26px;font-weight:700;color:#0f1b2d;margin-bottom:6px}
+.page-header p{color:var(--text-muted);font-size:15px}
+
+.app-badge{display:inline-flex;align-items:center;gap:6px;background:#fbe9e7;color:#bf360c;border:1px solid #ffccbc;border-radius:20px;padding:4px 14px;font-size:12px;font-weight:700;margin-bottom:16px}
+
+.section{margin-bottom:48px;scroll-margin-top:20px}
+.section-title{
+  font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--brand);padding-bottom:10px;border-bottom:2px solid var(--brand);
+  display:flex;align-items:center;gap:10px;margin-bottom:20px;
+}
+.s-icon{font-size:16px}
+
+.screen-card{background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:20px;overflow:hidden}
+.screen-card-header{padding:16px 20px;background:#f8fafc;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:10px}
+.screen-card-header h3{font-size:15px;font-weight:700;color:#0f1b2d}
+.screen-card-header p{font-size:13px;color:var(--text-muted)}
+.roles{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.role-badge{padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.role-all{background:#fbe9e7;color:#bf360c}
+.screen-card-body{padding:20px}
+
+/* PHONE */
+.phone-row{display:flex;gap:24px;flex-wrap:wrap;margin:16px 0}
+.phone-wrap{display:flex;flex-direction:column;align-items:center;gap:8px}
+.phone-frame{width:200px;border-radius:24px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.15);border:3px solid #263238;cursor:zoom-in;transition:box-shadow .2s;flex-shrink:0}
+.phone-frame:hover{box-shadow:0 8px 32px rgba(0,0,0,0.25)}
+.phone-frame img{width:100%;display:block}
+.phone-label{font-size:11px;font-weight:700;color:var(--text-muted);text-align:center;text-transform:uppercase;letter-spacing:.8px}
+
+/* STEPS */
+.steps{list-style:none;margin:12px 0}
+.steps li{display:flex;gap:14px;margin-bottom:16px}
+.step-num{min-width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-text{font-size:14px;line-height:1.6}
+.step-text strong{color:#0f1b2d}
+
+.info-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:12px 0}
+.info-table th{background:#fbe9e7;padding:9px 14px;text-align:left;font-weight:700;color:#bf360c;border:1px solid #ffccbc}
+.info-table td{padding:9px 14px;border:1px solid var(--border);vertical-align:top}
+.info-table tr:nth-child(even) td{background:#fafbfc}
+
+.tip{background:#fff8e1;border-left:4px solid #ffa000;border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:13.5px;display:flex;gap:10px;align-items:flex-start}
+.warn{background:#fbe9e7;border-left:4px solid #e53935;border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:13.5px;display:flex;gap:10px;align-items:flex-start}
+.note{background:#e3f2fd;border-left:4px solid #1e88e5;border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:13.5px;display:flex;gap:10px;align-items:flex-start}
+
+/* FLOW STEPPER */
+.flow-stepper{display:flex;align-items:flex-start;gap:0;margin:16px 0;flex-wrap:wrap}
+.flow-step-item{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;min-width:80px;text-align:center}
+.flow-step-circle{width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.flow-step-label{font-size:11px;color:var(--text-muted);font-weight:600;line-height:1.3}
+.flow-step-arrow{color:#b0bec5;font-size:18px;margin-top:8px;flex-shrink:0}
+
+/* BOTTOM NAV */
+.bottom-nav-desc{display:flex;gap:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:12px 0;background:#fff}
+.bnav-item{flex:1;padding:8px 4px;text-align:center;border-right:1px solid var(--border);font-size:11px;color:var(--text-muted)}
+.bnav-item:last-child{border-right:none}
+.bnav-item .bnav-icon{font-size:18px;display:block;margin-bottom:2px}
+.bnav-item.active-nav{background:#fbe9e7;color:#bf360c;font-weight:700}
+
+/* STATUS BADGE */
+.status-badge{display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:700}
+.status-done{background:#e8f5e9;color:#2e7d32}
+.status-active{background:#e3f2fd;color:#1565c0}
+.status-pending{background:#fff8e1;color:#f57f17}
+
+/* LIGHTBOX */
+#app-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;cursor:zoom-out;align-items:center;justify-content:center}
+#app-overlay.open{display:flex}
+#app-overlay img{max-width:360px;max-height:90vh;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+
+/* FOOTER */
+.page-footer{margin-top:48px;padding:24px;background:#1a0a00;border-radius:var(--radius);color:#bcaaa4;font-size:13px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.page-footer a{display:inline-flex;align-items:center;gap:6px;padding:8px 20px;border-radius:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#e0e0e0;font-size:13px;font-weight:600;text-decoration:none}
+.page-footer a:hover{background:rgba(255,255,255,0.2);color:#fff}
+
+@media(max-width:768px){
+  #sidebar{display:none}
+  #main{padding:20px;width:100%}
+  .phone-frame{width:160px}
+}
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <a class="sidebar-logo" href="index.html" title="Về trang chủ">
+    <div class="logo-icon">🚐</div>
+    <div>
+      <div class="logo-text">HUMI Workforce</div>
+      <div class="logo-sub">App tài xế</div>
+    </div>
+  </a>
+  <a href="index.html" class="home-nav-btn">🏠 Về Trang chủ</a>
+  <div class="sidebar-nav">
+    <div class="nav-group">Xác thực</div>
+    <a class="nav-item" href="#dang-nhap"><span class="nav-icon">🔐</span>Đăng nhập</a>
+
+    <div class="nav-group">Điều hành</div>
+    <a class="nav-item" href="#trang-chu"><span class="nav-icon">🏠</span>Trang chủ</a>
+    <a class="nav-item" href="#chi-tiet-tuyen"><span class="nav-icon">🗺️</span>Chi tiết tuyến xe</a>
+
+    <div class="nav-group">Lịch sử & Cá nhân</div>
+    <a class="nav-item" href="#lich-su"><span class="nav-icon">📅</span>Lịch sử chuyến xe</a>
+    <a class="nav-item" href="#ho-so-taixe"><span class="nav-icon">👤</span>Hồ sơ cá nhân</a>
+  </div>
+</nav>
+
+<main id="main">
+  <div class="page-header">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;color:#718096;font-size:13px;text-decoration:none;margin-bottom:12px">← Quay lại hướng dẫn theo bộ phận</a>
+    <div class="app-badge">🚐 App dành cho Tài xế</div>
+    <h1>Hướng Dẫn App Tài Xế</h1>
+    <p>Ứng dụng dành cho tài xế xe đưa đón — xem lịch trình hôm nay, thực hiện chuyến xe và theo dõi lịch sử thu nhập.</p>
+  </div>
+
+  <!-- TỔNG QUAN LUỒNG -->
+  <div style="background:#fff;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:20px 24px;margin-bottom:36px">
+    <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--brand);margin-bottom:14px">Tổng quan luồng sử dụng hàng ngày</div>
+    <div class="flow-stepper">
+      <div class="flow-step-item">
+        <div class="flow-step-circle">1</div>
+        <div class="flow-step-label">Đăng nhập<br>(tab Tài xế)</div>
+      </div>
+      <div class="flow-step-arrow">→</div>
+      <div class="flow-step-item">
+        <div class="flow-step-circle">2</div>
+        <div class="flow-step-label">Xem trang chủ<br>lịch trình hôm nay</div>
+      </div>
+      <div class="flow-step-arrow">→</div>
+      <div class="flow-step-item">
+        <div class="flow-step-circle">3</div>
+        <div class="flow-step-label">Nhấn Chi tiết<br>xem tuyến & trạm</div>
+      </div>
+      <div class="flow-step-arrow">→</div>
+      <div class="flow-step-item">
+        <div class="flow-step-circle">4</div>
+        <div class="flow-step-label">Thực hiện<br>chuyến xe</div>
+      </div>
+      <div class="flow-step-arrow">→</div>
+      <div class="flow-step-item">
+        <div class="flow-step-circle">5</div>
+        <div class="flow-step-label">Nhấn<br>"Kết thúc tuyến"</div>
+      </div>
+      <div class="flow-step-arrow">→</div>
+      <div class="flow-step-item">
+        <div class="flow-step-circle">6</div>
+        <div class="flow-step-label">Xem lịch sử<br>& thu nhập</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== ĐĂNG NHẬP ===================== -->
+  <div class="section" id="dang-nhap">
+    <div class="section-title"><span class="s-icon">🔐</span>Xác thực – Đăng nhập</div>
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Màn hình Đăng nhập – Tab Tài xế</h3>
+          <p>App dùng chung với app lao động — tài xế chọn tab riêng để đăng nhập</p>
+        </div>
+        <div class="roles"><span class="role-badge role-all">🚐 Tài xế</span></div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app tài xế/đăng nhập tài xế.png" alt="Đăng nhập tài xế">
+            </div>
+            <div class="phone-label">Đăng nhập</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:12px">Màn hình đăng nhập có <strong>2 tab</strong> ở trên cùng:</p>
+            <table class="info-table" style="margin-bottom:14px">
+              <tr><th>Tab</th><th>Dành cho</th></tr>
+              <tr><td>Nhân viên / Ứng viên</td><td>Người lao động (app lao động)</td></tr>
+              <tr><td><strong>Tài xế ✓</strong></td><td>Tài xế xe đưa đón — chọn tab này</td></tr>
+            </table>
+            <ul class="steps">
+              <li><div class="step-num">1</div><div class="step-text">Chọn tab <strong>"Tài xế"</strong> ở góc phải màn hình đăng nhập</div></li>
+              <li><div class="step-num">2</div><div class="step-text">Nhập <strong>Email</strong> và <strong>Mật khẩu</strong> được cấp bởi quản lý</div></li>
+              <li><div class="step-num">3</div><div class="step-text">Nhấn <strong>"Đăng nhập"</strong></div></li>
+            </ul>
+            <div class="tip">🔑 Nếu quên mật khẩu, nhấn <strong>"Quên mật khẩu?"</strong> (chữ cam) để nhận link đặt lại qua email.</div>
+            <div class="note">📌 App tài xế <strong>không dùng OTP</strong> như app lao động — đăng nhập trực tiếp bằng email + mật khẩu.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== TRANG CHỦ ===================== -->
+  <div class="section" id="trang-chu">
+    <div class="section-title"><span class="s-icon">🏠</span>Điều hành – Trang chủ</div>
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Trang chủ – Lịch trình hôm nay</h3>
+          <p>Màn hình chính sau đăng nhập — tổng quan chuyến xe và lịch trình trong ngày</p>
+        </div>
+        <div class="roles"><span class="role-badge role-all">🚐 Tài xế</span></div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app tài xế/trang chủ.png" alt="Trang chủ tài xế">
+            </div>
+            <div class="phone-label">Trang chủ</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:12px">Trang chủ gồm các thành phần:</p>
+            <table class="info-table">
+              <tr><th>Thành phần</th><th>Mô tả</th></tr>
+              <tr>
+                <td><strong>Header</strong></td>
+                <td>Vai trò (TÀI XẾ) · Tên tài khoản · Chuông thông báo</td>
+              </tr>
+              <tr>
+                <td><strong>Thống kê nhanh</strong></td>
+                <td>
+                  <span class="status-badge status-active">N chuyến hôm nay</span>&nbsp;
+                  <span class="status-badge status-done">N đã hoàn thành</span>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Lịch Trình Hôm Nay</strong></td>
+                <td>Danh sách chuyến trong ngày — mỗi thẻ gồm: Tên tuyến · Trạng thái · Giờ đón (xanh) · Giờ trả (đỏ) · Điểm đón/trả · Số lao động · Nút Chi tiết</td>
+              </tr>
+            </table>
+            <p style="margin-top:12px;margin-bottom:6px;font-weight:600;font-size:13px">Bottom Navigation:</p>
+            <div class="bottom-nav-desc">
+              <div class="bnav-item active-nav"><span class="bnav-icon">🏠</span>Trang chủ</div>
+              <div class="bnav-item"><span class="bnav-icon">📅</span>Lịch sử</div>
+              <div class="bnav-item"><span class="bnav-icon">💰</span>Thu nhập</div>
+              <div class="bnav-item"><span class="bnav-icon">👤</span>Cá nhân</div>
+            </div>
+            <div class="tip">💡 Nhấn <strong>"Chi tiết →"</strong> trên thẻ chuyến xe để xem bản đồ tuyến, danh sách trạm dừng và thông tin hành khách.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CHI TIẾT TUYẾN ===================== -->
+  <div class="section" id="chi-tiet-tuyen">
+    <div class="section-title"><span class="s-icon">🗺️</span>Điều hành – Chi tiết tuyến xe</div>
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Màn hình Chi tiết tuyến xe</h3>
+          <p>Bản đồ lộ trình, danh sách trạm dừng, thông tin hành khách và phương tiện</p>
+        </div>
+        <div class="roles"><span class="role-badge role-all">🚐 Tài xế</span></div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app tài xế/chi tiết tuyến xe.png" alt="Chi tiết tuyến xe">
+            </div>
+            <div class="phone-label">Chi tiết tuyến</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:12px">Màn hình chi tiết gồm các phần từ trên xuống:</p>
+            <table class="info-table">
+              <tr><th>Phần</th><th>Nội dung</th></tr>
+              <tr>
+                <td><strong>Header xanh</strong></td>
+                <td>Tên tuyến · Mã lệnh · Trạng thái (<span class="status-badge status-active">Đã phát lệnh</span>)</td>
+              </tr>
+              <tr>
+                <td><strong>Bản đồ</strong></td>
+                <td>Lộ trình từ điểm đầu (xanh) đến điểm cuối (đỏ) — hiển thị dạng đường kẻ đứt</td>
+              </tr>
+              <tr>
+                <td><strong>Danh sách trạm</strong></td>
+                <td>Mỗi trạm: Giờ đón · Tên điểm · Dự kiến số lao động đón/trả. Trạm "Không phụ trách" được đánh dấu riêng</td>
+              </tr>
+              <tr>
+                <td><strong>Thông tin xe</strong></td>
+                <td>Biển số xe · Số chỗ ngồi · Tên tài xế · Nhà thầu</td>
+              </tr>
+            </table>
+            <div class="warn">🔴 Nút <strong>"Kết thúc tuyến xe"</strong> (màu đỏ, cố định dưới cùng) — nhấn sau khi hoàn thành toàn bộ lộ trình để đánh dấu chuyến xe là hoàn thành.</div>
+            <div class="tip">📍 Tài xế cần <strong>không phụ trách</strong> các trạm được đánh dấu — lao động tại trạm đó đi xe khác.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== LỊCH SỬ ===================== -->
+  <div class="section" id="lich-su">
+    <div class="section-title"><span class="s-icon">📅</span>Lịch sử – Chuyến xe</div>
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Màn hình Lịch sử chuyến xe</h3>
+          <p>Tab "Lịch sử" — xem tổng hợp và chi tiết các chuyến đã thực hiện</p>
+        </div>
+        <div class="roles"><span class="role-badge role-all">🚐 Tài xế</span></div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app tài xế/lịch sử tuyến xe.png" alt="Lịch sử chuyến xe">
+            </div>
+            <div class="phone-label">Lịch sử chuyến</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:12px">Màn hình lịch sử cung cấp:</p>
+            <table class="info-table">
+              <tr><th>Thành phần</th><th>Mô tả</th></tr>
+              <tr>
+                <td><strong>Bộ lọc thời gian</strong></td>
+                <td>Theo Tháng / Theo Ngày — chọn tháng/ngày từ dropdown</td>
+              </tr>
+              <tr>
+                <td><strong>Thống kê tháng</strong></td>
+                <td>Tổng chuyến đã thực hiện · Tổng hành khách đã chở</td>
+              </tr>
+              <tr>
+                <td><strong>Danh sách chuyến</strong></td>
+                <td>Mỗi chuyến: Ngày giờ · Tên tuyến · Số lao động · Biển số xe · Trạng thái (<span class="status-badge status-done">Hoàn thành</span>)</td>
+              </tr>
+            </table>
+            <div class="tip">📊 Dữ liệu lịch sử giúp tài xế theo dõi số chuyến và tính thu nhập theo từng tháng qua tab <strong>"Thu nhập"</strong>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== HỒ SƠ TÀI XẾ ===================== -->
+  <div class="section" id="ho-so-taixe">
+    <div class="section-title"><span class="s-icon">👤</span>Cá nhân – Hồ sơ tài xế</div>
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Màn hình Hồ sơ cá nhân</h3>
+          <p>Tab "Cá nhân" — cập nhật thông tin và xác thực giấy tờ tùy thân</p>
+        </div>
+        <div class="roles"><span class="role-badge role-all">🚐 Tài xế</span></div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app tài xế/hồ sơ tàixế.png" alt="Hồ sơ tài xế">
+            </div>
+            <div class="phone-label">Hồ sơ cá nhân</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:12px">Hồ sơ cá nhân tương tự app lao động, gồm:</p>
+            <table class="info-table">
+              <tr><th>Phần</th><th>Nội dung</th></tr>
+              <tr><td><strong>Ảnh đại diện</strong></td><td>Nhấn ✏️ để đổi ảnh</td></tr>
+              <tr><td><strong>Tên & vai trò</strong></td><td>Hiển thị tên tài khoản và cấp bậc</td></tr>
+              <tr><td><strong>Độ hoàn thiện hồ sơ</strong></td><td>Thanh % — cần đạt 100% để được phân lịch chạy xe</td></tr>
+              <tr><td><strong>Căn cước công dân</strong></td><td>Upload mặt trước & mặt sau — hệ thống tự đọc QR điền thông tin</td></tr>
+              <tr><td><strong>Số CCCD / CMND</strong></td><td>Trạng thái: Chưa xác thực / Đã xác thực</td></tr>
+            </table>
+            <div class="tip">📷 Chụp CCCD <strong>rõ nét, đủ sáng, không che khuất góc</strong> — hệ thống tự động đọc QR và điền thông tin, không cần nhập tay.</div>
+            <div class="warn">⚠️ Hồ sơ chưa đủ 100% có thể ảnh hưởng đến việc phân công lịch chạy xe. Liên hệ quản lý vận hành nếu gặp vấn đề xác thực CCCD.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="page-footer">
+    <span>HUMI Workforce · Tài liệu App Tài Xế</span>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="index.html">🏠 Hướng dẫn theo bộ phận</a>
+      <a href="huong-dan-app.html">👷 App lao động</a>
+      <a href="huong-dan-nguoi-dung.html">🖥️ Chi tiết màn hình web</a>
+    </div>
+  </div>
+</main>
+
+<div id="app-overlay" onclick="closeImg()">
+  <img id="app-overlay-img" src="" alt="">
+</div>
+
+<script>
+function openImg(el){
+  var img=el.querySelector('img');
+  document.getElementById('app-overlay-img').src=img.src;
+  document.getElementById('app-overlay').classList.add('open');
+}
+function closeImg(){document.getElementById('app-overlay').classList.remove('open')}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeImg()});
+var sections=document.querySelectorAll('.section');
+var navItems=document.querySelectorAll('.nav-item[href^="#"]');
+window.addEventListener('scroll',function(){
+  var scrollY=window.scrollY+80;
+  sections.forEach(function(s){
+    if(s.offsetTop<=scrollY&&s.offsetTop+s.offsetHeight>scrollY){
+      navItems.forEach(function(n){n.classList.remove('active')});
+      var match=document.querySelector('.nav-item[href="#'+s.id+'"]');
+      if(match)match.classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>

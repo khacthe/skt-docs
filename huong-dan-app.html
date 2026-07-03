@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hướng Dẫn App Lao Động – HUMI Workforce</title>
+<style>
+:root {
+  --brand: #00897b;
+  --brand-dark: #00695c;
+  --sidebar-bg: #0f2622;
+  --sidebar-text: #b0bec5;
+  --sidebar-active: #ffffff;
+  --sidebar-hover: #1a3d36;
+  --sidebar-group: #546e7a;
+  --content-bg: #f5f7fa;
+  --card-bg: #ffffff;
+  --border: #e0e6ed;
+  --text: #1a202c;
+  --text-muted: #718096;
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --sidebar-w: 260px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{width:100%;height:100%}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);color:var(--text);line-height:1.6;display:flex;align-items:stretch;min-height:100vh;width:100%}
+
+/* SIDEBAR */
+#sidebar{
+  width:var(--sidebar-w);min-width:var(--sidebar-w);background:var(--sidebar-bg);
+  height:100vh;position:sticky;top:0;overflow-y:auto;display:flex;flex-direction:column;flex-shrink:0;
+}
+#sidebar::-webkit-scrollbar{width:4px}
+#sidebar::-webkit-scrollbar-thumb{background:#1e4d44;border-radius:4px}
+
+.home-nav-btn{
+  display:block;margin:0 12px 4px;padding:9px 14px;border-radius:8px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);
+  color:#e0e0e0;font-size:13px;font-weight:600;text-decoration:none;text-align:center;
+  transition:background .15s,color .15s;
+}
+.home-nav-btn:hover{background:rgba(255,255,255,0.2);color:#fff}
+
+.sidebar-logo{
+  padding:20px 16px 12px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:8px;
+  display:flex;align-items:center;gap:12px;text-decoration:none;
+}
+.sidebar-logo .logo-icon{
+  width:36px;height:36px;border-radius:8px;background:var(--brand);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;
+}
+.sidebar-logo .logo-text{color:#fff;font-weight:700;font-size:15px;line-height:1.2}
+.sidebar-logo .logo-sub{color:var(--sidebar-text);font-size:11px}
+.sidebar-nav{padding:12px 0;flex:1}
+.nav-group{padding:8px 16px 4px;font-size:10px;font-weight:700;letter-spacing:1.2px;color:var(--sidebar-group);text-transform:uppercase}
+.nav-item{
+  display:block;padding:9px 16px 9px 20px;color:var(--sidebar-text);text-decoration:none;
+  font-size:13px;border-left:3px solid transparent;transition:all .15s;
+}
+.nav-item:hover{background:var(--sidebar-hover);color:#fff}
+.nav-item.active{background:var(--sidebar-hover);color:var(--sidebar-active);border-left-color:var(--brand);font-weight:600}
+.nav-item .nav-icon{margin-right:10px;font-size:14px;opacity:.8}
+
+/* MAIN */
+#main{flex:1 1 0;min-width:0;width:0;padding:32px 36px;overflow-x:hidden}
+
+/* PAGE HEADER */
+.page-header{margin-bottom:32px}
+.page-header h1{font-size:26px;font-weight:700;color:#0f1b2d;margin-bottom:6px}
+.page-header p{color:var(--text-muted);font-size:15px}
+
+/* APP BADGE */
+.app-badge{display:inline-flex;align-items:center;gap:6px;background:#e0f2f1;color:#00695c;border:1px solid #b2dfdb;border-radius:20px;padding:4px 14px;font-size:12px;font-weight:700;margin-bottom:16px}
+
+/* SECTION */
+.section{margin-bottom:48px;scroll-margin-top:20px}
+.section-title{
+  font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--brand);padding-bottom:10px;border-bottom:2px solid var(--brand);
+  display:flex;align-items:center;gap:10px;margin-bottom:20px;
+}
+.s-icon{font-size:16px}
+
+/* SCREEN CARD */
+.screen-card{
+  background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid var(--border);margin-bottom:20px;overflow:hidden;
+}
+.screen-card-header{
+  padding:16px 20px;background:#f8fafc;border-bottom:1px solid var(--border);
+  display:flex;flex-direction:column;gap:10px;
+}
+.screen-card-header h3{font-size:15px;font-weight:700;color:#0f1b2d}
+.screen-card-header p{font-size:13px;color:var(--text-muted)}
+.roles{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.role-badge{padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.role-all{background:#e0f2f1;color:#00695c}
+.screen-card-body{padding:20px}
+
+/* PHONE FRAME */
+.phone-row{display:flex;gap:24px;flex-wrap:wrap;margin:16px 0}
+.phone-wrap{display:flex;flex-direction:column;align-items:center;gap:8px}
+.phone-frame{
+  width:200px;border-radius:24px;overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,0.15);border:3px solid #263238;
+  cursor:zoom-in;transition:box-shadow .2s;flex-shrink:0;
+}
+.phone-frame:hover{box-shadow:0 8px 32px rgba(0,0,0,0.25)}
+.phone-frame img{width:100%;display:block}
+.phone-label{font-size:11px;font-weight:700;color:var(--text-muted);text-align:center;text-transform:uppercase;letter-spacing:.8px}
+
+/* STEPS */
+.steps{list-style:none;margin:12px 0}
+.steps li{display:flex;gap:14px;margin-bottom:16px}
+.step-num{
+  min-width:26px;height:26px;border-radius:50%;background:var(--brand);
+  color:#fff;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;
+}
+.step-text{font-size:14px;line-height:1.6}
+.step-text strong{color:#0f1b2d}
+
+/* INFO TABLE */
+.info-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:12px 0}
+.info-table th{background:#e0f2f1;padding:9px 14px;text-align:left;font-weight:700;color:#00695c;border:1px solid #b2dfdb}
+.info-table td{padding:9px 14px;border:1px solid var(--border);vertical-align:top}
+.info-table tr:nth-child(even) td{background:#fafbfc}
+
+/* CALLOUTS */
+.tip{background:#e8f5e9;border-left:4px solid #43a047;border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:13.5px;display:flex;gap:10px;align-items:flex-start}
+.warn{background:#fff3e0;border-left:4px solid #fb8c00;border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:13.5px;display:flex;gap:10px;align-items:flex-start}
+.note{background:#e3f2fd;border-left:4px solid #1e88e5;border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:13.5px;display:flex;gap:10px;align-items:flex-start}
+
+/* FLOW STEPPER (horizontal) */
+.flow-stepper{display:flex;align-items:flex-start;gap:0;margin:16px 0;flex-wrap:wrap}
+.flow-step-item{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;min-width:80px;text-align:center}
+.flow-step-circle{width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.flow-step-label{font-size:11px;color:var(--text-muted);font-weight:600;line-height:1.3}
+.flow-step-arrow{color:#b0bec5;font-size:18px;margin-top:8px;flex-shrink:0}
+
+/* TAG */
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;margin:2px}
+.tag-req{background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9}
+.tag-loc{background:#e3f2fd;color:#1565c0;border:1px solid #bbdefb}
+.tag-type{background:#f3e5f5;color:#6a1b9a;border:1px solid #e1bee7}
+
+/* BOTTOM NAV ILLUSTRATION */
+.bottom-nav-desc{display:flex;gap:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:12px 0;background:#fff}
+.bnav-item{flex:1;padding:8px 4px;text-align:center;border-right:1px solid var(--border);font-size:11px;color:var(--text-muted)}
+.bnav-item:last-child{border-right:none}
+.bnav-item .bnav-icon{font-size:18px;display:block;margin-bottom:2px}
+.bnav-item.active-nav{background:#e0f2f1;color:#00695c;font-weight:700}
+.bnav-center{background:#00897b;color:#fff;font-weight:700}
+
+/* LIGHTBOX */
+#app-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;cursor:zoom-out;align-items:center;justify-content:center}
+#app-overlay.open{display:flex}
+#app-overlay img{max-width:360px;max-height:90vh;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+
+/* FOOTER */
+.page-footer{margin-top:48px;padding:24px;background:#0f2622;border-radius:var(--radius);color:#b0bec5;font-size:13px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.page-footer a{display:inline-flex;align-items:center;gap:6px;padding:8px 20px;border-radius:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#e0e0e0;font-size:13px;font-weight:600;text-decoration:none}
+.page-footer a:hover{background:rgba(255,255,255,0.2);color:#fff}
+
+@media(max-width:768px){
+  #sidebar{display:none}
+  #main{padding:20px;width:100%}
+  .phone-frame{width:160px}
+  .flow-stepper{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <a class="sidebar-logo" href="index.html" title="Về trang chủ">
+    <div class="logo-icon">H</div>
+    <div>
+      <div class="logo-text">HUMI Workforce</div>
+      <div class="logo-sub">App lao động</div>
+    </div>
+  </a>
+  <a href="index.html" class="home-nav-btn">🏠 Về Trang chủ</a>
+  <div class="sidebar-nav">
+    <div class="nav-group">Xác thực</div>
+    <a class="nav-item" href="#tao-tai-khoan"><span class="nav-icon">📝</span>Tạo tài khoản</a>
+    <a class="nav-item" href="#chon-otp"><span class="nav-icon">📲</span>Chọn nhận OTP</a>
+    <a class="nav-item" href="#xac-thuc-otp"><span class="nav-icon">🔢</span>Xác thực OTP</a>
+
+    <div class="nav-group">Dự án</div>
+    <a class="nav-item" href="#danh-sach-du-an"><span class="nav-icon">🏠</span>Trang chủ & Dự án</a>
+    <a class="nav-item" href="#chi-tiet-du-an"><span class="nav-icon">📋</span>Chi tiết dự án</a>
+    <a class="nav-item" href="#dang-ky-du-an"><span class="nav-icon">✍️</span>Đăng ký dự án</a>
+
+    <div class="nav-group">Hồ sơ & Tài chính</div>
+    <a class="nav-item" href="#ho-so"><span class="nav-icon">👤</span>Hồ sơ cá nhân</a>
+    <a class="nav-item" href="#tam-ung"><span class="nav-icon">💰</span>Lương & Tạm ứng</a>
+    <a class="nav-item" href="#nghi-phep"><span class="nav-icon">🏖️</span>Đơn nghỉ phép</a>
+
+    <div class="nav-group">Xe đưa đón</div>
+    <a class="nav-item" href="#tuyen-xe"><span class="nav-icon">🚌</span>Đăng ký tuyến xe</a>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main id="main">
+
+  <div class="page-header">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;color:#718096;font-size:13px;text-decoration:none;margin-bottom:12px">← Quay lại hướng dẫn theo bộ phận</a>
+    <div class="app-badge">📱 App dành cho Lao động</div>
+    <h1>Hướng Dẫn App Lao Động</h1>
+    <p>Hướng dẫn sử dụng ứng dụng di động HUMI Workforce dành cho người lao động — đăng ký tài khoản, tìm kiếm và đăng ký dự án.</p>
+  </div>
+
+  <!-- TỔNG QUAN LUỒNG -->
+  <div style="background:#fff;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:20px 24px;margin-bottom:36px">
+    <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--brand);margin-bottom:14px">Tổng quan luồng sử dụng</div>
+    <div class="flow-stepper">
+      <div class="flow-step-item">
+        <div class="flow-step-circle">1</div>
+        <div class="flow-step-label">Tạo tài khoản<br>hoặc Đăng nhập</div>
+      </div>
+      <div class="flow-step-arrow">→</div>
+      <div class="flow-step-item">
+        <div class="flow-step-circle">2</div>
+        <div class="flow-step-label">Chọn phương thức<br>nhận OTP</div>
+      </div>
+      <div class="flow-step-arrow">→</div>
+      <div class="flow-step-item">
+        <div class="flow-step-circle">3</div>
+        <div class="flow-step-label">Nhập mã OTP<br>xác thực</div>
+      </div>
+      <div class="flow-step-arrow">→</div>
+      <div class="flow-step-item">
+        <div class="flow-step-circle">4</div>
+        <div class="flow-step-label">Trang chủ —<br>Xem dự án</div>
+      </div>
+      <div class="flow-step-arrow">→</div>
+      <div class="flow-step-item">
+        <div class="flow-step-circle">5</div>
+        <div class="flow-step-label">Xem chi tiết<br>dự án</div>
+      </div>
+      <div class="flow-step-arrow">→</div>
+      <div class="flow-step-item">
+        <div class="flow-step-circle">6</div>
+        <div class="flow-step-label">Chọn ca &<br>Đăng ký</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== TẠO TÀI KHOẢN ===================== -->
+  <div class="section" id="tao-tai-khoan">
+    <div class="section-title"><span class="s-icon">📝</span>Xác thực – Tạo tài khoản</div>
+
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Màn hình Tạo tài khoản</h3>
+          <p>Đăng ký tài khoản mới cho người lao động lần đầu sử dụng app</p>
+        </div>
+        <div class="roles">
+          <span class="role-badge role-all">👷 Người lao động mới</span>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app lao động/login.png" alt="Màn hình tạo tài khoản">
+            </div>
+            <div class="phone-label">Tạo tài khoản</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:12px">Màn hình đăng ký tài khoản mới gồm các trường:</p>
+            <table class="info-table">
+              <tr><th>Trường</th><th>Mô tả</th></tr>
+              <tr><td><strong>Tên tài khoản</strong></td><td>Tên hiển thị trong hệ thống</td></tr>
+              <tr><td><strong>Mật khẩu</strong></td><td>Tối thiểu 8 ký tự</td></tr>
+              <tr><td><strong>Xác nhận mật khẩu</strong></td><td>Nhập lại mật khẩu để xác nhận</td></tr>
+              <tr><td><strong>Số điện thoại</strong></td><td>Dùng để nhận OTP qua SMS</td></tr>
+              <tr><td><strong>Email</strong></td><td>Dùng để nhận OTP qua email</td></tr>
+            </table>
+            <div class="note">📌 Nếu đã có tài khoản, nhấn nút <strong>"← Quay lại màn hình đăng nhập"</strong> ở góc trên trái để đăng nhập.</div>
+            <div class="tip">🔑 Có thể đăng ký nhanh bằng <strong>"Tiếp tục với Google"</strong> thay vì điền form thủ công.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CHỌN PHƯƠNG THỨC OTP ===================== -->
+  <div class="section" id="chon-otp">
+    <div class="section-title"><span class="s-icon">📲</span>Xác thực – Chọn phương thức nhận OTP</div>
+
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Màn hình Chọn phương thức nhận OTP</h3>
+          <p>Sau khi tạo tài khoản hoặc đăng nhập, chọn kênh nhận mã xác thực</p>
+        </div>
+        <div class="roles">
+          <span class="role-badge role-all">👷 Tất cả người dùng</span>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app lao động/chọn phương thức xác thực.png" alt="Chọn phương thức nhận OTP">
+            </div>
+            <div class="phone-label">Chọn nhận OTP</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:12px">Hệ thống cho phép chọn <strong>1 trong 2</strong> kênh nhận OTP:</p>
+            <table class="info-table">
+              <tr><th>Kênh</th><th>Mô tả</th></tr>
+              <tr><td>📧 <strong>Email</strong></td><td>OTP gửi vào địa chỉ email đã đăng ký (hiển thị ẩn một phần)</td></tr>
+              <tr><td>📱 <strong>Số điện thoại</strong></td><td>OTP gửi qua SMS đến số điện thoại đã đăng ký</td></tr>
+            </table>
+            <ul class="steps" style="margin-top:14px">
+              <li><div class="step-num">1</div><div class="step-text">Chọn radio button bên cạnh email hoặc số điện thoại</div></li>
+              <li><div class="step-num">2</div><div class="step-text">Nhấn <strong>"Gửi OTP"</strong> ở cuối màn hình</div></li>
+            </ul>
+            <div class="tip">💡 Nên chọn <strong>Email</strong> nếu ở nơi sóng yếu, vì SMS có thể bị chậm.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== XÁC THỰC OTP ===================== -->
+  <div class="section" id="xac-thuc-otp">
+    <div class="section-title"><span class="s-icon">🔢</span>Xác thực – Nhập mã OTP</div>
+
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Màn hình Xác thực OTP</h3>
+          <p>Nhập mã 6 số nhận qua email hoặc SMS để hoàn tất xác thực</p>
+        </div>
+        <div class="roles">
+          <span class="role-badge role-all">👷 Tất cả người dùng</span>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app lao động/xác thực otp.png" alt="Xác thực OTP">
+            </div>
+            <div class="phone-label">Nhập mã OTP</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:12px">Màn hình xác thực gồm:</p>
+            <ul class="steps">
+              <li><div class="step-num">1</div><div class="step-text"><strong>6 ô nhập OTP</strong> — nhập từng chữ số hoặc dán (paste) toàn bộ mã từ email/SMS</div></li>
+              <li><div class="step-num">2</div><div class="step-text"><strong>Đồng hồ đếm ngược</strong> — thời gian còn lại để nhập (hiển thị dạng MM:SS)</div></li>
+              <li><div class="step-num">3</div><div class="step-text">Nút <strong>"Gửi lại"</strong> — nhấn để nhận mã mới nếu hết thời gian</div></li>
+              <li><div class="step-num">4</div><div class="step-text">Nhấn <strong>"Tiếp tục"</strong> sau khi điền đủ 6 số</div></li>
+            </ul>
+            <div class="warn">⚠️ <strong>TUYỆT ĐỐI KHÔNG</strong> gửi mã OTP cho bất kỳ ai — mã OTP là chìa khóa vào tài khoản của bạn (app cũng hiển thị cảnh báo này).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== DANH SÁCH DỰ ÁN ===================== -->
+  <div class="section" id="danh-sach-du-an">
+    <div class="section-title"><span class="s-icon">🏠</span>Dự án – Trang chủ & Danh sách</div>
+
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Trang chủ – Danh sách dự án (việc làm)</h3>
+          <p>Màn hình chính sau khi đăng nhập — tìm kiếm và duyệt dự án tuyển dụng</p>
+        </div>
+        <div class="roles">
+          <span class="role-badge role-all">👷 Tất cả người lao động</span>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app lao động/trang danh sách dự án.png" alt="Trang chủ danh sách dự án">
+            </div>
+            <div class="phone-label">Trang chủ</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:12px">Màn hình trang chủ bao gồm:</p>
+            <table class="info-table">
+              <tr><th>Thành phần</th><th>Mô tả</th></tr>
+              <tr><td>🔍 <strong>Thanh tìm kiếm</strong></td><td>"Tìm kiếm việc làm" — tìm theo tên dự án hoặc mô tả</td></tr>
+              <tr><td>🏷️ <strong>Bộ lọc loại</strong></td><td>Tất cả / Bán thời gian / Toàn thời gian (swipe để xem thêm)</td></tr>
+              <tr><td>⭐ <strong>Gợi ý việc làm</strong></td><td>Thẻ nổi bật (carousel ngang) — hiển thị dự án phù hợp</td></tr>
+              <tr><td>📋 <strong>Danh sách dự án</strong></td><td>Mỗi thẻ gồm: Logo · Tên · Thời gian đăng · Loại · Mô tả · Mức lương · Nút Đăng ký</td></tr>
+            </table>
+            <p style="margin-top:12px;margin-bottom:6px;font-weight:600;font-size:13px">Thanh điều hướng dưới (Bottom Navigation):</p>
+            <div class="bottom-nav-desc">
+              <div class="bnav-item active-nav"><span class="bnav-icon">🏠</span>Trang chủ</div>
+              <div class="bnav-item"><span class="bnav-icon">📅</span>Lịch làm</div>
+              <div class="bnav-item bnav-center"><span class="bnav-icon">📷</span>QR</div>
+              <div class="bnav-item"><span class="bnav-icon">💰</span>Lương</div>
+              <div class="bnav-item"><span class="bnav-icon">👤</span>Hồ sơ</div>
+            </div>
+            <div class="tip">💡 Nhấn nút <strong>QR ở giữa</strong> để chấm công bằng QR Code tại công trường/dự án.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CHI TIẾT DỰ ÁN ===================== -->
+  <div class="section" id="chi-tiet-du-an">
+    <div class="section-title"><span class="s-icon">📋</span>Dự án – Chi tiết dự án</div>
+
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Màn hình Chi tiết dự án</h3>
+          <p>Thông tin đầy đủ về dự án, mức lương, yêu cầu hồ sơ trước khi đăng ký</p>
+        </div>
+        <div class="roles">
+          <span class="role-badge role-all">👷 Tất cả người lao động</span>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app lao động/chi tiết dự án.png" alt="Chi tiết dự án">
+            </div>
+            <div class="phone-label">Chi tiết dự án</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:12px">Màn hình hiển thị đầy đủ thông tin dự án:</p>
+            <table class="info-table">
+              <tr><th>Phần</th><th>Nội dung</th></tr>
+              <tr>
+                <td><strong>Header (nền xanh)</strong></td>
+                <td>Logo · Loại hợp đồng · Tên dự án · Địa điểm</td>
+              </tr>
+              <tr>
+                <td><strong>3 chỉ số chính</strong></td>
+                <td>💰 Mức lương · 👥 Số người cần tuyển · 📅 Hạn nộp hồ sơ</td>
+              </tr>
+              <tr>
+                <td><strong>Mô tả công việc</strong></td>
+                <td>Số lượng nhân viên cần, mô tả chi tiết công việc</td>
+              </tr>
+              <tr>
+                <td><strong>Yêu cầu hồ sơ</strong></td>
+                <td>Danh sách giấy tờ bắt buộc nộp kèm khi đăng ký</td>
+              </tr>
+            </table>
+            <p style="margin-top:12px;font-size:13px;font-weight:600;margin-bottom:6px">Các giấy tờ thường yêu cầu:</p>
+            <div>
+              <span class="tag tag-req">Giới tính</span>
+              <span class="tag tag-req">CCCD (bắt buộc)</span>
+              <span class="tag tag-req">Ảnh chân dung (bắt buộc)</span>
+              <span class="tag tag-req">Giấy khám sức khỏe (bắt buộc)</span>
+              <span class="tag tag-req">Hồ sơ / CV (bắt buộc)</span>
+            </div>
+            <div class="note" style="margin-top:12px">📌 Nút <strong>"Đăng ký ngay"</strong> cố định ở cuối màn hình — có thể nhấn bất kỳ lúc nào trong khi đọc chi tiết.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== ĐĂNG KÝ DỰ ÁN ===================== -->
+  <div class="section" id="dang-ky-du-an">
+    <div class="section-title"><span class="s-icon">✍️</span>Dự án – Đăng ký dự án</div>
+
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Màn hình Đăng ký dự án</h3>
+          <p>Chọn ca làm việc và xác nhận đăng ký tham gia dự án</p>
+        </div>
+        <div class="roles">
+          <span class="role-badge role-all">👷 Tất cả người lao động</span>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app lao động/đăng kí dự án.png" alt="Đăng ký dự án">
+            </div>
+            <div class="phone-label">Đăng ký dự án</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:12px">Màn hình đăng ký gồm 2 phần chính:</p>
+
+            <p style="font-weight:700;font-size:13px;margin-bottom:6px">1. Thông tin tóm tắt dự án</p>
+            <table class="info-table" style="margin-bottom:14px">
+              <tr><th>Thông tin</th><th>Ví dụ</th></tr>
+              <tr><td>Tên dự án</td><td>Dự án E-Lab</td></tr>
+              <tr><td>Địa điểm</td><td>Hưng Yên</td></tr>
+              <tr><td>Mức lương tối đa</td><td>Đến 500.000đ</td></tr>
+              <tr><td>Số slot còn trống</td><td>Còn 0 slot (nếu đầy — không đăng ký được)</td></tr>
+              <tr><td>Số ca / ngày</td><td>3 ca</td></tr>
+              <tr><td>Đánh giá dự án</td><td>⭐ 4.8</td></tr>
+            </table>
+
+            <p style="font-weight:700;font-size:13px;margin-bottom:6px">2. Chọn ca làm việc</p>
+            <table class="info-table" style="margin-bottom:14px">
+              <tr><th>Ca</th><th>Giờ làm</th><th>Slot</th></tr>
+              <tr><td>☀️ Ca Sáng</td><td>07:00 – 11:00</td><td>12 slot trống</td></tr>
+              <tr><td>🌤️ Ca Chiều</td><td>13:00 – 17:00</td><td>12 slot trống</td></tr>
+              <tr><td>🌃 Ca Tối</td><td>19:00 – 23:00</td><td>12 slot trống</td></tr>
+            </table>
+
+            <ul class="steps">
+              <li><div class="step-num">1</div><div class="step-text">Chọn <strong>một hoặc nhiều ca</strong> bằng cách tick vào ô tròn bên phải mỗi ca</div></li>
+              <li><div class="step-num">2</div><div class="step-text">Nhấn <strong>"Đăng ký ngay"</strong> ở cuối màn hình để xác nhận</div></li>
+            </ul>
+            <div class="warn">⚠️ Nếu hiển thị <strong>"Còn 0 slot"</strong> — dự án đã đầy, không thể đăng ký. Liên hệ bộ phận tuyển dụng để được hỗ trợ.</div>
+            <div>
+              <span class="tag tag-loc">📍 Hưng Yên</span>
+              <span class="tag tag-req">ID Cần CCCD</span>
+              <span class="tag tag-req">👤 Ảnh chân dung</span>
+              <span class="tag tag-type">🏷️ Thời vụ</span>
+              <span class="tag tag-type">📌 Cố định</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== HỒ SƠ CÁ NHÂN ===================== -->
+  <div class="section" id="ho-so">
+    <div class="section-title"><span class="s-icon">👤</span>Hồ sơ – Hồ sơ cá nhân</div>
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Màn hình Hồ sơ cá nhân</h3>
+          <p>Tab "Hồ sơ" trên bottom nav — cập nhật thông tin cá nhân và giấy tờ tùy thân</p>
+        </div>
+        <div class="roles"><span class="role-badge role-all">👷 Tất cả người lao động</span></div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app lao động/cập nhật thông tin.png" alt="Hồ sơ cá nhân">
+            </div>
+            <div class="phone-label">Hồ sơ cá nhân</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:12px">Màn hình hồ sơ cá nhân gồm:</p>
+            <table class="info-table">
+              <tr><th>Phần</th><th>Nội dung</th></tr>
+              <tr><td><strong>Ảnh đại diện</strong></td><td>Nhấn biểu tượng ✏️ để thay ảnh</td></tr>
+              <tr><td><strong>Độ hoàn thiện hồ sơ</strong></td><td>Thanh tiến trình % — cần đạt 100% để tham gia dự án</td></tr>
+              <tr><td><strong>Căn cước công dân</strong></td><td>Tải lên ảnh mặt trước & mặt sau CCCD/CMND — hệ thống tự động đọc QR và điền thông tin</td></tr>
+              <tr><td><strong>Số CCCD / CMND</strong></td><td>Hiển thị trạng thái xác thực (Chưa xác thực / Đã xác thực)</td></tr>
+            </table>
+            <div class="tip">📷 Hệ thống tự động <strong>đọc mã QR</strong> trên CCCD và điền thông tin — không cần nhập tay. Chụp rõ nét, đủ sáng, không bị che khuất.</div>
+            <div class="note">📌 Hồ sơ cần đạt <strong>100%</strong> trước khi có thể đăng ký tham gia dự án. Truy cập qua tab <strong>Hồ sơ</strong> ở bottom nav.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== LƯƠNG & TẠM ỨNG ===================== -->
+  <div class="section" id="tam-ung">
+    <div class="section-title"><span class="s-icon">💰</span>Tài chính – Lương & Tạm ứng</div>
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Màn hình Lương & Tạm ứng</h3>
+          <p>Tab "Lương" trên bottom nav — xem lương tạm ứng và gửi yêu cầu ứng lương</p>
+        </div>
+        <div class="roles"><span class="role-badge role-all">👷 Tất cả người lao động</span></div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app lao động/tạm ứng lương.png" alt="Lương & Tạm ứng">
+            </div>
+            <div class="phone-label">Lương & Tạm ứng</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:12px">Màn hình gồm 3 phần:</p>
+            <table class="info-table">
+              <tr><th>Phần</th><th>Nội dung</th></tr>
+              <tr><td><strong>Header xanh</strong></td><td>Tổng lương đã tạm ứng trong tháng hiện tại</td></tr>
+              <tr><td><strong>Yêu cầu chuyển ứng</strong></td><td>Slider kéo chọn số tiền (min 500k — max 3M). Nhấn <strong>"Gửi Yêu Cầu Ứng Lương"</strong></td></tr>
+              <tr><td><strong>Lịch sử thu chi</strong></td><td>Danh sách các lần đã tạm ứng trước đó</td></tr>
+            </table>
+            <div class="tip">⏱️ Tiền được cộng vào tài khoản ngân hàng đã đăng ký trong vòng <strong>2–4 giờ làm việc</strong>. Phí giao dịch: <strong>miễn phí</strong>.</div>
+            <div class="warn">⚠️ Hạn mức tạm ứng tối đa <strong>3.000.000đ/tháng</strong>. Số tiền tối thiểu mỗi lần: <strong>500.000đ</strong>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== ĐƠN NGHỈ PHÉP ===================== -->
+  <div class="section" id="nghi-phep">
+    <div class="section-title"><span class="s-icon">🏖️</span>Hồ sơ – Đơn nghỉ phép</div>
+
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Tạo đơn nghỉ phép</h3>
+          <p>Chọn loại nghỉ phép, chọn dự án và gửi đơn chờ duyệt</p>
+        </div>
+        <div class="roles"><span class="role-badge role-all">👷 Tất cả người lao động</span></div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app lao động/tạo đơn nghỉ phép.png" alt="Tạo đơn nghỉ phép">
+            </div>
+            <div class="phone-label">Tạo đơn nghỉ phép</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:10px">Có <strong>6 loại nghỉ phép</strong> để chọn:</p>
+            <table class="info-table" style="margin-bottom:14px">
+              <tr><th>Loại</th><th>Áp dụng</th></tr>
+              <tr><td>🏖️ Nghỉ phép năm</td><td>Nghỉ phép có lương theo quy định</td></tr>
+              <tr><td>🤒 Nghỉ ốm</td><td>Nghỉ do bệnh, cần xác nhận y tế</td></tr>
+              <tr><td>💼 Nghỉ không lương</td><td>Nghỉ việc riêng không được tính lương</td></tr>
+              <tr><td>🤰 Nghỉ thai sản</td><td>Theo quy định bảo hiểm xã hội</td></tr>
+              <tr><td>💼 Việc riêng có lương</td><td>Việc cá nhân quan trọng được tính lương</td></tr>
+              <tr><td>📋 Loại khác</td><td>Các trường hợp đặc biệt khác</td></tr>
+            </table>
+            <ul class="steps">
+              <li><div class="step-num">1</div><div class="step-text">Chọn <strong>loại nghỉ phép</strong> phù hợp (ô được highlight xanh khi chọn)</div></li>
+              <li><div class="step-num">2</div><div class="step-text">Chọn <strong>Dự án làm việc</strong> cần xin nghỉ</div></li>
+              <li><div class="step-num">3</div><div class="step-text">Nhấn <strong>"Gửi đơn nghỉ phép"</strong> — đơn gửi đến quản lý duyệt</div></li>
+            </ul>
+            <div class="note">📌 Góc trên phải hiển thị <strong>số ngày phép còn lại</strong>. Nếu hết ngày phép, nút gửi sẽ bị vô hiệu hóa.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Danh sách đơn nghỉ phép</h3>
+          <p>Xem lịch sử và trạng thái các đơn đã gửi</p>
+        </div>
+        <div class="roles"><span class="role-badge role-all">👷 Tất cả người lao động</span></div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app lao động/danh sách đơn nghỉ phép.png" alt="Danh sách đơn nghỉ phép">
+            </div>
+            <div class="phone-label">Danh sách đơn</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:10px">Màn hình có <strong>5 tab lọc</strong> theo trạng thái:</p>
+            <table class="info-table">
+              <tr><th>Tab</th><th>Mô tả</th></tr>
+              <tr><td><strong>Tất cả</strong></td><td>Toàn bộ đơn đã gửi</td></tr>
+              <tr><td><strong>Chờ duyệt</strong></td><td>Đơn đang chờ quản lý xem xét</td></tr>
+              <tr><td>✅ <strong>Đã duyệt</strong></td><td>Đơn được chấp thuận</td></tr>
+              <tr><td>❌ <strong>Bị từ chối</strong></td><td>Đơn bị quản lý từ chối</td></tr>
+              <tr><td><strong>Đã hủy</strong></td><td>Đơn người dùng tự hủy</td></tr>
+            </table>
+            <p style="margin-top:12px;font-size:13.5px">Mỗi đơn hiển thị: <strong>Loại nghỉ · Ngày giờ tạo · Khoảng ngày nghỉ · Số ngày · Trạng thái</strong></p>
+            <div class="tip">💡 Nhấn <strong>"Tạo đơn nghỉ phép"</strong> ở cuối màn hình để tạo đơn mới ngay từ màn hình danh sách.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== ĐĂNG KÝ TUYẾN XE ===================== -->
+  <div class="section" id="tuyen-xe">
+    <div class="section-title"><span class="s-icon">🚌</span>Xe đưa đón – Đăng ký tuyến xe</div>
+    <div class="screen-card">
+      <div class="screen-card-header">
+        <div>
+          <h3>Màn hình Đăng ký tuyến xe</h3>
+          <p>Chọn tuyến xe và trạm lên xe phù hợp với lộ trình đi làm hàng ngày</p>
+        </div>
+        <div class="roles"><span class="role-badge role-all">👷 Người lao động đang làm tại dự án</span></div>
+      </div>
+      <div class="screen-card-body">
+        <div class="phone-row">
+          <div class="phone-wrap">
+            <div class="phone-frame" onclick="openImg(this)">
+              <img src="images/app lao động/đăng kí tuyến xe.png" alt="Đăng ký tuyến xe">
+            </div>
+            <div class="phone-label">Đăng ký tuyến xe</div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <p style="margin-bottom:12px">Màn hình đăng ký xe đưa đón gồm <strong>2 bước</strong>:</p>
+            <table class="info-table" style="margin-bottom:14px">
+              <tr><th>Bước</th><th>Thao tác</th></tr>
+              <tr>
+                <td>1️⃣ <strong>Chọn tuyến xe</strong></td>
+                <td>Dropdown danh sách tuyến có sẵn — hiển thị tên tuyến và mô tả lộ trình xe</td>
+              </tr>
+              <tr>
+                <td>2️⃣ <strong>Chọn trạm lên xe</strong></td>
+                <td>Danh sách các trạm dừng trên tuyến kèm giờ đón dự kiến</td>
+              </tr>
+            </table>
+            <ul class="steps">
+              <li><div class="step-num">1</div><div class="step-text">Chọn <strong>tuyến xe</strong> từ dropdown (ví dụ: Tuyến 02: BigC Thăng Long – Mê Linh)</div></li>
+              <li><div class="step-num">2</div><div class="step-text">Chọn <strong>trạm lên xe</strong> gần nhà nhất từ danh sách (kèm giờ đón đề xuất)</div></li>
+              <li><div class="step-num">3</div><div class="step-text">Nhấn <strong>"Đăng Ký Tuyến Xe"</strong> — yêu cầu gửi đến quản lý vận hành</div></li>
+            </ul>
+            <div class="note">📌 Sau khi đăng ký, xe sẽ đón tại trạm đã chọn đúng giờ. Thay đổi tuyến cần liên hệ quản lý vận hành.</div>
+            <div class="warn">⚠️ Bằng việc bấm đăng ký, bạn đồng ý tuân thủ <strong>Quy chế vận hành xe tuyến</strong> của công ty.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="page-footer">
+    <span>HUMI Workforce · Tài liệu App Lao Động</span>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="index.html">🏠 Hướng dẫn theo bộ phận</a>
+      <a href="huong-dan-app-taixe.html">🚐 App tài xế</a>
+      <a href="huong-dan-nguoi-dung.html">🖥️ Chi tiết màn hình web</a>
+    </div>
+  </div>
+
+</main>
+
+<!-- LIGHTBOX -->
+<div id="app-overlay" onclick="closeImg()">
+  <img id="app-overlay-img" src="" alt="">
+</div>
+
+<script>
+function openImg(el){
+  var img = el.querySelector('img');
+  document.getElementById('app-overlay-img').src = img.src;
+  document.getElementById('app-overlay').classList.add('open');
+}
+function closeImg(){
+  document.getElementById('app-overlay').classList.remove('open');
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeImg()});
+
+// Sidebar active highlight on scroll
+var sections = document.querySelectorAll('.section');
+var navItems = document.querySelectorAll('.nav-item[href^="#"]');
+window.addEventListener('scroll',function(){
+  var scrollY = window.scrollY + 80;
+  sections.forEach(function(s){
+    if(s.offsetTop <= scrollY && s.offsetTop + s.offsetHeight > scrollY){
+      navItems.forEach(function(n){n.classList.remove('active')});
+      var match = document.querySelector('.nav-item[href="#'+s.id+'"]');
+      if(match) match.classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>
