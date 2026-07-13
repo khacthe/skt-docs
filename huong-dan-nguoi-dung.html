@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chi tiết màn hình – HUMI Workforce</title>
+<title>Chi tiết màn hình – SKT</title>
 <style>
 :root {
   --brand: #1a73e8;
@@ -119,6 +119,11 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
 
 /* TIP / NOTE / WARN */
 .tip,.note,.warn{border-radius:8px;padding:13px 16px;margin:14px 0;font-size:13.5px;display:flex;gap:10px;align-items:flex-start}
+.no-img{display:flex;align-items:center;gap:14px;background:#f8fafc;border:2px dashed #cbd5e0;border-radius:10px;padding:20px 24px;margin:12px 0;color:#718096;font-size:13.5px}
+.no-img .no-img-icon{font-size:32px;flex-shrink:0;opacity:.5}
+.no-img strong{color:#4a5568;display:block;margin-bottom:4px}
+.web-screenshot{width:100%;border-radius:8px;border:1px solid rgba(0,0,0,.08);box-shadow:0 3px 16px rgba(0,0,0,.1);display:block;margin:14px 0;cursor:zoom-in;transition:box-shadow .2s}
+.web-screenshot:hover{box-shadow:0 6px 24px rgba(0,0,0,.18)}
 .tip{background:#e8f5e9;border-left:4px solid #43a047}
 .tip::before{content:"✅";font-size:16px;flex-shrink:0}
 .note{background:#e3f2fd;border-left:4px solid #1e88e5}
@@ -198,7 +203,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
   <a class="sidebar-logo" href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:12px;cursor:pointer" title="Về trang chủ">
     <div class="logo-icon">H</div>
     <div>
-      <div class="logo-text">HUMI Workforce</div>
+      <div class="logo-text">SKT</div>
       <div class="logo-sub">Chi tiết màn hình</div>
     </div>
   </a>
@@ -294,7 +299,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
         </div>
       </div>
       <div class="screen-card-body">
-        <p>Màn hình đăng nhập bao gồm 2 trường:</p>
+<p>Màn hình đăng nhập bao gồm 2 trường:</p>
         <table class="info-table">
           <tr><th>Trường</th><th>Mô tả</th></tr>
           <tr><td><strong>Email</strong></td><td>Địa chỉ email đã được cấp tài khoản trong hệ thống</td></tr>
@@ -317,13 +322,13 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
         </div>
       </div>
       <div class="screen-card-body">
-        <p>Màn hình hiển thị tự động sau khi đăng nhập thành công bước 1. Bao gồm:</p>
+<p>Màn hình hiển thị tự động sau khi đăng nhập thành công bước 1. Bao gồm:</p>
         <ul style="list-style:disc;margin-left:20px;margin-top:6px;font-size:14px;line-height:1.9">
           <li><strong>6 ô nhập OTP</strong> — nhập từng chữ số hoặc dán toàn bộ (Ctrl+V)</li>
           <li><strong>Đếm ngược 5 phút</strong> — thời gian hiệu lực của mã</li>
           <li><strong>Nút "Gửi lại mã"</strong> — hiển thị sau 60 giây nếu không nhận được email</li>
         </ul>
-        <div class="tip">📧 Kiểm tra cả thư mục <strong>Spam / Junk</strong> nếu không thấy email trong hộp thư đến. Tiêu đề email thường là <em>"Mã xác thực đăng nhập HUMI"</em>.</div>
+        <div class="tip">📧 Kiểm tra cả thư mục <strong>Spam / Junk</strong> nếu không thấy email trong hộp thư đến. Tiêu đề email thường là <em>"Mã xác thực đăng nhập SKT"</em>.</div>
         <div class="warn">⚠️ Mỗi mã OTP chỉ dùng <strong>một lần</strong>. Sau 5 phút hết hiệu lực, cần nhấn "Gửi lại mã" để lấy mã mới.</div>
       </div>
     </div>
@@ -345,7 +350,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
         </div>
       </div>
       <div class="screen-card-body">
-        <p>Luồng đặt lại mật khẩu gồm 3 màn hình liên tiếp:</p>
+<p>Luồng đặt lại mật khẩu gồm 3 màn hình liên tiếp:</p>
         <table class="info-table">
           <tr><th>#</th><th>Màn hình</th><th>Thao tác</th></tr>
           <tr>
@@ -1606,7 +1611,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--content-bg);co
 
   <!-- FOOTER -->
   <div style="margin-top:20px;padding:20px;background:var(--card-bg);border-radius:var(--radius);border:1px solid var(--border);text-align:center;color:var(--text-muted);font-size:13px">
-    <strong>HUMI Workforce – SKT VINA</strong> · Hướng dẫn người dùng v2.0<br>
+    <strong>SKT – SKT VINA</strong> · Hướng dẫn người dùng v2.0<br>
     Cập nhật: 06/2026 · Liên hệ hỗ trợ: support@skt-vina.com
   </div>
 </main>
@@ -1671,7 +1676,10 @@ navItems.forEach(item => {
     'Tiếp nhận phản ánh & khiếu nại':        'images/danh sách khiếu nại.png',
     'Danh sách đen':                         'images/danh sách đen.png',
     'Quản lý thông báo':                     'images/danh sách thông báo.png',
-    'Quản lý quản trị viên':                 'images/danh sách quản trị viên.png'
+    'Quản lý quản trị viên':                 'images/danh sách quản trị viên.png',
+    'Màn hình đăng nhập':                    'images/login.png',
+    'Xác thực OTP':                          'images/xác nhận otp.png',
+    'Đặt lại mật khẩu':                      'images/quên mật khẩu.png'
   };
   var overlay = document.getElementById('ss-overlay');
   var bigImg  = document.getElementById('ss-big');

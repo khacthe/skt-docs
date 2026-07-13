@@ -163,6 +163,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
   transition:box-shadow .2s;
 }
 .step-screenshot:hover{box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.img-num{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:3px;border:1.5px solid #c0392b;color:#c0392b;font-size:11px;font-weight:700;background:#fff8f8;vertical-align:middle;margin:0 2px;flex-shrink:0}
 #ss-overlay2{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;cursor:zoom-out;align-items:center;justify-content:center}
 #ss-overlay2.open{display:flex}
 #ss-overlay2 img{max-width:92vw;max-height:90vh;border-radius:10px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
@@ -328,7 +329,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
         <tr><td><span class="toc-num">2</span></td><td><div class="toc-name">Đăng ký ứng viên vào dự án</div></td><td class="toc-desc">Gán ứng viên vào dự án để theo dõi luồng tuyển dụng</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
         <tr><td><span class="toc-num">3</span></td><td><div class="toc-name">Đăng ký ứng viên vào lịch phỏng vấn</div></td><td class="toc-desc">Thêm ứng viên vào lịch phỏng vấn do Quản lý đã tạo</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
         <tr><td><span class="toc-num">4</span></td><td><div class="toc-name">Theo dõi hiệu suất tuyển dụng</div></td><td class="toc-desc">Xem báo cáo KPI: tổng ứng viên, tỉ lệ chuyển đổi, nguồn tuyển</td><td><span class="toc-freq monthly">Định kỳ</span></td></tr>
-        <tr style="background:#fff8f0"><td colspan="4" style="font-size:12px;color:#92400e;padding:8px 16px">⚠️ <strong>Lưu ý quyền:</strong> Tuyển dụng chỉ có quyền <strong>View</strong> với Hồ sơ lao động, Hợp đồng và Người phụ thuộc — không có quyền tạo/chỉnh sửa. Các nghiệp vụ đó do <strong>Bộ phận Quản lý</strong> thực hiện.</td></tr>
+        <tr><td><span class="toc-num">5</span></td><td><div class="toc-name">Phân ca lao động</div></td><td class="toc-desc">Tạo phân ca thủ công cho lao động vào ca làm việc (TD-PM: toàn quyền; Lead/NV: trong phạm vi phụ trách)</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
+        <tr><td><span class="toc-num">6</span></td><td><div class="toc-name">Duyệt phân ca</div></td><td class="toc-desc">Duyệt phân ca cho ứng viên qua màn hình Xếp ca &amp; Booking hoặc Duyệt phân ca ứng viên</td><td><span class="toc-freq daily">Hàng ngày</span></td></tr>
+        <tr style="background:#fff8f0"><td colspan="4" style="font-size:12px;color:#92400e;padding:8px 16px">⚠️ <strong>Lưu ý quyền:</strong> Tuyển dụng chỉ có quyền <strong>View</strong> với Hồ sơ lao động, Hợp đồng và Người phụ thuộc — không có quyền tạo/chỉnh sửa (do <strong>Bộ phận Quản lý</strong> thực hiện). Riêng <strong>Phân ca</strong>: TD-PM có toàn quyền tạo phân ca; Lead/NV tạo trong phạm vi dự án phụ trách. Màn hình Duyệt phân ca chỉ ở mức View — duyệt chính thức do Quản lý thực hiện.</td></tr>
       </tbody>
     </table>
   </div>
@@ -351,9 +354,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-dot">1</div>
           <div class="step-body">
             <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#candidates" target="_blank">📋 Danh sách ứng viên</a> → Nhấn "+ Thêm mới"
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#candidates" target="_blank">📋 Danh sách ứng viên</a> <span class="img-num">1</span> → Nhấn <strong>"+ Thêm mới"</strong> <span class="img-num">3</span>
             </div>
-            <div class="step-desc">Mở trang "Thêm hồ sơ ứng viên mới"</div>
+            <div class="step-desc">Mở trang "Thêm hồ sơ ứng viên mới" · Lọc danh sách <span class="img-num">4</span> · Thao tác nhanh trên từng dòng <span class="img-num">5</span></div>
             <img class="step-screenshot" src="images/thêm mới ứng viên.png" alt="Form thêm mới ứng viên" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
@@ -408,7 +411,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-dot">1</div>
           <div class="step-body">
             <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#candidates" target="_blank">📋 Danh sách ứng viên</a> → Tìm ứng viên → Nhấn ⋮ → <strong>"Đăng ký dự án"</strong>
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#candidates" target="_blank">📋 Danh sách ứng viên</a> <span class="img-num">1</span> → Tìm ứng viên → Nhấn ⋮ <span class="img-num">5</span> → <strong>"Đăng ký dự án"</strong>
             </div>
             <img class="step-screenshot" src="images/đăng kí dự án cho ứng viên.png" alt="Đăng ký dự án cho ứng viên" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
@@ -417,14 +420,14 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Chọn dự án + Ngày bắt đầu + Trạng thái</div>
+            <div class="step-action">Chọn <strong>Dự án <span class="img-num">1</span></strong> · <strong>Ngày bắt đầu <span class="img-num">2</span></strong> · <strong>Trạng thái <span class="img-num">3</span></strong> · Mã lao động theo dự án <span class="img-num">4</span> (nếu có) · Bảo lãnh <span class="img-num">5</span> (nếu cần)</div>
             <div class="step-desc">Phần trên popup hiển thị các dự án ứng viên đang đăng ký (tránh trùng)</div>
           </div>
         </div>
         <div class="step-row">
           <div class="step-dot">3</div>
           <div class="step-body">
-            <div class="step-action">Nhấn <strong>"Lưu"</strong> để xác nhận đăng ký</div>
+            <div class="step-action">Nhấn <strong>"Lưu" <span class="img-num">7</span></strong> để xác nhận đăng ký</div>
             <div class="step-desc">Ứng viên xuất hiện trong danh sách dự án. Tiếp tục lên lịch phỏng vấn nếu cần.</div>
           </div>
         </div>
@@ -447,9 +450,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-dot">1</div>
           <div class="step-body">
             <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#interviews" target="_blank">📅 Lịch phỏng vấn</a> → Tìm lịch phỏng vấn do Quản lý đã tạo sẵn
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#interviews" target="_blank">📅 Lịch phỏng vấn</a> <span class="img-num">1</span> → Chọn tháng <span class="img-num">3</span> → Nhấn vào lịch trên calendar <span class="img-num">4</span>
             </div>
-            <div class="step-desc">Lịch phỏng vấn hiển thị theo ngày, dự án và người phỏng vấn — lọc để tìm đúng lịch phù hợp với ứng viên</div>
+            <div class="step-desc">Lịch phỏng vấn hiển thị theo tháng — nhấn vào một ô lịch để xem chi tiết và thêm ứng viên vào</div>
             <div class="step-tip">⚠️ Bộ phận Tuyển dụng <strong>không có quyền tạo lịch mới</strong>. Nếu chưa có lịch phù hợp, liên hệ Quản lý để tạo lịch trước.</div>
             <img class="step-screenshot" src="images/danh sách lịch phỏng vấn.png" alt="Danh sách lịch phỏng vấn" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
@@ -503,6 +506,87 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
       </div>
     </div>
 
+    <!-- Flow 5 — Phân ca lao động (Tuyển dụng) -->
+    <div class="flow-card">
+      <div class="flow-card-header td">
+        <div class="flow-num">5</div>
+        <div>
+          <h3>Phân ca lao động</h3>
+          <p>Tạo phân ca thủ công cho lao động vào ca cụ thể</p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              <strong>Cách 1 — Phân từng ca thủ công:</strong> Vào <a class="step-link" href="huong-dan-nguoi-dung.html#shift-assignment" target="_blank">👷 Phân ca lao động</a> → Nhấn <strong>"+ Phân ca thủ công"</strong>
+            </div>
+            <div class="step-desc">Chọn Ngày · Ca làm việc · Vị trí → Tick lao động → Nhấn <strong>"Phân ca"</strong>. Lao động nhận thông báo ca trên app tự động.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">
+              <strong>Cách 2 — Phân ca nhiều ngày:</strong> Vào <a class="step-link" href="huong-dan-nguoi-dung.html#candidates" target="_blank">📋 Ứng viên</a> → Nhấn <strong>"+"</strong> phía đầu ứng viên để mở danh sách dự án → Nhấn ⋮ → <strong>"Phân ca"</strong>
+            </div>
+            <div class="step-desc">Phù hợp khi cần phân ca cho nhiều ngày liên tiếp cùng lúc</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">✅ Phân ca thành công → Lao động được ghi nhận chính thức vào ca</div>
+            <div class="step-note">
+              <strong>Phân quyền theo vai trò:</strong>
+              <ul style="margin:6px 0 0 16px;line-height:1.9">
+                <li><strong>Tuyển dụng (PM):</strong> Toàn quyền tạo phân ca cho mọi dự án</li>
+                <li><strong>Lead team tuyển dụng:</strong> Tạo phân ca trong phạm vi dự án phụ trách (lead-self)</li>
+                <li><strong>Tuyển dụng (NV):</strong> Tạo phân ca trong phạm vi dự án của mình (self)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 6 — Duyệt phân ca (Tuyển dụng) -->
+    <div class="flow-card">
+      <div class="flow-card-header td">
+        <div class="flow-num">6</div>
+        <div>
+          <h3>Duyệt phân ca</h3>
+          <p>Duyệt phân ca cho ứng viên</p>
+        </div>
+        <span class="flow-freq freq-daily">Hàng ngày</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#shift-approval" target="_blank">🗓️ Xếp ca &amp; Booking</a> → Nhấn vào bất kì ô nào trên lịch → Nhấn <strong>"Duyệt phân ca"</strong>
+            </div>
+            <div class="step-desc">Xem danh sách lao động đã đăng ký ca trong ô đó, tick chọn → Duyệt</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">
+              Hoặc vào <a class="step-link" href="huong-dan-nguoi-dung.html#shift-registration" target="_blank">📋 Duyệt phân ca ứng viên</a>
+            </div>
+            <div class="step-desc">Xem trạng thái đăng ký ca của từng lao động: <strong>Chờ duyệt / Xác nhận một phần / Đã xác nhận / Đã huỷ</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div><!-- /flows-grid -->
 </div><!-- /tuyen-dung -->
 
@@ -539,6 +623,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
         <tr><td><span class="toc-num">9</span></td><td><div class="toc-name">Tạo hồ sơ lao động</div></td><td class="toc-desc">Chuyển ứng viên đậu thành lao động chính thức; tuyển dụng chỉ View</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
         <tr><td><span class="toc-num">10</span></td><td><div class="toc-name">Tạo &amp; Phát hành hợp đồng lao động</div></td><td class="toc-desc">Soạn, ký, upload bản đã ký; tuyển dụng không có quyền tạo</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
         <tr><td><span class="toc-num">11</span></td><td><div class="toc-name">Khai báo người phụ thuộc (NPT)</div></td><td class="toc-desc">Khai báo MST và NPT để giảm trừ thuế TNCN; tuyển dụng chỉ View</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
+        <tr><td><span class="toc-num">12</span></td><td><div class="toc-name">Duyệt phân ca lao động</div></td><td class="toc-desc">Xác nhận đăng ký ca của lao động; hệ thống kiểm tra đủ điều kiện trước khi phân công chính thức</td><td><span class="toc-freq daily">Hàng ngày</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -561,7 +646,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-dot">1</div>
           <div class="step-body">
             <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#project-list" target="_blank">📋 Dự án</a> → Nhấn <strong>"Tạo dự án"</strong>
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#project-list" target="_blank">📋 Dự án tuyển dụng</a> <span class="img-num">1</span> → Nhấn <strong>"Tạo dự án"</strong>
             </div>
             <img class="step-screenshot" src="images/tạo dự án.png" alt="Form tạo dự án mới" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
@@ -570,16 +655,16 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Tab <strong>Dự án</strong>: Điền thông tin cơ bản</div>
-            <div class="step-desc">Tên dự án ✱ · Mô tả ngắn ✱ · Mô tả chi tiết ✱ · Địa điểm · Lương ✱ · Loại công việc ✱ · Tags · Logo ✱</div>
-            <div class="step-tip">Thêm Vị trí công việc trong sidebar phải (VD: Leader, Công nhân) để phân ca sau này</div>
+            <div class="step-action">Tab <strong>Dự án <span class="img-num">2</span></strong>: Điền thông tin cơ bản</div>
+            <div class="step-desc">Tên dự án <span class="img-num">4</span> ✱ · Mô tả ngắn <span class="img-num">5</span> ✱ · Mô tả chi tiết <span class="img-num">6</span> ✱ · Mã dự án <span class="img-num">7</span> · Địa điểm <span class="img-num">8</span> · Lương <span class="img-num">9</span> ✱ · Loại công việc <span class="img-num">10</span> ✱ · Tags <span class="img-num">12</span> · Logo <span class="img-num">14</span> ✱</div>
+            <div class="step-tip">Thêm <strong>Vị trí công việc <span class="img-num">15</span></strong> và <strong>Quản lý dự án <span class="img-num">16</span></strong> ở sidebar phải (VD: Leader, Công nhân) trước khi lưu</div>
           </div>
         </div>
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">3</div>
           <div class="step-body">
-            <div class="step-action">Tab <strong>Kế hoạch ca</strong>: Cấu hình ca làm việc</div>
+            <div class="step-action">Tab <strong>Kế hoạch ca <span class="img-num">3</span></strong>: Cấu hình ca làm việc</div>
             <div class="step-desc">Định nghĩa các ca (sáng/chiều/đêm), giờ bắt đầu-kết thúc từng ca</div>
           </div>
         </div>
@@ -587,14 +672,14 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-line"></div>
           <div class="step-dot">4</div>
           <div class="step-body">
-            <div class="step-action">Tab <strong>Thưởng</strong>: Thiết lập chính sách thưởng</div>
+            <div class="step-action">Tab <strong>Thưởng</strong>: Thiết lập chính sách thưởng <span class="img-num">1</span></div>
             <div class="step-desc">Thưởng chuyên cần, thưởng hiệu suất, thưởng đặc biệt</div>
           </div>
         </div>
         <div class="step-row">
           <div class="step-dot">5</div>
           <div class="step-body">
-            <div class="step-action">Nhấn <strong>"Lưu thay đổi"</strong> → Mở trạng thái dự án</div>
+            <div class="step-action">Nhấn <strong>"Lưu thay đổi" <span class="img-num">17</span></strong> → Mở trạng thái dự án</div>
             <div class="step-desc">Thông báo cho team Tuyển dụng để bắt đầu tiếp nhận ứng viên</div>
           </div>
         </div>
@@ -626,14 +711,14 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Chọn Dự án ✱ · Ngày bắt đầu ✱ · Ngày kết thúc ✱</div>
-            <div class="step-desc">Thêm Ghi chú để lao động biết quy định ca, lưu ý đặc biệt (tùy chọn)</div>
+            <div class="step-action">Chọn <strong>Dự án <span class="img-num">1</span></strong> ✱ · <strong>Ngày bắt đầu <span class="img-num">2</span></strong> ✱ · <strong>Ngày kết thúc <span class="img-num">3</span></strong> ✱</div>
+            <div class="step-desc">Thêm <strong>Ghi chú <span class="img-num">4</span></strong> để lao động biết quy định ca, lưu ý đặc biệt (tùy chọn)</div>
           </div>
         </div>
         <div class="step-row">
           <div class="step-dot">3</div>
           <div class="step-body">
-            <div class="step-action">Tạo form → Chia sẻ link cho lao động</div>
+            <div class="step-action">Nhấn <strong>"Tạo form" <span class="img-num">5</span></strong> → Chia sẻ link cho lao động</div>
             <div class="step-desc">Lao động mở link trên app → Chọn ngày và ca → Hệ thống tự ghi nhận → Quản lý duyệt trong Phân ca lao động</div>
           </div>
         </div>
@@ -682,7 +767,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
         <div class="step-row">
           <div class="step-dot">4</div>
           <div class="step-body">
-            <div class="step-action">Chọn Ngày · Ca làm việc · Vị trí → Tick lao động → Nhấn <strong>"Phân ca"</strong></div>
+            <div class="step-action">Chọn <strong>Ngày <span class="img-num">1</span></strong> · <strong>Ca làm việc <span class="img-num">2</span></strong> · <strong>Vị trí <span class="img-num">3</span></strong> → Tìm lao động <span class="img-num">4</span> → Tick lao động <span class="img-num">6</span> (hoặc Chọn tất cả <span class="img-num">5</span>) → Nhấn <strong>"Phân ca" <span class="img-num">8</span></strong></div>
             <div class="step-desc">Lao động nhận thông báo ca làm việc trên app tự động</div>
           </div>
         </div>
@@ -866,14 +951,14 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-dot">2</div>
           <div class="step-body">
             <div class="step-action">Điền thông tin lịch phỏng vấn</div>
-            <div class="step-desc">Dự án ✱ · Ngày + giờ bắt đầu/kết thúc ✱ · Người phỏng vấn ✱ · Hình thức: <strong>Offline tại VP</strong> hoặc <strong>Online</strong> (nhập link meeting)</div>
+            <div class="step-desc"><strong>Dự án <span class="img-num">1</span></strong> ✱ · <strong>Ngày giờ bắt đầu <span class="img-num">3</span></strong> ✱ · <strong>Giờ kết thúc <span class="img-num">4</span></strong> ✱ · <strong>Người phỏng vấn <span class="img-num">5</span></strong> ✱ · <strong>Hình thức <span class="img-num">6</span></strong>: Offline tại VP hoặc Online · <strong>Địa điểm / Link <span class="img-num">7</span></strong></div>
           </div>
         </div>
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">3</div>
           <div class="step-body">
-            <div class="step-action">Nhấn <strong>"Lưu lịch hẹn"</strong></div>
+            <div class="step-action">Nhấn <strong>"Lưu lịch hẹn" <span class="img-num">8</span></strong></div>
             <div class="step-desc">Lịch hiển thị trong danh sách — Thông báo cho Bộ phận Tuyển dụng để thêm ứng viên vào lịch</div>
           </div>
         </div>
@@ -914,8 +999,8 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Chọn từ "Lao động đã đăng ký dự án"</div>
-            <div class="step-desc">Hệ thống tự điền thông tin cá nhân từ hồ sơ ứng viên. Kiểm tra lại và bổ sung nếu thiếu.</div>
+            <div class="step-action">Chọn từ "Lao động đã đăng ký dự án" → Upload CCCD → Nhấn <strong>"Quét CCCD"</strong></div>
+            <div class="step-desc">Các trường <span class="img-num">1</span> trên màn hình sẽ tự động điền từ CCCD (họ tên, ngày sinh, số CCCD, địa chỉ...). Kiểm tra lại và bổ sung thông tin còn thiếu.</div>
           </div>
         </div>
         <div class="step-row">
@@ -931,6 +1016,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-body">
             <div class="step-action">Nhấn <strong>"Lưu hồ sơ"</strong></div>
             <div class="step-desc">Hệ thống cấp mã WKR-XXXXXX. Lao động sẵn sàng để ký hợp đồng.</div>
+            <div class="step-note">⚠️ <strong>Kiểm tra CCCD tự động:</strong> Hệ thống đối chiếu số CCCD với danh sách đen toàn hệ thống ngay khi lưu. Nếu CCCD đã bị blacklist, hồ sơ sẽ bị từ chối — cần liên hệ quản lý để xem xét trước khi tạo.</div>
           </div>
         </div>
       </div>
@@ -962,14 +1048,14 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-dot">2</div>
           <div class="step-body">
             <div class="step-action">Điền thông tin hợp đồng</div>
-            <div class="step-desc">Chọn lao động ✱ · Chọn mẫu HĐ ✱ · Ngày ký ✱ · Ngày kết thúc ✱ · Lương cơ bản ✱ · Hình thức thanh toán · Điều khoản bổ sung</div>
+            <div class="step-desc"><strong>Lao động <span class="img-num">2</span></strong> ✱ · <strong>Dự án <span class="img-num">3</span></strong> · <strong>Mẫu HĐ <span class="img-num">4</span></strong> ✱ · <strong>Ngày ký <span class="img-num">5</span></strong> ✱ · <strong>Ngày kết thúc <span class="img-num">6</span></strong> ✱ · <strong>Lương cơ bản <span class="img-num">7</span></strong> ✱ · <strong>Hình thức thanh toán <span class="img-num">8</span></strong> · <strong>Ngày trả lương <span class="img-num">9</span></strong> · <strong>Cam kết nội quy <span class="img-num">10</span></strong></div>
           </div>
         </div>
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">3</div>
           <div class="step-body">
-            <div class="step-action">Nhấn <strong>"Lưu Nháp"</strong> → xem trước PDF → xuất .docx</div>
+            <div class="step-action">Nhấn <strong>"Lưu Nháp" <span class="img-num">11</span></strong> → xem trước PDF → xuất .docx</div>
           </div>
         </div>
         <div class="step-row">
@@ -1017,6 +1103,66 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-body">
             <div class="step-action">Thêm từng người phụ thuộc → <strong>Lưu</strong></div>
             <div class="step-desc">Dữ liệu NPT được kế toán sử dụng khi tính lương để giảm trừ thuế TNCN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 12 — Duyệt phân ca lao động -->
+    <div class="flow-card">
+      <div class="flow-card-header ql">
+        <div class="flow-num">12</div>
+        <div>
+          <h3>Duyệt phân ca lao động</h3>
+          <p>Xem xét đăng ký ca của lao động và phân công chính thức vào ca làm việc</p>
+        </div>
+        <span class="flow-freq freq-daily">Hàng ngày</span>
+      </div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-action">
+              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#shift-assignment" target="_blank">👷 Phân ca lao động</a> → Chọn ngày và ca cần duyệt
+            </div>
+            <div class="step-desc">Danh sách hiển thị lao động đã đăng ký ca (qua app hoặc link form), chia 2 nhóm: <strong>Chờ duyệt</strong> và <strong>Đã duyệt</strong></div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-action">Tick chọn lao động → Nhấn <strong>"Duyệt phân ca"</strong></div>
+            <div class="step-desc">Có thể chọn nhiều lao động cùng lúc để duyệt hàng loạt</div>
+            <div class="step-note">
+              <strong>⚠️ Hệ thống kiểm tra đủ 7 điều kiện trước khi duyệt — tất cả phải đạt:</strong>
+              <ol style="margin:8px 0 0 18px;line-height:2">
+                <li>Lao động tồn tại trong hệ thống</li>
+                <li>Lao động đã có <strong>hồ sơ lao động</strong> (mã WKR-XXXXXX)</li>
+                <li>Lao động <strong>không nằm trong danh sách đen</strong> của dự án này</li>
+                <li>Lao động có <strong>hợp đồng lao động đang hoạt động</strong></li>
+                <li>Lao động đã được <strong>duyệt vào dự án</strong> (trạng thái "Đang hoạt động")</li>
+                <li>Ngày duyệt <strong>nằm trong danh sách ngày đã xác nhận</strong> của đăng ký ca</li>
+                <li>Lao động <strong>không trùng giờ</strong> với ca khác trong cùng ngày (cross-project)</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-action">Nếu có lỗi → Đọc thông báo chi tiết để biết lao động nào chưa đủ điều kiện</div>
+            <div class="step-desc">Hệ thống báo cụ thể từng lao động và lý do. Ví dụ: <em>"Chưa có hợp đồng đang hoạt động"</em> → Tạo hợp đồng trước → Duyệt lại</div>
+            <div class="step-tip">Nếu ứng viên có kết quả <strong>"Không nhận việc"</strong> → Hệ thống chặn toàn bộ batch. Cần cập nhật lại trạng thái ứng viên trước khi duyệt.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <div class="step-action">✅ Duyệt thành công → Lao động được phân công chính thức vào ca</div>
+            <div class="step-desc">Lao động nhận thông báo ca làm việc trên app. Trạng thái chuyển sang <span style="background:#e8f5e9;color:#2e7d32;padding:1px 8px;border-radius:10px;font-size:12px;font-weight:700">Đã phân công</span></div>
           </div>
         </div>
       </div>
@@ -1487,6 +1633,8 @@ if (['tuyen-dung','quan-ly','xe-dua-don','ke-toan'].includes(hash)) show(hash);
     '#shift-register-form':'images/danh sách form đăng kí.png',
     '#shift-booking':      'images/booking ca.png',
     '#shift-assignment':   'images/Phân ca lao động.png',
+    '#shift-approval':     'images/duyệt lao động vào ca.png',
+    '#shift-registration': 'images/phân ca cho ứng viên.png',
     '#daily-report':       'images/báo cáo ca làm việc.png',
     '#routes':             'images/danh sách tuyến đường.png',
     '#vehicles':           'images/danh sách xe.png',
