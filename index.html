@@ -104,6 +104,12 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .kt .step-link{background:var(--ke-toan-bg);color:var(--ke-toan);border:1px solid #d8a8e8}
 .kt .step-link:hover{background:var(--ke-toan);color:#fff}
 .step-desc{font-size:13px;color:var(--muted);margin-top:3px}
+.step-where{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:#64748b;margin-bottom:5px}
+.step-where .where-badge{display:inline-flex;align-items:center;gap:4px;background:#f1f5f9;border:1px solid #dde3ec;color:#334155;padding:2px 10px;border-radius:6px;text-transform:none;letter-spacing:0;font-size:12px}
+.td .step-where .where-badge{background:var(--tuyen-dung-bg);border-color:#a8c7fa;color:var(--tuyen-dung-dark)}
+.ql .step-where .where-badge{background:var(--quan-ly-bg);border-color:#a8d5b5;color:var(--quan-ly-dark)}
+.xe .step-where .where-badge{background:var(--xe-bg);border-color:#f0c060;color:var(--xe-dark)}
+.kt .step-where .where-badge{background:var(--ke-toan-bg);border-color:#d8a8e8;color:var(--ke-toan-dark)}
 .step-tip{background:#fffbf0;border-left:3px solid #f9a825;padding:8px 12px;border-radius:0 6px 6px 0;font-size:12.5px;color:#92400e;margin-top:6px}
 .step-note{background:#f0f5ff;border-left:3px solid var(--tuyen-dung);padding:8px 12px;border-radius:0 6px 6px 0;font-size:12.5px;color:#1e40af;margin-top:6px}
 
@@ -131,6 +137,40 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .toc-freq.monthly{background:#e8f0fe;color:#1a73e8}
 .toc-freq.once{background:#fce4ec;color:#c62828}
 .toc-freq.asneeded{background:#fff3e0;color:#e65100}
+
+/* QUICK NAV (Quản lý) */
+.flow-menu{margin-top:3px;font-size:12px;color:#0b7a44}
+.flow-card{scroll-margin-top:72px}
+.flow-card.flash{box-shadow:0 0 0 3px var(--quan-ly),var(--shadow);transition:box-shadow .3s}
+.quick-nav{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:24px}
+.quick-nav-title{font-size:13px;font-weight:700;color:var(--quan-ly-dark);margin-bottom:12px}
+.qn-group{margin-bottom:14px}
+.qn-group:last-child{margin-bottom:0}
+.qn-group-name{font-size:12px;font-weight:700;color:#334155;margin-bottom:6px}
+.qn-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.qn-item{display:flex;flex-direction:column;gap:2px;padding:9px 12px;border:1px solid #a8d5b5;background:#f6fbf8;border-radius:8px;text-decoration:none;transition:all .15s}
+.qn-item:hover{background:var(--quan-ly-bg);border-color:var(--quan-ly);transform:translateY(-1px)}
+.qn-title{font-size:13px;font-weight:700;color:#0f1b2d}
+.qn-menu{font-size:11.5px;color:var(--quan-ly-dark);font-weight:600}
+.qn-brief{font-size:11.5px;color:var(--muted)}
+
+.flow-perm{margin:0;padding:10px 22px;background:#f8fafc;border-bottom:1px solid var(--border);font-size:12px;color:#334155}
+.flow-perm-title{font-weight:700;color:#0f1b2d;margin-bottom:4px}
+.flow-perm ul{margin:0 0 0 16px;line-height:1.7}
+.flow-perm li{margin-bottom:2px}
+.pm-all{color:#0b7a44;font-weight:600}.pm-scope{color:#1558b0}.pm-view{color:#64748b}.pm-none{color:#b91c1c}
+.step-multi{margin-top:8px;padding:7px 12px;border-left:3px solid #7b1fa2;background:#f8f0fb;border-radius:0 6px 6px 0;font-size:12.5px;color:#5c0f7a}
+.step-multi.single{border-left-color:#64748b;background:#f1f5f9;color:#334155}
+.perm-legend{background:#fffbf0;border:1px solid #f0d080;border-radius:var(--radius);padding:10px 16px;margin-bottom:20px;font-size:12.5px;color:#92400e}
+.perm-legend ul{margin:4px 0 0 18px;line-height:1.8}
+
+.quick-nav.td .quick-nav-title{color:var(--tuyen-dung-dark)}
+.quick-nav.td .qn-item{border-color:#a8c7fa;background:#f6f9ff}
+.quick-nav.td .qn-item:hover{background:var(--tuyen-dung-bg);border-color:var(--tuyen-dung)}
+.quick-nav.td .qn-menu{color:var(--tuyen-dung-dark)}
+.flow-card-header.td .flow-menu{color:var(--tuyen-dung-dark)}
+.flows-grid.td .flow-card.flash{box-shadow:0 0 0 3px var(--tuyen-dung),var(--shadow)}
+
 
 /* SEPARATOR */
 .section-sep{height:1px;background:var(--border);margin:32px 0}
@@ -182,7 +222,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
     <span class="tab-icon">👤</span>Tuyển dụng
   </a>
   <a class="dept-tab ql" href="#" onclick="show('quan-ly');return false">
-    <span class="tab-icon">📋</span>Quản lý
+    <span class="tab-icon">📋</span>Quản lý &amp; Vận hành
   </a>
   <a class="dept-tab xe" href="#" onclick="show('xe-dua-don');return false">
     <span class="tab-icon">🚌</span>Xe đưa đón
@@ -311,283 +351,271 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 ═══════════════════════════════════════════════════════ -->
 <div class="dept-section active" id="tuyen-dung">
   <div class="dept-header td">
-    <h2>👤 Bộ phận Tuyển dụng</h2>
-    <p>Chịu trách nhiệm toàn bộ quá trình từ tiếp nhận ứng viên đến khi lao động có hợp đồng chính thức.</p>
+    <h2>👤 Module Tuyển dụng</h2>
+    <p>Toàn bộ quá trình từ tiếp nhận ứng viên đến khi lao động có hợp đồng chính thức. Đây là module dùng chung — hầu như vai trò nào cũng vào được (thường ở phạm vi của mình) — xem khung 🔐 Phân quyền ở từng chức năng.</p>
     <div class="roles-row">
       <span class="role-chip">👔 Trưởng BP Tuyển dụng (TV PM)</span>
       <span class="role-chip">🔶 Trưởng nhóm TV (Lead TV)</span>
       <span class="role-chip">📋 Nhân viên TV (TV NV)</span>
+      <span class="role-chip">👥 + các vai trò khác theo quyền</span>
     </div>
   </div>
 
-  <div class="dept-toc">
-    <div class="dept-toc-title">📋 Tổng quan nghiệp vụ — Tuyển dụng</div>
-    <table>
-      <thead><tr><th>#</th><th>Nghiệp vụ</th><th>Mô tả ngắn</th><th>Tần suất</th></tr></thead>
-      <tbody>
-        <tr><td><span class="toc-num">1</span></td><td><div class="toc-name">Tiếp nhận &amp; Tạo hồ sơ ứng viên mới</div></td><td class="toc-desc">Nhập CCCD → hệ thống tự điền → bổ sung giấy tờ</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
-        <tr><td><span class="toc-num">2</span></td><td><div class="toc-name">Đăng ký ứng viên vào dự án</div></td><td class="toc-desc">Gán ứng viên vào dự án để theo dõi luồng tuyển dụng</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
-        <tr><td><span class="toc-num">3</span></td><td><div class="toc-name">Đăng ký ứng viên vào lịch phỏng vấn</div></td><td class="toc-desc">Thêm ứng viên vào lịch phỏng vấn do Quản lý đã tạo</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
-        <tr><td><span class="toc-num">4</span></td><td><div class="toc-name">Theo dõi hiệu suất tuyển dụng</div></td><td class="toc-desc">Xem báo cáo KPI: tổng ứng viên, tỉ lệ chuyển đổi, nguồn tuyển</td><td><span class="toc-freq monthly">Định kỳ</span></td></tr>
-        <tr><td><span class="toc-num">5</span></td><td><div class="toc-name">Phân ca lao động</div></td><td class="toc-desc">Tạo phân ca thủ công cho lao động vào ca làm việc (TD-PM: toàn quyền; Lead/NV: trong phạm vi phụ trách)</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
-        <tr><td><span class="toc-num">6</span></td><td><div class="toc-name">Duyệt phân ca</div></td><td class="toc-desc">Duyệt phân ca cho ứng viên qua màn hình Xếp ca &amp; Booking hoặc Duyệt phân ca ứng viên</td><td><span class="toc-freq daily">Hàng ngày</span></td></tr>
-        <tr style="background:#fff8f0"><td colspan="4" style="font-size:12px;color:#92400e;padding:8px 16px">⚠️ <strong>Lưu ý quyền:</strong> Tuyển dụng chỉ có quyền <strong>View</strong> với Hồ sơ lao động, Hợp đồng và Người phụ thuộc — không có quyền tạo/chỉnh sửa (do <strong>Bộ phận Quản lý</strong> thực hiện). Riêng <strong>Phân ca</strong>: TD-PM có toàn quyền tạo phân ca; Lead/NV tạo trong phạm vi dự án phụ trách. Màn hình Duyệt phân ca chỉ ở mức View — duyệt chính thức do Quản lý thực hiện.</td></tr>
-      </tbody>
-    </table>
+  <div class="quick-nav td">
+    <div class="quick-nav-title">🧭 Bạn muốn làm gì? — chọn chức năng để nhảy tới hướng dẫn</div>
+    <div class="qn-group"><div class="qn-group-name">👤 Tiếp nhận &amp; hồ sơ ứng viên</div><div class="qn-items">
+      <a class="qn-item" href="#td-1" onclick="qlGo('td-1');return false"><span class="qn-title">Tiếp nhận &amp; tạo hồ sơ ứng viên</span><span class="qn-menu">🧭 Tuyển dụng ➜ Ứng viên</span><span class="qn-brief">Quét CCCD, giấy tờ, nguyện vọng</span></a>
+      <a class="qn-item" href="#td-2" onclick="qlGo('td-2');return false"><span class="qn-title">Đăng ký ứng viên vào dự án / duyệt</span><span class="qn-menu">🧭 Ứng viên ➜ ⋮ ➜ Đăng ký dự án</span><span class="qn-brief">Gán dự án, chuyển Đã duyệt</span></a>
+    </div></div>
+    <div class="qn-group"><div class="qn-group-name">🗓️ Ca &amp; phỏng vấn</div><div class="qn-items">
+      <a class="qn-item" href="#td-3" onclick="qlGo('td-3');return false"><span class="qn-title">Phân ca ứng viên &amp; theo dõi phân ca</span><span class="qn-menu">🧭 Ứng viên ➜ ⋮ · Xếp ca &amp; Booking · Phân ca lao động</span><span class="qn-brief">Phân ca nhiều ngày, xem trạng thái duyệt</span></a>
+      <a class="qn-item" href="#td-4" onclick="qlGo('td-4');return false"><span class="qn-title">Thêm ứng viên vào lịch phỏng vấn</span><span class="qn-menu">🧭 Tuyển dụng ➜ Lịch phỏng vấn</span><span class="qn-brief">Chọn lịch đã tạo, thêm ứng viên</span></a>
+    </div></div>
+    <div class="qn-group"><div class="qn-group-name">📊 Báo cáo &amp; tra cứu</div><div class="qn-items">
+      <a class="qn-item" href="#td-5" onclick="qlGo('td-5');return false"><span class="qn-title">Báo cáo hiệu suất tuyển dụng</span><span class="qn-menu">🧭 Tuyển dụng ➜ Báo cáo tuyển dụng</span><span class="qn-brief">KPI, tỉ lệ chuyển đổi, nguồn</span></a>
+      <a class="qn-item" href="#td-6" onclick="qlGo('td-6');return false"><span class="qn-title">Màn hình chỉ xem</span><span class="qn-menu">🧭 Hồ sơ LĐ · Hợp đồng · NPT · Danh sách đen</span><span class="qn-brief">Tra cứu, không tạo/sửa</span></a>
+    </div></div>
   </div>
+
+  <div class="perm-legend">🔐 <strong>Cách đọc phân quyền</strong> (theo <em>RBAC_Permission_Matrix.xlsx</em>): <strong>Toàn quyền</strong> = xem + tạo/sửa · <strong>Chỉ xem</strong> = không thao tác được · <strong>(self)</strong> = chỉ dữ liệu của mình · <strong>(team)</strong> = của mình + team. Với Tuyển dụng: <strong>TD PM</strong> = Trưởng BP, <strong>TD Lead</strong> = Trưởng nhóm (phạm vi team), <strong>TD NV</strong> = Nhân viên (phạm vi của mình). Tuyển dụng <strong>chỉ xem</strong> Hồ sơ lao động, Hợp đồng, Người phụ thuộc và Duyệt phân ca. Ghi chú <strong>🔀 chọn nhiều dự án</strong> / <strong>☝️ chỉ 1 dự án</strong> nằm ngay tại bước có ô chọn dự án.</div>
 
   <div class="flows-grid td">
 
-    <!-- Flow 1 -->
-    <div class="flow-card">
+    <div class="flow-card" id="td-1">
       <div class="flow-card-header td">
         <div class="flow-num">1</div>
         <div>
-          <h3>Tiếp nhận &amp; Tạo hồ sơ ứng viên mới</h3>
-          <p>Khi có ứng viên tiếp cận qua các kênh tuyển dụng</p>
+          <h3>Tiếp nhận &amp; tạo hồ sơ ứng viên mới</h3>
+          <p>Tìm ứng viên, thêm mới bằng CCCD, cập nhật giấy tờ và nguyện vọng ứng tuyển</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Tuyển dụng ➜ Ứng viên</strong></p>
         </div>
         <span class="flow-freq freq-asneeded">Khi phát sinh</span>
       </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Xem danh sách ứng viên</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM, TD PM, HCNS</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (self), Ad-onsite (self), TD Lead (team), TD NV (self), BP Xe PM (team), QL tuyến (self), Điều phối (self), Lái xe (self), Kế toán PM (self), BHXH (self), Thuế (self), Tính lương (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án</span></li><li><strong>Tạo / sửa hồ sơ ứng viên</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), TD PM, HCNS</span> · <span class="pm-scope">Toàn quyền theo phạm vi: QL PM (self), Leader (self), Ad-onsite (self), TD Lead (team), TD NV (self), BP Xe PM (team), QL tuyến (self), Điều phối (self), Lái xe (self), Kế toán PM (self), BHXH (self), Thuế (self), Tính lương (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án</span></li></ul></div>
       <div class="flow-steps">
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">1</div>
           <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#candidates" target="_blank">📋 Danh sách ứng viên</a> <span class="img-num">1</span> → Nhấn <strong>"+ Thêm mới"</strong> <span class="img-num">3</span>
-            </div>
-            <div class="step-desc">Mở trang "Thêm hồ sơ ứng viên mới" · Lọc danh sách <span class="img-num">4</span> · Thao tác nhanh trên từng dòng <span class="img-num">5</span></div>
-            <img class="step-screenshot" src="images/thêm mới ứng viên.png" alt="Form thêm mới ứng viên" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu Tuyển dụng ➜ <strong>Ứng viên</strong></span></div>
+            <div class="step-action">Kiểm tra ứng viên đã có chưa: gõ tên/SĐT/email <span class="img-num">7</span> hoặc dùng bộ lọc <span class="img-num">8</span> → <strong>"Tìm kiếm"</strong> <span class="img-num">5</span>; <strong>"Lọc nâng cao"</strong> <span class="img-num">6</span> mở/thu gọn bộ lọc → chưa có thì nhấn <strong>"+ Thêm mới"</strong> <span class="img-num">4</span></div>
+            <div class="step-desc">Thanh công cụ: <strong>Tiếp nhận lao động nhanh</strong> <span class="img-num">2</span> · <strong>Xuất Excel</strong> <span class="img-num">3</span>. Dấu <strong>+</strong> đầu dòng mở danh sách dự án ứng viên đã đăng ký kèm kết quả (Đã duyệt / Chưa duyệt). ⋮ <span class="img-num">9</span> là thao tác trên ứng viên, ⋮ <span class="img-num">10</span> là thao tác trên từng dự án.</div>
+            <img class="step-screenshot" src="images/web/danh sách ứng viên.png" alt="Danh sách ứng viên" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Upload ảnh CCCD mặt trước + mặt sau → Nhấn <strong>"Xử lý CCCD"</strong></div>
-            <div class="step-desc">Hệ thống tự điền: Họ tên, ngày sinh, giới tính, số CCCD, địa chỉ thường trú</div>
-            <div class="step-tip">Nếu ảnh mờ/không nhận dạng được → Nhập tay phần "Thông tin cá nhân"</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Trang "Chỉnh sửa hồ sơ ứng viên" (mở khi Thêm mới hoặc ⋮ trên dòng ứng viên)</span></div>
+            <div class="step-action">Tải ảnh CCCD mặt trước + mặt sau → nhấn <strong>"Xử lý CCCD"</strong> <span class="img-num">4</span> → hệ thống tự điền <strong>Thông tin cá nhân</strong> <span class="img-num">5</span> (họ tên ✱, SĐT ✱, ngày sinh, giới tính, số CCCD, địa chỉ...)</div>
+            <div class="step-desc">Nếu ảnh mờ/không nhận dạng được → nhập tay phần Thông tin cá nhân. Sau đó điền <strong>Nguyện vọng ứng tuyển</strong>: dự án · nhân sự tuyển dụng · nguồn tuyển dụng · kết quả ứng viên · xe đưa đón (nếu cần).</div>
+            <div class="step-multi">🔀 <strong>Chọn nhiều dự án:</strong> ô <strong>Dự án ứng tuyển</strong> cho chọn nhiều dự án cho cùng một ứng viên.</div>
+            <img class="step-screenshot" src="images/web/chi tiết ứng viên.png" alt="Chỉnh sửa hồ sơ ứng viên" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
         <div class="step-row">
-          <div class="step-line"></div>
           <div class="step-dot">3</div>
           <div class="step-body">
-            <div class="step-action">Điền phần "Nguyện vọng ứng tuyển"</div>
-            <div class="step-desc">Dự án ứng tuyển · Nguồn tuyển dụng · Nhân sự tuyển dụng · Kết quả ban đầu · Xe đưa đón (nếu cần)</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-line"></div>
-          <div class="step-dot">4</div>
-          <div class="step-body">
-            <div class="step-action">Nhấn <strong>"Lưu hồ sơ"</strong></div>
-            <div class="step-desc">Hệ thống cấp mã APL-XXXXXX tự động</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-dot">5</div>
-          <div class="step-body">
-            <div class="step-action">Upload giấy tờ bổ sung (sau khi lưu)</div>
-            <div class="step-desc">Phần "Tình trạng tiếp nhận hồ sơ" xuất hiện sau lần lưu đầu tiên — Upload CCCD bản cứng, ảnh chân dung, giấy khám sức khỏe, CV</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Cùng trang hồ sơ ứng viên</span></div>
+            <div class="step-action">Tải giấy tờ ở <strong>Tình trạng tiếp nhận hồ sơ</strong> <span class="img-num">6</span> (ảnh 3×4, giấy khám sức khoẻ, lý lịch tư pháp) → nhấn <strong>"Lưu hồ sơ"</strong> <span class="img-num">7</span></div>
+            <div class="step-desc">Hệ thống cấp mã ứng viên dạng <strong>APL-XXXXXX</strong> khi lưu.</div>
+            <div class="step-tip">Góc trên phải có nút <strong>Hồ sơ lao động</strong> <span class="img-num">1</span> · <strong>Tạo hợp đồng</strong> <span class="img-num">2</span> · <strong>Thêm vào danh sách đen</strong> <span class="img-num">3</span> — với Tuyển dụng các mục này chỉ ở mức xem hoặc do vai trò có quyền tạo/sửa thực hiện (xem mục 6 và khung 🔐).</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Flow 2 -->
-    <div class="flow-card">
+    <div class="flow-card" id="td-2">
       <div class="flow-card-header td">
         <div class="flow-num">2</div>
         <div>
-          <h3>Đăng ký ứng viên vào dự án</h3>
-          <p>Gán ứng viên vào dự án để bắt đầu theo dõi luồng tuyển dụng</p>
+          <h3>Đăng ký ứng viên vào dự án &amp; duyệt vào dự án</h3>
+          <p>Gán ứng viên vào dự án và chuyển trạng thái Đã duyệt để theo dõi luồng tuyển dụng</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Tuyển dụng ➜ Ứng viên ➜ ⋮</strong></p>
         </div>
         <span class="flow-freq freq-asneeded">Khi phát sinh</span>
       </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Ứng viên (đăng ký dự án, duyệt)</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), TD PM, HCNS</span> · <span class="pm-scope">Toàn quyền theo phạm vi: QL PM (self), Leader (self), Ad-onsite (self), TD Lead (team), TD NV (self), BP Xe PM (team), QL tuyến (self), Điều phối (self), Lái xe (self), Kế toán PM (self), BHXH (self), Thuế (self), Tính lương (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án</span></li></ul></div>
       <div class="flow-steps">
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">1</div>
           <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#candidates" target="_blank">📋 Danh sách ứng viên</a> <span class="img-num">1</span> → Tìm ứng viên → Nhấn ⋮ <span class="img-num">5</span> → <strong>"Đăng ký dự án"</strong>
-            </div>
-            <img class="step-screenshot" src="images/đăng kí dự án cho ứng viên.png" alt="Đăng ký dự án cho ứng viên" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Danh sách Ứng viên ➜ nút ⋮ trên dòng ứng viên ➜ <strong>Đăng ký dự án</strong></span></div>
+            <div class="step-action">Trong popup, phần <strong>"Thêm đăng ký dự án"</strong>: chọn <strong>Dự án</strong> <span class="img-num">3</span> ✱ · <strong>Ngày bắt đầu</strong> <span class="img-num">4</span> ✱ · <strong>Trạng thái</strong> <span class="img-num">5</span> ✱ · Mã lao động theo dự án <span class="img-num">6</span> (có thể để trống) → <strong>"Lưu"</strong> <span class="img-num">8</span></div>
+            <div class="step-desc">Nếu ứng viên chưa có mã lao động thì tick <strong>"Bảo lãnh — chưa có mã lao động"</strong> <span class="img-num">7</span>. Phần trên popup liệt kê các dự án đang đăng ký để tránh trùng.</div>
+            <div class="step-multi single">☝️ <strong>Chỉ chọn 1 dự án:</strong> mỗi dòng đăng ký gắn với 1 dự án; muốn đăng ký thêm dự án khác → thêm dòng đăng ký mới trong cùng popup.</div>
+            <img class="step-screenshot" src="images/web/đăng kí dự án.png" alt="Popup đăng ký dự án cho ứng viên" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
         <div class="step-row">
-          <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Chọn <strong>Dự án <span class="img-num">1</span></strong> · <strong>Ngày bắt đầu <span class="img-num">2</span></strong> · <strong>Trạng thái <span class="img-num">3</span></strong> · Mã lao động theo dự án <span class="img-num">4</span> (nếu có) · Bảo lãnh <span class="img-num">5</span> (nếu cần)</div>
-            <div class="step-desc">Phần trên popup hiển thị các dự án ứng viên đang đăng ký (tránh trùng)</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-dot">3</div>
-          <div class="step-body">
-            <div class="step-action">Nhấn <strong>"Lưu" <span class="img-num">7</span></strong> để xác nhận đăng ký</div>
-            <div class="step-desc">Ứng viên xuất hiện trong danh sách dự án. Tiếp tục lên lịch phỏng vấn nếu cần.</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Cùng popup "Đăng ký dự án"</span></div>
+            <div class="step-action"><strong>Duyệt vào dự án:</strong> nhấn <strong>"Sửa"</strong> <span class="img-num">1</span> ở dòng dự án → đổi Trạng thái từ <em>Chưa duyệt</em> sang <strong>Đã duyệt</strong> → Lưu. Muốn rút khỏi dự án → <strong>"Hủy đăng ký"</strong> <span class="img-num">2</span></div>
+            <div class="step-desc">Kết quả hiển thị ở dòng dự án khi mở rộng ứng viên trong danh sách. Chỉ ứng viên <strong>Đã duyệt</strong> vào dự án mới được Quản lý duyệt phân ca sau này.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Flow 3 -->
-    <div class="flow-card">
+    <div class="flow-card" id="td-3">
       <div class="flow-card-header td">
         <div class="flow-num">3</div>
         <div>
-          <h3>Đăng ký ứng viên vào lịch phỏng vấn</h3>
-          <p>Bộ phận Tuyển dụng chỉ thêm ứng viên vào lịch có sẵn — việc tạo lịch do Bộ phận Quản lý thực hiện</p>
-        </div>
-        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
-      </div>
-      <div class="flow-steps">
-        <div class="step-row">
-          <div class="step-line"></div>
-          <div class="step-dot">1</div>
-          <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#interviews" target="_blank">📅 Lịch phỏng vấn</a> <span class="img-num">1</span> → Chọn tháng <span class="img-num">3</span> → Nhấn vào lịch trên calendar <span class="img-num">4</span>
-            </div>
-            <div class="step-desc">Lịch phỏng vấn hiển thị theo tháng — nhấn vào một ô lịch để xem chi tiết và thêm ứng viên vào</div>
-            <div class="step-tip">⚠️ Bộ phận Tuyển dụng <strong>không có quyền tạo lịch mới</strong>. Nếu chưa có lịch phù hợp, liên hệ Quản lý để tạo lịch trước.</div>
-            <img class="step-screenshot" src="images/danh sách lịch phỏng vấn.png" alt="Danh sách lịch phỏng vấn" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-line"></div>
-          <div class="step-dot">2</div>
-          <div class="step-body">
-            <div class="step-action">Nhấn vào lịch → Nhấn <strong>"Thêm ứng viên"</strong></div>
-            <div class="step-desc">Trong chi tiết lịch phỏng vấn → Chọn ứng viên cần tham dự từ danh sách ứng viên đã đăng ký dự án</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-line"></div>
-          <div class="step-dot">3</div>
-          <div class="step-body">
-            <div class="step-action">Xác nhận → Ứng viên nhận thông báo qua app</div>
-            <div class="step-desc">Ứng viên thấy ngày giờ, địa điểm/link meeting và tên người phỏng vấn trên app</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-dot">4</div>
-          <div class="step-body">
-            <div class="step-action">Sau phỏng vấn: Cập nhật kết quả trong hồ sơ ứng viên</div>
-            <div class="step-desc">Vào hồ sơ ứng viên → Cập nhật "Kết quả ứng viên" (Đậu / Trượt / Hẹn lại) → Lưu</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Flow 4 -->
-    <div class="flow-card">
-      <div class="flow-card-header td">
-        <div class="flow-num">4</div>
-        <div>
-          <h3>Theo dõi hiệu suất tuyển dụng</h3>
-          <p>Xem báo cáo để đánh giá kết quả và phân bổ nguồn lực</p>
-        </div>
-        <span class="flow-freq freq-monthly">Hàng tuần / tháng</span>
-      </div>
-      <div class="flow-steps">
-        <div class="step-row">
-          <div class="step-dot">1</div>
-          <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#recruitment-report" target="_blank">📊 Báo cáo tuyển dụng</a>
-            </div>
-            <div class="step-desc">Xem KPI: Tổng ứng viên · Đã PV · Đã nhận việc · Tỉ lệ chuyển đổi — Lọc theo kỳ / dự án / nguồn tuyển dụng</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Flow 5 — Phân ca lao động (Tuyển dụng) -->
-    <div class="flow-card">
-      <div class="flow-card-header td">
-        <div class="flow-num">5</div>
-        <div>
-          <h3>Phân ca lao động</h3>
-          <p>Tạo phân ca thủ công cho lao động vào ca cụ thể</p>
-        </div>
-        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
-      </div>
-      <div class="flow-steps">
-        <div class="step-row">
-          <div class="step-line"></div>
-          <div class="step-dot">1</div>
-          <div class="step-body">
-            <div class="step-action">
-              <strong>Cách 1 — Phân từng ca thủ công:</strong> Vào <a class="step-link" href="huong-dan-nguoi-dung.html#shift-assignment" target="_blank">👷 Phân ca lao động</a> → Nhấn <strong>"+ Phân ca thủ công"</strong>
-            </div>
-            <div class="step-desc">Chọn Ngày · Ca làm việc · Vị trí → Tick lao động → Nhấn <strong>"Phân ca"</strong>. Lao động nhận thông báo ca trên app tự động.</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-line"></div>
-          <div class="step-dot">2</div>
-          <div class="step-body">
-            <div class="step-action">
-              <strong>Cách 2 — Phân ca nhiều ngày:</strong> Vào <a class="step-link" href="huong-dan-nguoi-dung.html#candidates" target="_blank">📋 Ứng viên</a> → Nhấn <strong>"+"</strong> phía đầu ứng viên để mở danh sách dự án → Nhấn ⋮ → <strong>"Phân ca"</strong>
-            </div>
-            <div class="step-desc">Phù hợp khi cần phân ca cho nhiều ngày liên tiếp cùng lúc</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-dot">3</div>
-          <div class="step-body">
-            <div class="step-action">✅ Phân ca thành công → Lao động được ghi nhận chính thức vào ca</div>
-            <div class="step-note">
-              <strong>Phân quyền theo vai trò:</strong>
-              <ul style="margin:6px 0 0 16px;line-height:1.9">
-                <li><strong>Tuyển dụng (PM):</strong> Toàn quyền tạo phân ca cho mọi dự án</li>
-                <li><strong>Lead team tuyển dụng:</strong> Tạo phân ca trong phạm vi dự án phụ trách (lead-self)</li>
-                <li><strong>Tuyển dụng (NV):</strong> Tạo phân ca trong phạm vi dự án của mình (self)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Flow 6 — Duyệt phân ca (Tuyển dụng) -->
-    <div class="flow-card">
-      <div class="flow-card-header td">
-        <div class="flow-num">6</div>
-        <div>
-          <h3>Duyệt phân ca</h3>
-          <p>Duyệt phân ca cho ứng viên</p>
+          <h3>Phân ca cho ứng viên &amp; theo dõi phân ca</h3>
+          <p>Phân ca nhiều ngày cho ứng viên; xem trạng thái đăng ký / duyệt ca (duyệt chính thức do vai trò có quyền duyệt: QL PM, Leader, Ad-onsite…)</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Tuyển dụng ➜ Ứng viên  ·  Vận hành lao động ➜ Xếp ca &amp; Booking / Phân ca lao động</strong></p>
         </div>
         <span class="flow-freq freq-daily">Hàng ngày</span>
       </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Tạo phân ca</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM, TD PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), TD Lead (team), TD NV (self), BP Xe PM (team), QL tuyến (self), Điều phối (self), Lái xe (self), Kế toán PM (self), BHXH (self), Thuế (self), Tính lương (self), HCNS (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án</span></li><li><strong>Màn hình Phân ca lao động</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương, HCNS)</span></li><li><strong>Duyệt phân ca ứng viên</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM, BP Xe PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (TD PM, TD Lead, TD NV, Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương, HCNS)</span> · <span class="pm-none">Không có quyền: Tổng GĐ, GĐ công ty, GĐ dự án</span></li></ul></div>
       <div class="flow-steps">
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">1</div>
           <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#shift-approval" target="_blank">🗓️ Xếp ca &amp; Booking</a> → Nhấn vào bất kì ô nào trên lịch → Nhấn <strong>"Duyệt phân ca"</strong>
-            </div>
-            <div class="step-desc">Xem danh sách lao động đã đăng ký ca trong ô đó, tick chọn → Duyệt</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Danh sách Ứng viên ➜ mở rộng dòng ứng viên (dấu +) ➜ ⋮ trên dòng <strong>dự án</strong> ➜ <strong>Phân ca</strong></span></div>
+            <div class="step-action">Popup "Phân ca ứng viên": chọn <strong>Tháng</strong> <span class="img-num">4</span> → tick các <strong>ngày làm việc</strong> <span class="img-num">3</span> (hoặc "Chọn tất cả" <span class="img-num">1</span> / "Bỏ chọn tất cả" <span class="img-num">2</span>) → chọn <strong>Ca làm việc</strong> <span class="img-num">5</span> → <strong>Vị trí làm việc</strong> <span class="img-num">6</span> → <strong>"Lưu"</strong> <span class="img-num">7</span></div>
+            <div class="step-desc">Phù hợp khi cần phân ca cho nhiều ngày liên tiếp cùng lúc. Ứng viên phải <strong>Đã duyệt</strong> vào dự án (mục 2).</div>
+            <img class="step-screenshot" src="images/web/phân ca ứng viên.png" alt="Popup phân ca ứng viên" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
         <div class="step-row">
+          <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">
-              Hoặc vào <a class="step-link" href="huong-dan-nguoi-dung.html#shift-registration" target="_blank">📋 Duyệt phân ca ứng viên</a>
-            </div>
-            <div class="step-desc">Xem trạng thái đăng ký ca của từng lao động: <strong>Chờ duyệt / Xác nhận một phần / Đã xác nhận / Đã huỷ</strong></div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu Vận hành lao động ➜ <strong>Xếp ca &amp; Booking</strong></span></div>
+            <div class="step-action">Xem lịch booking của dự án: mỗi ca hiển thị <strong>đã phân công / tuyển dụng + xe đưa đón</strong> (VD <code>0/20+10</code>) → nhấn vào ô ngày để xem lao động từng ca</div>
+            <div class="step-desc">Tuyển dụng xem được số lượng booking (mức xem) — việc đặt/sửa booking do vai trò có quyền booking thực hiện (QL PM, Leader, Ad-onsite…).</div>
+            <div class="step-multi single">☝️ <strong>Chỉ chọn 1 dự án:</strong> lịch booking hiển thị theo từng dự án, muốn xem dự án khác phải đổi ô Dự án <span class="img-num">1</span>.</div>
+            <img class="step-screenshot" src="images/web/xếp ca và booking ca.png" alt="Xếp ca & Booking" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu Vận hành lao động ➜ <strong>Phân ca lao động</strong></span></div>
+            <div class="step-action">Theo dõi trạng thái từng lao động trong ca: <strong>Chờ duyệt / Đã phân công</strong>; lọc theo Group / Vùng / Dự án <span class="img-num">6</span> và ngày <span class="img-num">7</span></div>
+            <div class="step-desc">Tuyển dụng chỉ <strong>xem</strong> màn hình này; nút ✓ Duyệt / 🚫 Từ chối <span class="img-num">9</span> và duyệt chính thức do vai trò có quyền duyệt thực hiện.</div>
+            <div class="step-multi">🔀 <strong>Chọn nhiều dự án:</strong> bộ lọc <strong>Dự án</strong> <span class="img-num">6</span> cho chọn nhiều dự án (hoặc <strong>Chọn tất cả</strong>) — mỗi dự án hiện thành một khối ca riêng.</div>
+            <img class="step-screenshot" src="images/web/phân ca.png" alt="Màn hình Phân ca nhân sự" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
       </div>
     </div>
 
-  </div><!-- /flows-grid -->
+    <div class="flow-card" id="td-4">
+      <div class="flow-card-header td">
+        <div class="flow-num">4</div>
+        <div>
+          <h3>Đăng ký ứng viên vào lịch phỏng vấn</h3>
+          <p>Chọn lịch đã được tạo sẵn rồi thêm ứng viên vào lịch; cập nhật kết quả sau phỏng vấn</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Tuyển dụng ➜ Lịch phỏng vấn</strong></p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
+      </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Tạo / sửa lịch phỏng vấn</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án, HCNS</span> · <span class="pm-none">Vai trò Tuyển dụng (TD PM, TD Lead, TD NV) <strong>không có quyền tạo/sửa lịch</strong></span></li><li><strong>Thêm / xóa ứng viên vào lịch</strong> — <span class="pm-all">Tuyển dụng: TD PM (toàn quyền), TD Lead (team), TD NV (self)</span> · Quản lý cũng thao tác được theo phạm vi ở trên</li></ul></div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">📅 Tuyển dụng ➜ Lịch phỏng vấn</span></div>
+            <div class="step-action">Chọn tháng <span class="img-num">3</span> → nhấn vào lịch trên calendar <span class="img-num">4</span> để xem chi tiết</div>
+            <div class="step-desc">Lịch hiển thị theo tháng — nhấn vào một ô lịch để xem chi tiết và thêm ứng viên vào.</div>
+            <img class="step-screenshot" src="images/danh sách lịch phỏng vấn.png" alt="Danh sách lịch phỏng vấn" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+            <div class="step-tip">⚠️ Vai trò Tuyển dụng <strong>không có quyền tạo lịch mới</strong>. Chưa có lịch phù hợp → nhờ vai trò có quyền tạo lịch (Admin, QL PM, Leader, Ad-onsite…) tạo trước.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Chi tiết lịch phỏng vấn</span></div>
+            <div class="step-action">Nhấn <strong>"Thêm ứng viên"</strong> → chọn ứng viên đã đăng ký dự án → xác nhận</div>
+            <div class="step-desc">Ứng viên nhận thông báo qua app: ngày giờ, địa điểm/link meeting và tên người phỏng vấn.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Hồ sơ ứng viên (sau buổi phỏng vấn)</span></div>
+            <div class="step-action">Cập nhật <strong>Kết quả ứng viên</strong>: Đậu / Trượt / Hẹn lại → Lưu</div>
+            <div class="step-desc">Đậu → vai trò có quyền tạo hồ sơ lao động &amp; hợp đồng (mục 6, 7 tab Quản lý &amp; Vận hành). Hẹn lại → nhờ vai trò có quyền tạo lịch mới, Tuyển dụng thêm ứng viên vào.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-card" id="td-5">
+      <div class="flow-card-header td">
+        <div class="flow-num">5</div>
+        <div>
+          <h3>Theo dõi hiệu suất tuyển dụng</h3>
+          <p>Xem báo cáo để đánh giá kết quả và phân bổ nguồn lực</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Tuyển dụng ➜ Báo cáo tuyển dụng</strong></p>
+        </div>
+        <span class="flow-freq freq-monthly">Hàng tuần / tháng</span>
+      </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Báo cáo tuyển dụng</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), TD PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: QL PM (self), Leader (self), Ad-onsite (self), TD Lead (team), TD NV (self), BP Xe PM (team), QL tuyến (self), Điều phối (self), Lái xe (self), Kế toán PM (self), BHXH (self), Thuế (self), Tính lương (self), HCNS (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án</span></li><li><strong>Dashboard tuyển dụng</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), TD PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: QL PM (self), Leader (self), Ad-onsite (self), TD Lead (team), TD NV (self), BP Xe PM (team), QL tuyến (self), Điều phối (self), Lái xe (self), Kế toán PM (self), BHXH (self), Thuế (self), Tính lương (self), HCNS (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án</span></li></ul></div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge"><a class="step-link" style="padding:0;border:0;background:none" href="huong-dan-nguoi-dung.html#recruitment-report" target="_blank">📊 Tuyển dụng ➜ Báo cáo tuyển dụng</a></span></div>
+            <div class="step-action">Xem KPI: Tổng ứng viên · Đã PV · Đã nhận việc · Tỉ lệ chuyển đổi — lọc theo kỳ / dự án / nguồn tuyển dụng</div>
+            <div class="step-desc">Bộ lọc dự án và nguồn tuyển dụng ở báo cáo cho chọn nhiều giá trị.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-card" id="td-6">
+      <div class="flow-card-header td">
+        <div class="flow-num">6</div>
+        <div>
+          <h3>Các màn hình chỉ xem (Hồ sơ lao động, Hợp đồng, Người phụ thuộc…)</h3>
+          <p>Tuyển dụng tra cứu được nhưng không tạo/sửa — phần tạo/sửa do vai trò có quyền thực hiện (Admin, QL PM, Leader, Ad-onsite, HCNS…)</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Tuyển dụng ➜ Hồ sơ lao động / Hợp đồng lao động / Người phụ thuộc</strong></p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi cần tra cứu</span>
+      </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Hồ sơ lao động</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM, HCNS</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương)</span></li><li><strong>Hợp đồng lao động</strong> — <span class="pm-all">Toàn quyền: Tổng GĐ, GĐ công ty, Admin (Sys), GĐ dự án, QL PM, HCNS</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: TD PM, TD Lead, TD NV, Kế toán PM, BHXH, Thuế, Tính lương</span> · <span class="pm-none">Không có quyền: Điều phối, Lái xe</span></li><li><strong>Người phụ thuộc</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM, HCNS</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, Kế toán PM, BHXH, Thuế, Tính lương)</span> · <span class="pm-none">Không có quyền: Điều phối, Lái xe</span></li><li><strong>Danh sách đen</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM, Leader, Ad-onsite, HCNS</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, BP Xe PM, QL tuyến, Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương)</span></li><li><strong>Form đăng ký ca</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, Điều phối</span> · <span class="pm-none">Không có quyền: Lái xe, Kế toán PM, BHXH, Thuế, Tính lương, HCNS</span></li></ul></div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu Tuyển dụng ➜ <strong>Hồ sơ lao động</strong></span></div>
+            <div class="step-action">Tra cứu hồ sơ bằng bộ lọc <span class="img-num">3</span> → <strong>"Áp dụng"</strong> <span class="img-num">4</span> → nhấn <strong>Xem</strong> <span class="img-num">5</span></div>
+            <div class="step-desc">Các nút <strong>Import Lao động</strong> <span class="img-num">1</span>, <strong>Tạo hồ sơ</strong> <span class="img-num">2</span> và <strong>Chỉnh sửa</strong> <span class="img-num">6</span> dành cho Quản lý.</div>
+            <img class="step-screenshot" src="images/web/danh sách hoso.png" alt="Danh sách hồ sơ lao động" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu Tuyển dụng ➜ <strong>Hợp đồng lao động</strong></span></div>
+            <div class="step-action">Xem tổng quan (HĐ hiệu lực · Chờ LĐ ký · Sắp/đã hết hạn), lọc <span class="img-num">2</span> và xem chi tiết HĐ <span class="img-num">3</span></div>
+            <div class="step-desc">Tạo / sửa / upload bản ký hợp đồng do vai trò có quyền tạo/sửa thực hiện (nút <strong>Tạo HĐ Mới</strong> <span class="img-num">1</span>).</div>
+            <img class="step-screenshot" src="images/web/danh sách hợp đồng lao động.png" alt="Danh sách hợp đồng lao động" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Các menu còn lại</span></div>
+            <div class="step-action"><strong>Người phụ thuộc</strong> (xem MST/NPT của lao động) · <strong>Danh sách đen</strong> (tra cứu lao động bị blacklist trước khi nhận) · <strong>Form đăng ký ca</strong> (xem các form đang mở)</div>
+            <div class="step-desc">Hệ thống cũng tự cảnh báo khi nhập CCCD/SĐT trùng lao động trong danh sách đen.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div><!-- /tuyen-dung -->
 
 
@@ -596,353 +624,318 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 ═══════════════════════════════════════════════════════ -->
 <div class="dept-section" id="quan-ly">
   <div class="dept-header ql">
-    <h2>📋 Bộ phận Quản lý &amp; Vận hành</h2>
-    <p>Lập kế hoạch dự án, điều phối ca làm việc hàng ngày, giám sát quân số và xử lý các yêu cầu từ lao động.</p>
+    <h2>📋 Module Quản lý &amp; Vận hành</h2>
+    <p>Lập kế hoạch dự án, điều phối ca làm việc hàng ngày, giám sát quân số và xử lý các yêu cầu từ lao động. Nhiều vai trò cùng vào được các màn hình này (VD Quản lý tuyến xe, Điều phối, Kế toán…) — mỗi vai trò làm được gì và trong phạm vi nào xem khung 🔐 Phân quyền ở từng chức năng.</p>
     <div class="roles-row">
       <span class="role-chip">🏢 Admin</span>
       <span class="role-chip">🎯 Giám đốc dự án (GĐ DA)</span>
       <span class="role-chip">👔 Quản lý PM (QL PM)</span>
       <span class="role-chip">🔶 Leader / Trưởng ca</span>
       <span class="role-chip">🏗️ Admin onsite (Ad-onsite)</span>
+      <span class="role-chip">👥 + các vai trò khác theo quyền</span>
     </div>
   </div>
 
-  <div class="dept-toc">
-    <div class="dept-toc-title">📋 Tổng quan nghiệp vụ — Quản lý &amp; Vận hành</div>
-    <table>
-      <thead><tr><th>#</th><th>Nghiệp vụ</th><th>Mô tả ngắn</th><th>Tần suất</th></tr></thead>
-      <tbody>
-        <tr><td><span class="toc-num">1</span></td><td><div class="toc-name">Khởi tạo dự án mới</div></td><td class="toc-desc">Tạo dự án, cấu hình ca làm việc, chính sách thưởng, mở dự án</td><td><span class="toc-freq once">Khi có dự án mới</span></td></tr>
-        <tr><td><span class="toc-num">2</span></td><td><div class="toc-name">Tạo form đăng ký ca</div></td><td class="toc-desc">Cho phép lao động chủ động đăng ký ca qua app; chia sẻ link</td><td><span class="toc-freq asneeded">Mỗi đợt / tuần</span></td></tr>
-        <tr><td><span class="toc-num">3</span></td><td><div class="toc-name">Booking ca &amp; Xếp ca hàng ngày</div></td><td class="toc-desc">Đặt số lượng ca cần, phân công lao động cụ thể từng vị trí</td><td><span class="toc-freq daily">Hàng ngày</span></td></tr>
-        <tr><td><span class="toc-num">4</span></td><td><div class="toc-name">Giám sát quân số &amp; Cập nhật thực tế</div></td><td class="toc-desc">Theo dõi điểm danh, cập nhật vắng mặt, bổ sung lao động thiếu</td><td><span class="toc-freq daily">Hàng ngày</span></td></tr>
-        <tr><td><span class="toc-num">5</span></td><td><div class="toc-name">Xác nhận bảng chấm công</div></td><td class="toc-desc">Duyệt bảng công cuối tháng làm đầu vào tính lương</td><td><span class="toc-freq monthly">Hàng tháng</span></td></tr>
-        <tr><td><span class="toc-num">6</span></td><td><div class="toc-name">Duyệt nghỉ phép, ứng lương &amp; khiếu nại</div></td><td class="toc-desc">Xem xét và phê duyệt các yêu cầu phát sinh từ lao động</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
-        <tr><td><span class="toc-num">7</span></td><td><div class="toc-name">Xử lý lao động vi phạm</div></td><td class="toc-desc">Ghi nhận vi phạm, cảnh báo, thêm vào danh sách đen nếu cần</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
-        <tr><td><span class="toc-num">8</span></td><td><div class="toc-name">Tạo lịch phỏng vấn</div></td><td class="toc-desc">Tạo lịch phỏng vấn để bộ phận Tuyển dụng đăng ký ứng viên vào</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
-        <tr><td><span class="toc-num">9</span></td><td><div class="toc-name">Tạo hồ sơ lao động</div></td><td class="toc-desc">Chuyển ứng viên đậu thành lao động chính thức; tuyển dụng chỉ View</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
-        <tr><td><span class="toc-num">10</span></td><td><div class="toc-name">Tạo &amp; Phát hành hợp đồng lao động</div></td><td class="toc-desc">Soạn, ký, upload bản đã ký; tuyển dụng không có quyền tạo</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
-        <tr><td><span class="toc-num">11</span></td><td><div class="toc-name">Khai báo người phụ thuộc (NPT)</div></td><td class="toc-desc">Khai báo MST và NPT để giảm trừ thuế TNCN; tuyển dụng chỉ View</td><td><span class="toc-freq asneeded">Khi phát sinh</span></td></tr>
-        <tr><td><span class="toc-num">12</span></td><td><div class="toc-name">Duyệt phân ca lao động</div></td><td class="toc-desc">Xác nhận đăng ký ca của lao động; hệ thống kiểm tra đủ điều kiện trước khi phân công chính thức</td><td><span class="toc-freq daily">Hàng ngày</span></td></tr>
-      </tbody>
-    </table>
+  <div class="quick-nav">
+    <div class="quick-nav-title">🧭 Bạn muốn làm gì? — chọn chức năng để nhảy tới hướng dẫn</div>
+    <div class="qn-group"><div class="qn-group-name">📁 Dự án</div><div class="qn-items">
+      <a class="qn-item" href="#ql-1" onclick="qlGo('ql-1');return false"><span class="qn-title">Tạo &amp; cấu hình dự án</span><span class="qn-menu">🧭 Dự án ➜ Dự án tuyển dụng</span><span class="qn-brief">Ca làm việc, lương khung giờ, phụ cấp, thưởng</span></a>
+      <a class="qn-item" href="#ql-2" onclick="qlGo('ql-2');return false"><span class="qn-title">Tạo form đăng ký ca</span><span class="qn-menu">🧭 Dự án ➜ Form đăng ký ca</span><span class="qn-brief">Mở form cho lao động tự đăng ký ca</span></a>
+    </div></div>
+    <div class="qn-group"><div class="qn-group-name">👤 Tuyển dụng</div><div class="qn-items">
+      <a class="qn-item" href="#ql-3" onclick="qlGo('ql-3');return false"><span class="qn-title">Ứng viên: tìm, thêm, cập nhật hồ sơ</span><span class="qn-menu">🧭 Tuyển dụng ➜ Ứng viên</span><span class="qn-brief">Quét CCCD, giấy tờ, kết quả tuyển</span></a>
+      <a class="qn-item" href="#ql-4" onclick="qlGo('ql-4');return false"><span class="qn-title">Thêm ứng viên vào dự án / duyệt / phân ca</span><span class="qn-menu">🧭 Tuyển dụng ➜ Ứng viên ➜ ⋮</span><span class="qn-brief">Đăng ký dự án, Đã duyệt, phân ca nhiều ngày</span></a>
+      <a class="qn-item" href="#ql-5" onclick="qlGo('ql-5');return false"><span class="qn-title">Tạo lịch phỏng vấn</span><span class="qn-menu">🧭 Tuyển dụng ➜ Lịch phỏng vấn</span><span class="qn-brief">Tạo lịch (không gồm Tuyển dụng) · Tuyển dụng thêm ứng viên</span></a>
+      <a class="qn-item" href="#ql-6" onclick="qlGo('ql-6');return false"><span class="qn-title">Tạo hồ sơ lao động / import Excel</span><span class="qn-menu">🧭 Tuyển dụng ➜ Hồ sơ lao động</span><span class="qn-brief">Từng người hoặc hàng loạt</span></a>
+      <a class="qn-item" href="#ql-7" onclick="qlGo('ql-7');return false"><span class="qn-title">Tạo &amp; phát hành hợp đồng</span><span class="qn-menu">🧭 Tuyển dụng ➜ Hợp đồng lao động</span><span class="qn-brief">Soạn, xem trước, upload bản đã ký</span></a>
+      <a class="qn-item" href="#ql-8" onclick="qlGo('ql-8');return false"><span class="qn-title">Khai báo người phụ thuộc</span><span class="qn-menu">🧭 Tuyển dụng ➜ Người phụ thuộc</span><span class="qn-brief">MST &amp; NPT giảm trừ thuế</span></a>
+    </div></div>
+    <div class="qn-group"><div class="qn-group-name">🗓️ Vận hành lao động</div><div class="qn-items">
+      <a class="qn-item" href="#ql-9" onclick="qlGo('ql-9');return false"><span class="qn-title">Booking ca hàng ngày</span><span class="qn-menu">🧭 Vận hành ➜ Xếp ca &amp; Booking</span><span class="qn-brief">Số LĐ cần + số ghế xe theo ca</span></a>
+      <a class="qn-item" href="#ql-10" onclick="qlGo('ql-10');return false"><span class="qn-title">Phân ca &amp; duyệt phân ca</span><span class="qn-menu">🧭 Vận hành ➜ Phân ca lao động</span><span class="qn-brief">Duyệt, phân thủ công, LĐ cố định</span></a>
+      <a class="qn-item" href="#ql-11" onclick="qlGo('ql-11');return false"><span class="qn-title">Báo cáo quân số</span><span class="qn-menu">🧭 Vận hành ➜ Báo cáo quân số</span><span class="qn-brief">Thực tế đi làm, nghỉ việc, sự vụ</span></a>
+    </div></div>
+    <div class="qn-group"><div class="qn-group-name">🎧 CSKH lao động</div><div class="qn-items">
+      <a class="qn-item" href="#ql-12" onclick="qlGo('ql-12');return false"><span class="qn-title">Duyệt nghỉ phép, ứng lương, khiếu nại</span><span class="qn-menu">🧭 CSKH lao động ➜ 3 mục tương ứng</span><span class="qn-brief">Yêu cầu từ app của lao động</span></a>
+      <a class="qn-item" href="#ql-13" onclick="qlGo('ql-13');return false"><span class="qn-title">Đề xuất bảo hiểm</span><span class="qn-menu">🧭 CSKH lao động ➜ Đề xuất bảo hiểm</span><span class="qn-brief">Tăng / giảm BHXH theo tháng</span></a>
+    </div></div>
+    <div class="qn-group"><div class="qn-group-name">🚫 Pháp lý &amp; rủi ro</div><div class="qn-items">
+      <a class="qn-item" href="#ql-14" onclick="qlGo('ql-14');return false"><span class="qn-title">Danh sách đen</span><span class="qn-menu">🧭 Pháp lý &amp; rủi ro ➜ Danh sách đen</span><span class="qn-brief">Chặn lao động vi phạm</span></a>
+    </div></div>
+  </div>
+
+  <div class="perm-legend">🔐 <strong>Cách đọc phân quyền ở mỗi chức năng</strong> (theo <em>RBAC_Permission_Matrix.xlsx</em>):
+    <ul>
+      <li><strong>Toàn quyền</strong> = xem + tạo/sửa/duyệt · <strong>Chỉ xem</strong> = không thao tác được.</li>
+      <li><strong>(self)</strong> = chỉ dữ liệu/dự án của mình hoặc được gán (VD Ad-onsite) · <strong>(team)</strong> = của mình + cấp dưới (VD Leader thấy cả dự án của Ad-onsite mình quản lý).</li>
+      <li><strong>🔀 Chọn nhiều dự án</strong> / <strong>☝️ Chỉ chọn 1 dự án</strong> được ghi chú ngay tại bước có ô chọn dự án.</li>
+    </ul>
   </div>
 
   <div class="flows-grid ql">
 
     <!-- Flow 1 -->
-    <div class="flow-card">
+    <div class="flow-card" id="ql-1">
       <div class="flow-card-header ql">
         <div class="flow-num">1</div>
         <div>
           <h3>Khởi tạo dự án mới</h3>
-          <p>Cấu hình đầy đủ dự án trước khi bắt đầu tuyển dụng &amp; vận hành</p>
+          <p>Tạo dự án, cấu hình ca làm việc, lương theo khung giờ và phụ cấp trước khi bắt đầu tuyển dụng &amp; vận hành</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Dự án ➜ Dự án tuyển dụng</strong></p>
         </div>
         <span class="flow-freq freq-once">Khi có dự án mới</span>
       </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Xem danh sách dự án</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), GĐ dự án, QL PM</span> · <span class="pm-scope">Sửa theo phạm vi: Leader (team), Ad-onsite (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, TD PM, TD Lead, TD NV, BP Xe PM, QL tuyến, Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương, HCNS)</span></li><li><strong>Tạo dự án</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), GĐ dự án, QL PM</span> · <span class="pm-none">Không có quyền: 16 vai trò còn lại</span></li><li><strong>Sửa thông tin, kế hoạch ca, thưởng</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), GĐ dự án, QL PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, TD PM, TD Lead, TD NV, Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương, HCNS)</span></li><li><strong>Lương theo khung giờ</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: GĐ dự án (self), Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, TD PM, TD Lead, TD NV, Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương, HCNS)</span></li><li><strong>Đóng / mở dự án</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), GĐ dự án, QL PM</span> · <span class="pm-none">Không có quyền: 16 vai trò còn lại</span></li></ul></div>
       <div class="flow-steps">
+
+        <!-- Bước 1: Danh sách dự án -->
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">1</div>
           <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#project-list" target="_blank">📋 Dự án tuyển dụng</a> <span class="img-num">1</span> → Nhấn <strong>"Tạo dự án"</strong>
-            </div>
-            <img class="step-screenshot" src="images/tạo dự án.png" alt="Form tạo dự án mới" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+            <div class="step-where">📍 Ở đâu <span class="where-badge"><a class="step-link" style="padding:0;border:0;background:none" href="huong-dan-nguoi-dung.html#project-list" target="_blank">📋 Dự án ➜ Dự án tuyển dụng</a></span></div>
+            <div class="step-action">Nhấn <strong>"Tạo dự án"</strong> <span class="img-num">4</span> ở góc trên phải</div>
+            <div class="step-desc">Ô tìm kiếm <span class="img-num">1</span> · Thêm người quản lý <span class="img-num">2</span> · Import dự án hàng loạt <span class="img-num">3</span> · Bộ lọc nhóm/vùng/quản lý <span class="img-num">5</span> · Mỗi thẻ dự án có nút "Đóng dự án" <span class="img-num">6</span> khi cần ngừng hoạt động</div>
+            <div class="step-multi">🔀 <strong>Chọn nhiều dự án:</strong> nút <strong>Thêm người quản lý</strong> <span class="img-num">2</span> gán một quản lý cho nhiều dự án cùng lúc (chọn quản lý → tick các dự án).</div>
+            <img class="step-screenshot" src="images/web/danh sách dự án.png" alt="Danh sách dự án" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
+
+        <!-- Bước 2: Tab Dự án -->
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Tab <strong>Dự án <span class="img-num">2</span></strong>: Điền thông tin cơ bản</div>
-            <div class="step-desc">Tên dự án <span class="img-num">4</span> ✱ · Mô tả ngắn <span class="img-num">5</span> ✱ · Mô tả chi tiết <span class="img-num">6</span> ✱ · Mã dự án <span class="img-num">7</span> · Địa điểm <span class="img-num">8</span> · Lương <span class="img-num">9</span> ✱ · Loại công việc <span class="img-num">10</span> ✱ · Tags <span class="img-num">12</span> · Logo <span class="img-num">14</span> ✱</div>
-            <div class="step-tip">Thêm <strong>Vị trí công việc <span class="img-num">15</span></strong> và <strong>Quản lý dự án <span class="img-num">16</span></strong> ở sidebar phải (VD: Leader, Công nhân) trước khi lưu</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Trang "Chi tiết dự án" vừa mở → tab <strong>Dự án</strong> <span class="img-num">16</span></span></div>
+            <div class="step-action">Điền thông tin cơ bản của dự án</div>
+            <div class="step-desc">Tên dự án <span class="img-num">1</span> ✱ · Mô tả ngắn gọn <span class="img-num">2</span> ✱ · Mô tả chi tiết công việc <span class="img-num">3</span> ✱ · Mã dự án <span class="img-num">4</span> ✱ · Địa điểm làm việc <span class="img-num">5</span> · Lương <span class="img-num">6</span> ✱ · Loại công việc <span class="img-num">7</span> ✱ · Giới tính <span class="img-num">8</span> · Thẻ <span class="img-num">9</span> · Hồ sơ yêu cầu (CCCD/Ảnh chân dung/Giấy khám sức khỏe/CV) <span class="img-num">10</span> · Logo <span class="img-num">11</span> ✱</div>
+            <div class="step-tip">Sidebar phải: chọn <strong>Khu vực</strong> (Group / Vùng / Tỉnh / Phường) <span class="img-num">12</span> · thêm <strong>Vị trí công việc</strong> <span class="img-num">13</span> (VD: Leader, Công nhân) · gán <strong>Quản lý dự án</strong> <span class="img-num">14</span> — nên điền đủ trước khi lưu để các tab sau (Kế hoạch ca, Phụ cấp...) có dữ liệu để chọn</div>
+            <img class="step-screenshot" src="images/web/chi tiết dự án.png" alt="Tab Dự án - Chi tiết dự án" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+            <div class="step-desc" style="margin-top:8px">Nhấn <strong>"Lưu thay đổi"</strong> <span class="img-num">15</span> để lưu tab này trước khi sang tab tiếp theo</div>
           </div>
         </div>
+
+        <!-- Bước 3: Tab Kế hoạch ca -->
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">3</div>
           <div class="step-body">
-            <div class="step-action">Tab <strong>Kế hoạch ca <span class="img-num">3</span></strong>: Cấu hình ca làm việc</div>
-            <div class="step-desc">Định nghĩa các ca (sáng/chiều/đêm), giờ bắt đầu-kết thúc từng ca</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Tab <strong>Kế hoạch ca</strong></span></div>
+            <div class="step-action">Nhấn <strong>"+ Thêm ca mới"</strong> <span class="img-num">3</span> để tạo từng ca làm việc</div>
+            <div class="step-desc">Danh sách hiển thị theo bảng: Tên ca · Thời gian · Khoảng ngày áp dụng · Thao tác (Sửa <span class="img-num">4</span> / Sao chép <span class="img-num">5</span> / Xóa <span class="img-num">6</span>). Ô tìm kiếm ca <span class="img-num">1</span> và lọc theo ca <span class="img-num">2</span> ở trên.</div>
+            <img class="step-screenshot" src="images/web/kế hoạch ca.png" alt="Tab Kế hoạch ca" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
+
+        <!-- Bước 4: Form Thêm ca làm việc -->
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">4</div>
           <div class="step-body">
-            <div class="step-action">Tab <strong>Thưởng</strong>: Thiết lập chính sách thưởng <span class="img-num">1</span></div>
-            <div class="step-desc">Thưởng chuyên cần, thưởng hiệu suất, thưởng đặc biệt</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Popup "Thêm ca làm việc" (mở từ nút ở bước 3)</span></div>
+            <div class="step-action">Điền thông tin ca → Nhấn <strong>"Tạo ca làm việc"</strong> <span class="img-num">11</span></div>
+            <div class="step-desc">Tên ca <span class="img-num">1</span> ✱ · Ngày bắt đầu/kết thúc áp dụng <span class="img-num">2</span><span class="img-num">3</span> · Giờ bắt đầu <span class="img-num">4</span> ✱ · Giờ kết thúc <span class="img-num">5</span> ✱ · Thời lượng <span class="img-num">6</span> (hệ thống tự tính) · Giờ bắt đầu/kết thúc nghỉ <span class="img-num">7</span><span class="img-num">8</span> · Giới tính áp dụng <span class="img-num">9</span> · Ghi chú <span class="img-num">10</span></div>
+            <img class="step-screenshot" src="images/web/thêm ca làm việc.png" alt="Popup thêm ca làm việc" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+            <div class="step-tip">Cần khai báo <strong>giờ bắt đầu &amp; kết thúc</strong> trước — panel bên phải sẽ hiện phân bổ giờ lương / thu nhập dự kiến sau khi đủ dữ liệu (liên kết với tab Lương theo khung giờ)</div>
           </div>
         </div>
+
+        <!-- Bước 5: Sao chép ca sang dự án khác -->
         <div class="step-row">
+          <div class="step-line"></div>
           <div class="step-dot">5</div>
           <div class="step-body">
-            <div class="step-action">Nhấn <strong>"Lưu thay đổi" <span class="img-num">17</span></strong> → Mở trạng thái dự án</div>
-            <div class="step-desc">Thông báo cho team Tuyển dụng để bắt đầu tiếp nhận ứng viên</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Icon 📋 "Sao chép" trên dòng ca (tab Kế hoạch ca)</span></div>
+            <div class="step-action">Dùng khi các dự án khác dùng chung mẫu ca → Nhấn icon sao chép → Chọn dự án đích → Nhấn <strong>"Sao chép"</strong> <span class="img-num">5</span></div>
+            <div class="step-desc">Lọc theo Khu vực <span class="img-num">1</span> / Tỉnh-Thành <span class="img-num">2</span> → Tick "Chọn tất cả" <span class="img-num">3</span> hoặc chọn từng dự án <span class="img-num">4</span></div>
+            <div class="step-multi">🔀 <strong>Chọn nhiều dự án:</strong> popup cho tick nhiều dự án đích (hoặc <strong>Chọn tất cả</strong>) — sao chép 1 lần cho nhiều dự án. Nút sao chép cũng có ở tab <strong>Lương theo khung giờ</strong>, <strong>Phụ cấp</strong>, <strong>Thưởng</strong>.</div>
+            <img class="step-screenshot" src="images/web/sao chép ca làm việc.png" alt="Popup sao chép ca sang dự án khác" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+            <div class="step-desc">Áp dụng tương tự cho từng ca cần dùng lại — tránh phải tạo tay lại từ đầu ở mỗi dự án</div>
           </div>
         </div>
+
+        <!-- Bước 6: Tab Lương theo khung giờ -->
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">6</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Tab <strong>Lương theo khung giờ</strong> → "Thêm định nghĩa"</span></div>
+            <div class="step-action">Khai báo mức lương áp dụng theo từng khung giờ trong ca</div>
+            <div class="step-desc">Tên định nghĩa <span class="img-num">1</span> (VD: Khung sáng, Khung tối) · Ngày bắt đầu/kết thúc/ngày đặc biệt <span class="img-num">2</span> · Đơn vị tính lương <span class="img-num">3</span>: Theo giờ / Theo tháng / Khoán SL / Theo ca · Giờ bắt đầu-kết thúc khung <span class="img-num">6</span><span class="img-num">7</span> · Lương lao động cố định <span class="img-num">8</span> · Lương lao động xe đưa đón <span class="img-num">9</span> · Lương tăng ca cố định <span class="img-num">10</span> · Lương tăng ca xe đưa đón <span class="img-num">11</span> · Ghi chú <span class="img-num">12</span></div>
+            <img class="step-screenshot" src="images/web/thêm lương khung giờ.png" alt="Popup thêm định nghĩa lương khung giờ" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+            <div class="step-desc">Nhấn <strong>"Lưu định nghĩa"</strong> <span class="img-num">13</span> — có thể thêm nhiều khung giờ khác nhau (sáng/tối) với mức lương riêng cho cùng 1 dự án</div>
+          </div>
+        </div>
+
+        <!-- Bước 7: Tab Phụ cấp -->
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">7</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Tab <strong>Phụ cấp</strong> → "Thêm phụ cấp"</span></div>
+            <div class="step-action">Thiết lập khoản phụ cấp ngoài lương cơ bản (nếu dự án có)</div>
+            <div class="step-desc">Loại phụ cấp <span class="img-num">1</span> (hoặc "+ Tạo loại phụ cấp mới" <span class="img-num">2</span>) · Ngày bắt đầu/kết thúc <span class="img-num">3</span><span class="img-num">4</span> · Số tiền/ca <span class="img-num">5</span> ✱ · Điều kiện nhận <span class="img-num">6</span> · Áp dụng cho loại lao động <span class="img-num">7</span> · Áp dụng cho đơn vị tính lương <span class="img-num">8</span> · Áp dụng cho ca cụ thể <span class="img-num">9</span> (không chọn = áp dụng tất cả)</div>
+            <img class="step-screenshot" src="images/web/thêm phụ cấp.png" alt="Popup thêm phụ cấp" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+            <div class="step-desc">Nhấn <strong>"Lưu phụ cấp"</strong> <span class="img-num">10</span></div>
+          </div>
+        </div>
+
+        <!-- Bước 8: Tab Thưởng + hoàn tất -->
+        <div class="step-row">
+          <div class="step-dot">8</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Tab <strong>Thưởng</strong></span></div>
+            <div class="step-action">Thiết lập chính sách thưởng (chuyên cần, hiệu suất, đặc biệt...) nếu dự án có áp dụng</div>
+            <div class="step-note">✅ Sau khi hoàn tất cả 5 tab (Dự án · Kế hoạch ca · Lương theo khung giờ · Phụ cấp · Thưởng), dự án sẵn sàng để mở trạng thái hoạt động — thông báo cho team Tuyển dụng bắt đầu tiếp nhận ứng viên</div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- Flow 2 -->
-    <div class="flow-card">
+
+    <div class="flow-card" id="ql-2">
       <div class="flow-card-header ql">
         <div class="flow-num">2</div>
         <div>
           <h3>Tạo form để lao động tự đăng ký ca</h3>
-          <p>Cho phép lao động linh hoạt chủ động đăng ký ca muốn làm</p>
+          <p>Mở form theo tuần để lao động chủ động đăng ký ca qua app / link</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Dự án ➜ Form đăng ký ca</strong></p>
         </div>
-        <span class="flow-freq freq-asneeded">Mỗi đợt tuyển / theo tuần</span>
+        <span class="flow-freq freq-asneeded">Mỗi đợt / theo tuần</span>
       </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Form đăng ký ca</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, Điều phối</span> · <span class="pm-none">Không có quyền: Lái xe, Kế toán PM, BHXH, Thuế, Tính lương, HCNS</span></li></ul></div>
       <div class="flow-steps">
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">1</div>
           <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#shift-register-form" target="_blank">📝 Form đăng ký ca</a> → Nhấn <strong>"+ Tạo form mới"</strong>
-            </div>
-            <img class="step-screenshot" src="images/tạo form đăng kí ca.png" alt="Form tạo form đăng ký ca" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu Dự án ➜ <strong>Form đăng ký ca</strong></span></div>
+            <div class="step-action">Xem các form đã tạo: tìm theo ghi chú/mã dự án <span class="img-num">1</span> · lọc Dự án <span class="img-num">2</span> · lọc Trạng thái <span class="img-num">3</span></div>
+            <div class="step-desc">Trạng thái form: <strong>Đang mở</strong> · Đã đóng (thủ công) · Đã đóng (hết hạn). Nút <strong>"+ Tạo form mới"</strong> <span class="img-num">4</span> ở góc trên phải.</div>
+            <img class="step-screenshot" src="images/web/danh sách form đăng kí ca.png" alt="Danh sách form đăng ký ca" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Chọn <strong>Dự án <span class="img-num">1</span></strong> ✱ · <strong>Ngày bắt đầu <span class="img-num">2</span></strong> ✱ · <strong>Ngày kết thúc <span class="img-num">3</span></strong> ✱</div>
-            <div class="step-desc">Thêm <strong>Ghi chú <span class="img-num">4</span></strong> để lao động biết quy định ca, lưu ý đặc biệt (tùy chọn)</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Popup "Tạo form đăng ký" (mở từ nút Tạo form mới)</span></div>
+            <div class="step-action">Chọn <strong>Dự án</strong> <span class="img-num">1</span> ✱ · <strong>Tuần đăng ký</strong> <span class="img-num">2</span> ✱ · thời gian <strong>Bắt đầu</strong> <span class="img-num">3</span> / <strong>Kết thúc</strong> <span class="img-num">4</span> nhận đăng ký ✱ · <strong>Ghi chú</strong> <span class="img-num">5</span> → Nhấn <strong>"Tạo form"</strong> <span class="img-num">6</span></div>
+            <div class="step-desc">Ghi chú (tối đa 2000 ký tự) là quy định giờ làm, nghỉ phép... — lao động sẽ thấy nội dung này khi mở form.</div>
+            <div class="step-multi">🔀 <strong>Chọn nhiều dự án:</strong> ô <strong>Dự án</strong> <span class="img-num">1</span> cho chọn một hoặc nhiều dự án — tạo form 1 lần cho nhiều dự án.</div>
+            <img class="step-screenshot" src="images/web/tạo form đăng kí ca.png" alt="Popup tạo form đăng ký ca" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
         <div class="step-row">
           <div class="step-dot">3</div>
           <div class="step-body">
-            <div class="step-action">Nhấn <strong>"Tạo form" <span class="img-num">5</span></strong> → Chia sẻ link cho lao động</div>
-            <div class="step-desc">Lao động mở link trên app → Chọn ngày và ca → Hệ thống tự ghi nhận → Quản lý duyệt trong Phân ca lao động</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Cột <strong>Thao tác</strong> cuối mỗi dòng ở danh sách form (hình bước 1)</span></div>
+            <div class="step-action">Dùng các icon thao tác <span class="img-num">5</span> <span class="img-num">6</span> <span class="img-num">7</span> để sao chép / xem / mở form; với form <strong>Đang mở</strong> có thêm nút ⏻ để đóng thủ công</div>
+            <div class="step-desc">Lao động đăng ký ca qua app hoặc link → các đăng ký hiện ở màn hình <strong>Phân ca lao động</strong> chờ Quản lý duyệt (xem mục 10).</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Flow 3 -->
-    <div class="flow-card">
+    <div class="flow-card" id="ql-3">
       <div class="flow-card-header ql">
         <div class="flow-num">3</div>
         <div>
-          <h3>Booking ca &amp; Xếp ca hàng ngày</h3>
-          <p>Lập kế hoạch số lượng ca cần và phân công lao động cụ thể</p>
+          <h3>Quản lý danh sách &amp; hồ sơ ứng viên</h3>
+          <p>Tìm ứng viên, thêm mới bằng CCCD, cập nhật giấy tờ và kết quả tuyển dụng</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Tuyển dụng ➜ Ứng viên</strong></p>
         </div>
-        <span class="flow-freq freq-daily">Hàng ngày</span>
+        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
       </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Xem danh sách ứng viên</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM, TD PM, HCNS</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (self), Ad-onsite (self), TD Lead (team), TD NV (self), BP Xe PM (team), QL tuyến (self), Điều phối (self), Lái xe (self), Kế toán PM (self), BHXH (self), Thuế (self), Tính lương (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án</span></li><li><strong>Tạo / sửa hồ sơ ứng viên</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), TD PM, HCNS</span> · <span class="pm-scope">Toàn quyền theo phạm vi: QL PM (self), Leader (self), Ad-onsite (self), TD Lead (team), TD NV (self), BP Xe PM (team), QL tuyến (self), Điều phối (self), Lái xe (self), Kế toán PM (self), BHXH (self), Thuế (self), Tính lương (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án</span></li></ul></div>
       <div class="flow-steps">
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">1</div>
           <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#shift-booking" target="_blank">🗓️ Xếp ca &amp; Booking</a> → Chọn dự án
-            </div>
-            <div class="step-desc">Xem lịch tháng — ô màu đỏ = chưa đủ lao động, xanh = đủ</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu Tuyển dụng ➜ <strong>Ứng viên</strong></span></div>
+            <div class="step-action">Tìm ứng viên: gõ tên/SĐT/email <span class="img-num">7</span> hoặc dùng bộ lọc <span class="img-num">8</span> (tình trạng PV, kết quả, dự án, NV tuyển dụng, ngày tạo...) → Nhấn <strong>"Tìm kiếm"</strong> <span class="img-num">5</span>; nhấn <strong>"Lọc nâng cao"</strong> <span class="img-num">6</span> để mở/thu gọn bộ lọc</div>
+            <div class="step-desc">Thanh công cụ: <strong>Tiếp nhận lao động nhanh</strong> <span class="img-num">2</span> · <strong>Xuất Excel</strong> <span class="img-num">3</span> · <strong>+ Thêm mới</strong> <span class="img-num">4</span>. Nhấn dấu <strong>+</strong> đầu dòng để xem các dự án ứng viên đã đăng ký kèm kết quả (Đã duyệt / Chưa duyệt). Nút ⋮ <span class="img-num">9</span> là thao tác trên ứng viên, ⋮ <span class="img-num">10</span> là thao tác trên từng dự án của ứng viên.</div>
+            <img class="step-screenshot" src="images/web/danh sách ứng viên.png" alt="Danh sách ứng viên" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
         <div class="step-row">
-          <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Nhấn ✏️ trên ô ca → Nhập số lượng booking</div>
-            <div class="step-desc">Chọn áp dụng Một ngày hoặc Khoảng ngày → Nhập số LĐ cần (Tuyển dụng) + Số ghế xe (Xe đưa đón) → Lưu</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-line"></div>
-          <div class="step-dot">3</div>
-          <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#shift-assignment" target="_blank">👷 Phân ca lao động</a> → Nhấn <strong>"+ Phân ca thủ công"</strong>
-            </div>
-            <img class="step-screenshot" src="images/phân ca thủ công.png" alt="Màn hình phân ca thủ công" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-dot">4</div>
-          <div class="step-body">
-            <div class="step-action">Chọn <strong>Ngày <span class="img-num">1</span></strong> · <strong>Ca làm việc <span class="img-num">2</span></strong> · <strong>Vị trí <span class="img-num">3</span></strong> → Tìm lao động <span class="img-num">4</span> → Tick lao động <span class="img-num">6</span> (hoặc Chọn tất cả <span class="img-num">5</span>) → Nhấn <strong>"Phân ca" <span class="img-num">8</span></strong></div>
-            <div class="step-desc">Lao động nhận thông báo ca làm việc trên app tự động</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Trang "Chỉnh sửa hồ sơ ứng viên" — mở khi nhấn <strong>Thêm mới</strong> hoặc ⋮ trên dòng ứng viên</span></div>
+            <div class="step-action">Tải ảnh CCCD mặt trước + mặt sau → nhấn <strong>"Xử lý CCCD"</strong> <span class="img-num">4</span> → hệ thống tự điền <strong>Thông tin cá nhân</strong> <span class="img-num">5</span>; kiểm tra lại họ tên ✱, SĐT ✱ và bổ sung phần còn thiếu</div>
+            <div class="step-desc">Tiếp đó điền <strong>Nguyện vọng ứng tuyển</strong> (dự án, nhân sự tuyển dụng, nguồn tuyển dụng, kết quả ứng viên) và tải giấy tờ ở <strong>Tình trạng tiếp nhận hồ sơ</strong> <span class="img-num">6</span> (ảnh 3×4, giấy khám sức khoẻ, lý lịch tư pháp) → nhấn <strong>"Lưu hồ sơ"</strong> <span class="img-num">7</span>.</div>
+            <div class="step-multi">🔀 <strong>Chọn nhiều dự án:</strong> ô <strong>Dự án ứng tuyển</strong> trong phần Nguyện vọng ứng tuyển chọn được nhiều dự án cho cùng một ứng viên.</div>
+            <img class="step-screenshot" src="images/web/chi tiết ứng viên.png" alt="Chỉnh sửa hồ sơ ứng viên" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+            <div class="step-tip">Góc trên phải có 3 nút đi tiếp ngay từ hồ sơ ứng viên: <strong>Hồ sơ lao động</strong> <span class="img-num">1</span> (mục 6) · <strong>Tạo hợp đồng</strong> <span class="img-num">2</span> (mục 7) · <strong>Thêm vào danh sách đen</strong> <span class="img-num">3</span> (mục 14). CCCD mờ không nhận dạng được → nhập tay phần Thông tin cá nhân.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Flow 4 -->
-    <div class="flow-card">
+    <div class="flow-card" id="ql-4">
       <div class="flow-card-header ql">
         <div class="flow-num">4</div>
         <div>
-          <h3>Giám sát quân số &amp; Cập nhật thực tế</h3>
-          <p>Theo dõi số lao động đi làm thực tế mỗi ca trong ngày</p>
+          <h3>Thêm ứng viên vào dự án, duyệt vào dự án &amp; phân ca ứng viên</h3>
+          <p>Gán ứng viên vào dự án, chuyển trạng thái Đã duyệt rồi phân ca làm việc</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Tuyển dụng ➜ Ứng viên</strong></p>
         </div>
-        <span class="flow-freq freq-daily">Cuối mỗi ca</span>
+        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
       </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Ứng viên (đăng ký dự án, duyệt)</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), TD PM, HCNS</span> · <span class="pm-scope">Toàn quyền theo phạm vi: QL PM (self), Leader (self), Ad-onsite (self), TD Lead (team), TD NV (self), BP Xe PM (team), QL tuyến (self), Điều phối (self), Lái xe (self), Kế toán PM (self), BHXH (self), Thuế (self), Tính lương (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án</span></li><li><strong>Phân ca</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM, TD PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), TD Lead (team), TD NV (self), BP Xe PM (team), QL tuyến (self), Điều phối (self), Lái xe (self), Kế toán PM (self), BHXH (self), Thuế (self), Tính lương (self), HCNS (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án</span></li></ul></div>
       <div class="flow-steps">
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">1</div>
           <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#daily-report" target="_blank">📈 Báo cáo quân số</a>
-            </div>
-            <div class="step-desc">Xem bảng tổng hợp: Booking / Thực tế / Tỉ lệ / Nghỉ việc / Sự vụ</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Danh sách Ứng viên ➜ nút ⋮ trên dòng ứng viên ➜ <strong>Đăng ký dự án</strong></span></div>
+            <div class="step-action">Trong popup, phần <strong>"Thêm đăng ký dự án"</strong>: chọn <strong>Dự án</strong> <span class="img-num">3</span> ✱ · <strong>Ngày bắt đầu</strong> <span class="img-num">4</span> ✱ · <strong>Trạng thái</strong> <span class="img-num">5</span> ✱ · Mã lao động theo dự án <span class="img-num">6</span> (có thể để trống) → Nhấn <strong>"Lưu"</strong> <span class="img-num">8</span></div>
+            <div class="step-desc">Nếu ứng viên chưa có mã lao động thì tick <strong>"Bảo lãnh — chưa có mã lao động"</strong> <span class="img-num">7</span>. Phần trên popup liệt kê các dự án đang đăng ký để tránh trùng.</div>
+            <div class="step-multi single">☝️ <strong>Chỉ chọn 1 dự án:</strong> mỗi dòng đăng ký gắn với 1 dự án; muốn đăng ký thêm dự án khác → thêm dòng đăng ký mới trong cùng popup.</div>
+            <img class="step-screenshot" src="images/web/đăng kí dự án.png" alt="Popup đăng ký dự án cho ứng viên" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Nhập số LĐ thực tế vào ô → Nhấn <strong>"Lưu"</strong> từng hàng</div>
-            <div class="step-desc">Hoặc nhấn <strong>"Lưu toàn bộ báo cáo"</strong> để lưu tất cả cùng lúc</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Cùng popup "Đăng ký dự án" (mở lại từ ⋮ của ứng viên)</span></div>
+            <div class="step-action"><strong>Duyệt vào dự án:</strong> nhấn <strong>"Sửa"</strong> <span class="img-num">1</span> ở dòng dự án → đổi Trạng thái từ <em>Chưa duyệt</em> sang <strong>Đã duyệt</strong> → Lưu. Muốn rút khỏi dự án → <strong>"Hủy đăng ký"</strong> <span class="img-num">2</span></div>
+            <div class="step-desc">Kết quả hiển thị ở dòng dự án khi mở rộng ứng viên trong danh sách. Chỉ ứng viên <strong>Đã duyệt</strong> vào dự án mới được duyệt phân ca ở các bước sau.</div>
           </div>
         </div>
         <div class="step-row">
           <div class="step-dot">3</div>
           <div class="step-body">
-            <div class="step-action">Nếu có sự cố → Nhấn <strong>"+ Thêm sự vụ"</strong></div>
-            <div class="step-desc">Ghi nhận tai nạn, vi phạm, vắng mặt không phép, sự cố thiết bị trong ca</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Danh sách Ứng viên ➜ mở rộng dòng ứng viên (dấu +) ➜ ⋮ trên dòng <strong>dự án</strong> ➜ <strong>Phân ca</strong></span></div>
+            <div class="step-action">Popup "Phân ca ứng viên": chọn <strong>Tháng</strong> <span class="img-num">4</span> → tick các <strong>ngày làm việc</strong> <span class="img-num">3</span> (hoặc "Chọn tất cả" <span class="img-num">1</span> / "Bỏ chọn tất cả" <span class="img-num">2</span>) → chọn <strong>Ca làm việc</strong> <span class="img-num">5</span> → <strong>Vị trí làm việc</strong> <span class="img-num">6</span> → Nhấn <strong>"Lưu"</strong> <span class="img-num">7</span></div>
+            <div class="step-desc">Phù hợp khi cần phân ca cho nhiều ngày liên tiếp cùng lúc. Muốn phân ca cho nhiều lao động cùng ngày → dùng <strong>Phân ca thủ công</strong> (mục 10).</div>
+            <img class="step-screenshot" src="images/web/phân ca ứng viên.png" alt="Popup phân ca ứng viên" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Flow 5 -->
-    <div class="flow-card">
+    <div class="flow-card" id="ql-5">
       <div class="flow-card-header ql">
         <div class="flow-num">5</div>
         <div>
-          <h3>Xác nhận bảng chấm công</h3>
-          <p>Đối chiếu và xác nhận dữ liệu công trước khi chuyển sang tính lương</p>
-        </div>
-        <span class="flow-freq freq-monthly">Cuối tháng</span>
-      </div>
-      <div class="flow-steps">
-        <div class="step-row">
-          <div class="step-line"></div>
-          <div class="step-dot">1</div>
-          <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#attendance" target="_blank">⏱️ Bảng chấm công</a>
-            </div>
-            <div class="step-desc">Xem dữ liệu check-in/check-out của từng lao động trong tháng</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-line"></div>
-          <div class="step-dot">2</div>
-          <div class="step-body">
-            <div class="step-action">Kiểm tra sai lệch → Điều chỉnh thủ công nếu cần</div>
-            <div class="step-desc">Trường hợp: quên check-in, lỗi QR, làm thêm giờ được duyệt thêm</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-dot">3</div>
-          <div class="step-body">
-            <div class="step-action"><strong>Xác nhận bảng công tháng</strong></div>
-            <div class="step-desc">Sau khi xác nhận, dữ liệu chốt — kế toán dùng để tính lương</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Flow 6 -->
-    <div class="flow-card">
-      <div class="flow-card-header ql">
-        <div class="flow-num">6</div>
-        <div>
-          <h3>Duyệt nghỉ phép, ứng lương &amp; khiếu nại</h3>
-          <p>Xử lý các yêu cầu từ lao động gửi qua app mobile</p>
-        </div>
-        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
-      </div>
-      <div class="flow-steps">
-        <div class="step-row">
-          <div class="step-line"></div>
-          <div class="step-dot">1</div>
-          <div class="step-body">
-            <div class="step-action">
-              <a class="step-link" href="huong-dan-nguoi-dung.html#leave" target="_blank">🏖️ Duyệt nghỉ phép</a>: Xem đơn → Kiểm tra số ngày phép còn lại → Duyệt / Từ chối
-            </div>
-            <div class="step-desc">Nếu duyệt: trừ ngày phép + cập nhật bảng công tự động</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-line"></div>
-          <div class="step-dot">2</div>
-          <div class="step-body">
-            <div class="step-action">
-              <a class="step-link" href="huong-dan-nguoi-dung.html#salary-advance" target="_blank">💸 Ứng lương</a>: Xem yêu cầu → Duyệt số tiền → Chuyển khoản thực tế
-            </div>
-            <div class="step-desc">Hệ thống tự ghi nhận để khấu trừ vào phiếu lương tháng</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-dot">3</div>
-          <div class="step-body">
-            <div class="step-action">
-              <a class="step-link" href="huong-dan-nguoi-dung.html#complaints" target="_blank">📣 Khiếu nại</a>: Tiếp nhận → Điều tra → Phản hồi → Đóng khiếu nại
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Flow 7 -->
-    <div class="flow-card">
-      <div class="flow-card-header ql">
-        <div class="flow-num">7</div>
-        <div>
-          <h3>Xử lý lao động vi phạm</h3>
-          <p>Ghi nhận vi phạm và ngăn chặn tái tuyển dụng lao động xấu</p>
-        </div>
-        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
-      </div>
-      <div class="flow-steps">
-        <div class="step-row">
-          <div class="step-line"></div>
-          <div class="step-dot">1</div>
-          <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#blacklist" target="_blank">🚫 Danh sách đen</a> → Nhấn <strong>"+ Thêm mới"</strong>
-            </div>
-            <img class="step-screenshot" src="images/thêm ứng viên vào danh sách đen.png" alt="Form thêm vào danh sách đen" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-dot">2</div>
-          <div class="step-body">
-            <div class="step-action">Chọn lao động → Chọn loại vi phạm → Nhập lý do chi tiết → Lưu</div>
-            <div class="step-desc">Từ thời điểm này, hệ thống tự cảnh báo khi nhân viên tuyển dụng nhập CCCD/SĐT của lao động này</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Flow 8 — Tạo lịch phỏng vấn (chỉ Quản lý) -->
-    <div class="flow-card">
-      <div class="flow-card-header ql">
-        <div class="flow-num">8</div>
-        <div>
           <h3>Tạo lịch phỏng vấn</h3>
-          <p>Chỉ Bộ phận Quản lý mới có quyền tạo lịch — Bộ phận Tuyển dụng sẽ đăng ký ứng viên vào lịch này</p>
+          <p>Chỉ các vai trò có quyền tạo lịch (không gồm Tuyển dụng) mới tạo được — vai trò Tuyển dụng chọn lịch này rồi thêm ứng viên vào</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Tuyển dụng ➜ Lịch phỏng vấn</strong></p>
         </div>
-        <span class="flow-freq freq-asneeded">Khi cần phỏng vấn ứng viên</span>
+        <span class="flow-freq freq-asneeded">Khi cần phỏng vấn</span>
       </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Tạo / sửa lịch phỏng vấn</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án, HCNS</span> · <span class="pm-none">Vai trò Tuyển dụng (TD PM, TD Lead, TD NV) <strong>không có quyền tạo/sửa lịch</strong></span></li><li><strong>Thêm / xóa ứng viên vào lịch</strong> — <span class="pm-all">Tuyển dụng: TD PM (toàn quyền), TD Lead (team), TD NV (self)</span> · Quản lý cũng thao tác được theo phạm vi ở trên</li></ul></div>
       <div class="flow-steps">
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">1</div>
           <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#interviews" target="_blank">📅 Lịch phỏng vấn</a> → Nhấn <strong>"+ Thêm mới"</strong>
-            </div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge"><a class="step-link" style="padding:0;border:0;background:none" href="huong-dan-nguoi-dung.html#interviews" target="_blank">📅 Tuyển dụng ➜ Lịch phỏng vấn</a></span></div>
+            <div class="step-action">Nhấn <strong>"+ Thêm mới"</strong></div>
             <img class="step-screenshot" src="images/tạo lịch phỏng vấn.png" alt="Form tạo lịch phỏng vấn" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
@@ -950,144 +943,128 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Điền thông tin lịch phỏng vấn</div>
-            <div class="step-desc"><strong>Dự án <span class="img-num">1</span></strong> ✱ · <strong>Ngày giờ bắt đầu <span class="img-num">3</span></strong> ✱ · <strong>Giờ kết thúc <span class="img-num">4</span></strong> ✱ · <strong>Người phỏng vấn <span class="img-num">5</span></strong> ✱ · <strong>Hình thức <span class="img-num">6</span></strong>: Offline tại VP hoặc Online · <strong>Địa điểm / Link <span class="img-num">7</span></strong></div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Form tạo lịch phỏng vấn</span></div>
+            <div class="step-action">Điền <strong>Dự án</strong> <span class="img-num">1</span> ✱ · <strong>Ngày giờ bắt đầu</strong> <span class="img-num">3</span> ✱ · <strong>Giờ kết thúc</strong> <span class="img-num">4</span> ✱ · <strong>Người phỏng vấn</strong> <span class="img-num">5</span> ✱ · <strong>Hình thức</strong> <span class="img-num">6</span> (Offline / Online) · <strong>Địa điểm / Link</strong> <span class="img-num">7</span> → Nhấn <strong>"Lưu lịch hẹn"</strong> <span class="img-num">8</span></div>
+            <div class="step-desc">Lịch hiển thị trong danh sách → thông báo cho vai trò Tuyển dụng thêm ứng viên vào lịch.</div>
           </div>
         </div>
         <div class="step-row">
-          <div class="step-line"></div>
           <div class="step-dot">3</div>
           <div class="step-body">
-            <div class="step-action">Nhấn <strong>"Lưu lịch hẹn" <span class="img-num">8</span></strong></div>
-            <div class="step-desc">Lịch hiển thị trong danh sách — Thông báo cho Bộ phận Tuyển dụng để thêm ứng viên vào lịch</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-dot">4</div>
-          <div class="step-body">
-            <div class="step-action">Sau phỏng vấn: Nhận kết quả từ Bộ phận Tuyển dụng cập nhật trong hồ sơ ứng viên</div>
-            <div class="step-desc">Đậu → Thông báo nhận việc. Trượt → Lưu hồ sơ. Hẹn lại → Tạo lịch mới tương tự.</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Hồ sơ ứng viên (sau buổi phỏng vấn)</span></div>
+            <div class="step-action">Nhận kết quả từ Tuyển dụng: <strong>Đậu</strong> → thông báo nhận việc · <strong>Trượt</strong> → lưu hồ sơ · <strong>Hẹn lại</strong> → tạo lịch mới tương tự</div>
           </div>
         </div>
       </div>
     </div>
 
-
-    <!-- Flow 9 -->
-    <div class="flow-card">
+    <div class="flow-card" id="ql-6">
       <div class="flow-card-header ql">
-        <div class="flow-num">9</div>
+        <div class="flow-num">6</div>
         <div>
-          <h3>Tạo hồ sơ lao động sau khi ứng viên đậu</h3>
-          <p>Chuyển đổi ứng viên thành lao động chính thức trong hệ thống</p>
+          <h3>Tạo hồ sơ lao động (thủ công hoặc import Excel)</h3>
+          <p>Chuyển ứng viên đã nhận việc thành lao động chính thức trong hệ thống</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Tuyển dụng ➜ Hồ sơ lao động</strong></p>
         </div>
         <span class="flow-freq freq-asneeded">Khi phát sinh</span>
       </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Hồ sơ lao động</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM, HCNS</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương)</span></li></ul></div>
       <div class="flow-steps">
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">1</div>
           <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#worker-profile" target="_blank">📁 Hồ sơ lao động</a> → Nhấn <strong>"Tạo hồ sơ"</strong>
-            </div>
-            <div class="step-desc">Hoặc từ Danh sách ứng viên → ⋮ → "Tạo hồ sơ lao động"</div>
-            <img class="step-screenshot" src="images/tạo hồ sơ lao động.png" alt="Form tạo hồ sơ lao động" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu Tuyển dụng ➜ <strong>Hồ sơ lao động</strong></span></div>
+            <div class="step-action">Tra cứu hồ sơ: lọc theo loại hợp đồng, trạng thái, bộ phận, dự án, nhân viên tuyển dụng, ngày làm việc/ngày tạo <span class="img-num">3</span> → Nhấn <strong>"Áp dụng"</strong> <span class="img-num">4</span></div>
+            <div class="step-desc">Thao tác trên dòng: <strong>Xem</strong> <span class="img-num">5</span> · <strong>Chỉnh sửa</strong> <span class="img-num">6</span>. Có 2 cách tạo hồ sơ: <strong>Tạo hồ sơ</strong> <span class="img-num">2</span> (từng người) hoặc <strong>Import Lao động</strong> <span class="img-num">1</span> (hàng loạt bằng Excel).</div>
+            <img class="step-screenshot" src="images/web/danh sách hoso.png" alt="Danh sách hồ sơ lao động" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Chọn từ "Lao động đã đăng ký dự án" → Upload CCCD → Nhấn <strong>"Quét CCCD"</strong></div>
-            <div class="step-desc">Các trường <span class="img-num">1</span> trên màn hình sẽ tự động điền từ CCCD (họ tên, ngày sinh, số CCCD, địa chỉ...). Kiểm tra lại và bổ sung thông tin còn thiếu.</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Popup "Tạo Hồ Sơ Lao Động" (nút Tạo hồ sơ)</span></div>
+            <div class="step-action">Chọn từ danh sách <strong>"Lao động đã đăng ký dự án"</strong> <span class="img-num">1</span> để tự điền, hoặc tải CCCD 2 mặt → <strong>Quét CCCD</strong> → kiểm tra <strong>Thông tin cá nhân</strong> <span class="img-num">2</span> (Họ tên ✱, SĐT ✱, CCCD, địa chỉ...) → điền <strong>Thông tin nội bộ công ty</strong> và <strong>Phép năm &amp; tài chính</strong> <span class="img-num">3</span> (loại lao động, loại hợp đồng, bộ phận, vị trí, ngày bắt đầu, lương cơ bản, tài khoản ngân hàng, mã BHXH...) → Nhấn <strong>"Lưu hồ sơ"</strong> <span class="img-num">4</span></div>
+            <div class="step-desc">Hệ thống cấp mã lao động. Lao động sẵn sàng để tạo hợp đồng (mục 7).</div>
+            <img class="step-screenshot" src="images/web/tạo hoso.png" alt="Popup tạo hồ sơ lao động" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+            <div class="step-note">⚠️ <strong>Kiểm tra CCCD tự động:</strong> hệ thống đối chiếu số CCCD với danh sách đen ngay khi lưu. Nếu CCCD đã bị blacklist, hồ sơ bị từ chối — cần xem xét trước khi tạo.</div>
           </div>
         </div>
         <div class="step-row">
-          <div class="step-line"></div>
           <div class="step-dot">3</div>
           <div class="step-body">
-            <div class="step-action">Điền "Thông tin nội bộ công ty"</div>
-            <div class="step-desc">Loại lao động ✱ · Loại hợp đồng · Bộ phận · Vị trí · Ngày bắt đầu làm việc · Dự án hiện tại</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-dot">4</div>
-          <div class="step-body">
-            <div class="step-action">Nhấn <strong>"Lưu hồ sơ"</strong></div>
-            <div class="step-desc">Hệ thống cấp mã WKR-XXXXXX. Lao động sẵn sàng để ký hợp đồng.</div>
-            <div class="step-note">⚠️ <strong>Kiểm tra CCCD tự động:</strong> Hệ thống đối chiếu số CCCD với danh sách đen toàn hệ thống ngay khi lưu. Nếu CCCD đã bị blacklist, hồ sơ sẽ bị từ chối — cần liên hệ quản lý để xem xét trước khi tạo.</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Nút <strong>Import Lao động</strong> ở góc trên phải màn hình Hồ sơ lao động</span></div>
+            <div class="step-action">Bước 1/2 — Nhấn <strong>"Tải file mẫu"</strong> <span class="img-num">1</span> → điền dữ liệu (bắt buộc có cột <strong>"TÊN DỰ ÁN"</strong>) → kéo thả hoặc chọn file <strong>.xlsx</strong> (tối đa 10 MB) <span class="img-num">2</span></div>
+            <div class="step-desc">Bước 2/2 — xem <strong>Kết quả</strong> import để biết dòng nào thành công / lỗi.</div>
+            <img class="step-screenshot" src="images/web/import lao động.png" alt="Màn hình import lao động" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Flow 10 -->
-    <div class="flow-card">
+    <div class="flow-card" id="ql-7">
       <div class="flow-card-header ql">
-        <div class="flow-num">10</div>
+        <div class="flow-num">7</div>
         <div>
-          <h3>Tạo &amp; Phát hành hợp đồng lao động</h3>
-          <p>Soạn thảo, xem trước và hoàn thiện hợp đồng ký kết</p>
+          <h3>Tạo &amp; phát hành hợp đồng lao động</h3>
+          <p>Soạn hợp đồng, xem trước, ký và upload bản đã ký</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Tuyển dụng ➜ Hợp đồng lao động</strong></p>
         </div>
-        <span class="flow-freq freq-asneeded">Khi nhận lao động mới / gia hạn HĐ</span>
+        <span class="flow-freq freq-asneeded">Khi nhận LĐ mới / gia hạn</span>
       </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Xem hợp đồng</strong> — <span class="pm-all">Toàn quyền: Tổng GĐ, GĐ công ty, Admin (Sys), GĐ dự án, QL PM, HCNS</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: TD PM, TD Lead, TD NV, Kế toán PM, BHXH, Thuế, Tính lương</span> · <span class="pm-none">Không có quyền: Điều phối, Lái xe</span></li><li><strong>Tạo hợp đồng</strong> — <span class="pm-all">Toàn quyền: Tổng GĐ, GĐ công ty, Admin (Sys), GĐ dự án, QL PM, HCNS</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-none">Không có quyền: TD PM, TD Lead, TD NV, Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương</span></li><li><strong>Sửa hợp đồng</strong> — <span class="pm-all">Toàn quyền: Tổng GĐ, GĐ công ty, Admin (Sys), GĐ dự án, QL PM, HCNS</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-none">Không có quyền: TD PM, TD Lead, TD NV, Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương</span></li></ul></div>
       <div class="flow-steps">
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">1</div>
           <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#contracts" target="_blank">📄 Hợp đồng lao động</a> → Nhấn <strong>"+ Tạo HĐ Mới"</strong>
-            </div>
-            <img class="step-screenshot" src="images/tạo hợp đồng lao động.png" alt="Form tạo hợp đồng lao động" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu Tuyển dụng ➜ <strong>Hợp đồng lao động</strong></span></div>
+            <div class="step-action">Xem tổng quan (HĐ hiệu lực · Chờ LĐ ký · Sắp/đã hết hạn) và lọc danh sách <span class="img-num">2</span>; nhấn <strong>"+ Tạo HĐ Mới"</strong> <span class="img-num">1</span> để tạo</div>
+            <div class="step-desc">Trạng thái HĐ: <strong>Nháp</strong> · <strong>Đang hoạt động</strong> · <strong>Hết hạn</strong>. Thao tác trên dòng: Xem chi tiết <span class="img-num">3</span> · Xem trước file <span class="img-num">4</span> · Tải bản đã ký <span class="img-num">5</span> (chỉ có khi HĐ đã hoạt động).</div>
+            <img class="step-screenshot" src="images/web/danh sách hợp đồng lao động.png" alt="Danh sách hợp đồng lao động" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Điền thông tin hợp đồng</div>
-            <div class="step-desc"><strong>Lao động <span class="img-num">2</span></strong> ✱ · <strong>Dự án <span class="img-num">3</span></strong> · <strong>Mẫu HĐ <span class="img-num">4</span></strong> ✱ · <strong>Ngày ký <span class="img-num">5</span></strong> ✱ · <strong>Ngày kết thúc <span class="img-num">6</span></strong> ✱ · <strong>Lương cơ bản <span class="img-num">7</span></strong> ✱ · <strong>Hình thức thanh toán <span class="img-num">8</span></strong> · <strong>Ngày trả lương <span class="img-num">9</span></strong> · <strong>Cam kết nội quy <span class="img-num">10</span></strong></div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Trang "Tạo Hợp Đồng Lao Động"</span></div>
+            <div class="step-action">Chọn <strong>Ứng viên / người lao động</strong> <span class="img-num">1</span> ✱ · <strong>Dự án</strong> <span class="img-num">2</span> · <strong>Mẫu hợp đồng</strong> <span class="img-num">3</span> ✱ · <strong>Ngày ký</strong> <span class="img-num">4</span> ✱ · <strong>Ngày kết thúc</strong> <span class="img-num">5</span> ✱ · <strong>Lương cơ bản</strong> ✱ · Hình thức thanh toán · <strong>Ngày trả lương</strong> <span class="img-num">6</span> · Điều khoản bổ sung <span class="img-num">7</span> · tick <strong>Đính kèm bản Cam kết tuân thủ nội quy</strong> <span class="img-num">8</span> → Nhấn <strong>"Lưu Nháp"</strong> <span class="img-num">9</span></div>
+            <div class="step-desc">Khung "Xem trước Document" bên phải chỉ dùng được sau khi lưu nháp. Cũng có thể tạo nhanh bằng nút <strong>Tạo hợp đồng</strong> ngay trong hồ sơ ứng viên (mục 3).</div>
+            <img class="step-screenshot" src="images/web/tạo hợp đồng lao động.png" alt="Tạo hợp đồng lao động" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
         <div class="step-row">
-          <div class="step-line"></div>
           <div class="step-dot">3</div>
           <div class="step-body">
-            <div class="step-action">Nhấn <strong>"Lưu Nháp" <span class="img-num">11</span></strong> → xem trước PDF → xuất .docx</div>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="step-line"></div>
-          <div class="step-dot">4</div>
-          <div class="step-body">
-            <div class="step-action">In HĐ → Ký tay → Scan → Upload "Bản Đã Ký"</div>
-            <div class="step-desc">HĐ chuyển trạng thái <span style="background:#e8f5e9;color:#2e7d32;padding:1px 8px;border-radius:10px;font-size:12px;font-weight:700">Đang hoạt động</span></div>
-            <div class="step-note">Nếu HĐ sắp hết hạn → Tạo HĐ mới cùng quy trình. Hệ thống tự liên kết lịch sử gia hạn.</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Trang "Chi tiết Hợp đồng lao động" (mở từ dòng HĐ hoặc sau khi lưu nháp)</span></div>
+            <div class="step-action">Nhấn <strong>"Tải template"</strong> <span class="img-num">1</span> hoặc <strong>"Xem trước"</strong> <span class="img-num">2</span> → in, ký tay → <strong>"Upload Bản Đã Ký"</strong> <span class="img-num">4</span> → HĐ chuyển sang <strong>Đang hoạt động</strong></div>
+            <div class="step-desc">Cần sửa thông tin → <strong>"Chỉnh Sửa"</strong> <span class="img-num">3</span>. Bản nháp sai → <strong>"Xóa HĐ Nháp"</strong> <span class="img-num">5</span>. File .docx của HĐ và bản cam kết nằm ở <strong>Tài liệu đính kèm</strong> <span class="img-num">6</span>. Khung "Lịch sử gia hạn" bên phải tự liên kết khi tạo HĐ mới cho cùng lao động.</div>
+            <img class="step-screenshot" src="images/web/chỉnh sửa hợp đồng lao động.png" alt="Chi tiết hợp đồng lao động" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Flow 11 -->
-    <div class="flow-card">
+    <div class="flow-card" id="ql-8">
       <div class="flow-card-header ql">
-        <div class="flow-num">11</div>
+        <div class="flow-num">8</div>
         <div>
           <h3>Khai báo người phụ thuộc (NPT)</h3>
           <p>Khai báo MST và NPT để tính đúng thuế TNCN trong phiếu lương</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Tuyển dụng ➜ Người phụ thuộc</strong></p>
         </div>
         <span class="flow-freq freq-asneeded">Khi lao động có NPT</span>
       </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Người phụ thuộc</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM, HCNS</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, Kế toán PM, BHXH, Thuế, Tính lương)</span> · <span class="pm-none">Không có quyền: Điều phối, Lái xe</span></li></ul></div>
       <div class="flow-steps">
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">1</div>
           <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#dependents" target="_blank">👨‍👩‍👧 Người phụ thuộc</a> → Nhấn <strong>"Khai báo NPT mới"</strong>
-            </div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge"><a class="step-link" style="padding:0;border:0;background:none" href="huong-dan-nguoi-dung.html#dependents" target="_blank">👨‍👩‍👧 Tuyển dụng ➜ Người phụ thuộc</a></span></div>
+            <div class="step-action">Nhấn <strong>"Khai báo NPT mới"</strong></div>
             <img class="step-screenshot" src="images/thêm người phụ thuộc.png" alt="Form khai báo người phụ thuộc" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
@@ -1095,74 +1072,272 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
           <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Chọn lao động → Nhập Mã số thuế (MST) cá nhân</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Form khai báo NPT</span></div>
+            <div class="step-action">Chọn lao động → nhập <strong>Mã số thuế (MST)</strong> cá nhân</div>
           </div>
         </div>
         <div class="step-row">
           <div class="step-dot">3</div>
           <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Form khai báo NPT</span></div>
             <div class="step-action">Thêm từng người phụ thuộc → <strong>Lưu</strong></div>
-            <div class="step-desc">Dữ liệu NPT được kế toán sử dụng khi tính lương để giảm trừ thuế TNCN</div>
+            <div class="step-desc">Dữ liệu NPT được kế toán dùng khi tính lương để giảm trừ thuế TNCN.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Flow 12 — Duyệt phân ca lao động -->
-    <div class="flow-card">
+    <div class="flow-card" id="ql-9">
       <div class="flow-card-header ql">
-        <div class="flow-num">12</div>
+        <div class="flow-num">9</div>
         <div>
-          <h3>Duyệt phân ca lao động</h3>
-          <p>Xem xét đăng ký ca của lao động và phân công chính thức vào ca làm việc</p>
+          <h3>Booking ca hàng ngày (Xếp ca &amp; Booking)</h3>
+          <p>Đặt số lượng lao động cần và số ghế xe cho từng ca theo ngày / khoảng ngày</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Vận hành lao động ➜ Xếp ca &amp; Booking</strong></p>
         </div>
         <span class="flow-freq freq-daily">Hàng ngày</span>
       </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Booking ca</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, Điều phối, Lái xe</span> · <span class="pm-none">Không có quyền: Kế toán PM, BHXH, Thuế, Tính lương, HCNS</span></li></ul></div>
       <div class="flow-steps">
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">1</div>
           <div class="step-body">
-            <div class="step-action">
-              Vào <a class="step-link" href="huong-dan-nguoi-dung.html#shift-assignment" target="_blank">👷 Phân ca lao động</a> → Chọn ngày và ca cần duyệt
-            </div>
-            <div class="step-desc">Danh sách hiển thị lao động đã đăng ký ca (qua app hoặc link form), chia 2 nhóm: <strong>Chờ duyệt</strong> và <strong>Đã duyệt</strong></div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu Vận hành lao động ➜ <strong>Xếp ca &amp; Booking</strong></span></div>
+            <div class="step-action">Chọn <strong>Dự án</strong> <span class="img-num">1</span> → xem lịch tháng: mỗi ca hiển thị <strong>đã phân công / tuyển dụng + xe đưa đón</strong> (VD <code>0/20+10</code>)</div>
+            <div class="step-desc">Thẻ thống kê trên lịch: Booking · Đã phân công · Cảnh báo. Nút tắt: <strong>Tạo dự án</strong> <span class="img-num">2</span> · <strong>Quản lý dự án</strong> <span class="img-num">3</span>. Nhấn vào một ô ngày <span class="img-num">4</span> để thao tác.</div>
+            <div class="step-multi single">☝️ <strong>Chỉ chọn 1 dự án:</strong> lịch booking hiển thị theo từng dự án, muốn xem/booking dự án khác phải đổi ô Dự án <span class="img-num">1</span>.</div>
+            <img class="step-screenshot" src="images/web/xếp ca và booking ca.png" alt="Màn hình Xếp ca & Booking" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">2</div>
           <div class="step-body">
-            <div class="step-action">Tick chọn lao động → Nhấn <strong>"Duyệt phân ca"</strong></div>
-            <div class="step-desc">Có thể chọn nhiều lao động cùng lúc để duyệt hàng loạt</div>
-            <div class="step-note">
-              <strong>⚠️ Hệ thống kiểm tra đủ 7 điều kiện trước khi duyệt — tất cả phải đạt:</strong>
-              <ol style="margin:8px 0 0 18px;line-height:2">
-                <li>Lao động tồn tại trong hệ thống</li>
-                <li>Lao động đã có <strong>hồ sơ lao động</strong> (mã WKR-XXXXXX)</li>
-                <li>Lao động <strong>không nằm trong danh sách đen</strong> của dự án này</li>
-                <li>Lao động có <strong>hợp đồng lao động đang hoạt động</strong></li>
-                <li>Lao động đã được <strong>duyệt vào dự án</strong> (trạng thái "Đang hoạt động")</li>
-                <li>Ngày duyệt <strong>nằm trong danh sách ngày đã xác nhận</strong> của đăng ký ca</li>
-                <li>Lao động <strong>không trùng giờ</strong> với ca khác trong cùng ngày (cross-project)</li>
-              </ol>
-            </div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Popup "Chi tiết thao tác trong ngày" (mở khi nhấn ô ngày)</span></div>
+            <div class="step-action">Xem lao động của từng ca ở các tab <strong>Ca sáng / Ca chiều / Ca đêm</strong> <span class="img-num">2</span> (kèm chỉ tiêu Tuyển dụng &amp; Xe đưa đón) → nhấn <strong>"Booking ca"</strong> <span class="img-num">1</span> để đặt số lượng</div>
+            <img class="step-screenshot" src="images/web/chi tiết ca hàng ngày.png" alt="Chi tiết thao tác trong ngày" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Popup "Cập nhật số lượng booking"</span></div>
+            <div class="step-action">Chọn áp dụng <strong>Một ngày</strong> <span class="img-num">1</span> hoặc <strong>Khoảng ngày</strong> <span class="img-num">2</span> → với mỗi ca nhập <strong>Tuyển dụng</strong> <span class="img-num">3</span> (số lao động cần) + <strong>Xe đưa đón</strong> <span class="img-num">4</span> (số ghế xe) + Ghi chú <span class="img-num">5</span> → Nhấn <strong>"Lưu"</strong> <span class="img-num">6</span></div>
+            <div class="step-desc">Sau khi booking xong → sang <strong>Phân ca lao động</strong> để phân công người cụ thể (mục 10).</div>
+            <img class="step-screenshot" src="images/web/tạo và cập nhật booking ca.png" alt="Cập nhật số lượng booking" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-card" id="ql-10">
+      <div class="flow-card-header ql">
+        <div class="flow-num">10</div>
+        <div>
+          <h3>Phân ca &amp; duyệt phân ca lao động</h3>
+          <p>Duyệt đăng ký ca, phân ca thủ công và quản lý lao động cố định</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Vận hành lao động ➜ Phân ca lao động</strong></p>
+        </div>
+        <span class="flow-freq freq-daily">Hàng ngày</span>
+      </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Màn hình Phân ca lao động</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương, HCNS)</span></li><li><strong>Tạo phân ca (Xếp ca &amp; Booking)</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM, TD PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), TD Lead (team), TD NV (self), BP Xe PM (team), QL tuyến (self), Điều phối (self), Lái xe (self), Kế toán PM (self), BHXH (self), Thuế (self), Tính lương (self), HCNS (self)</span> · <span class="pm-view">Chỉ xem: Tổng GĐ, GĐ công ty, GĐ dự án</span></li><li><strong>Duyệt phân ca ứng viên</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM, BP Xe PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (TD PM, TD Lead, TD NV, Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương, HCNS)</span> · <span class="pm-none">Không có quyền: Tổng GĐ, GĐ công ty, GĐ dự án</span></li></ul></div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu Vận hành lao động ➜ <strong>Phân ca lao động</strong> (trang "Phân Ca Nhân Sự")</span></div>
+            <div class="step-action">Lọc theo Group / Vùng / Dự án <span class="img-num">6</span> và chọn ngày <span class="img-num">7</span> → xem từng ca với thanh <strong>Booking · Đã đăng ký · Đã duyệt</strong> <span class="img-num">8</span></div>
+            <div class="step-desc">Thanh công cụ: <strong>Import booking</strong> <span class="img-num">1</span> · <strong>Xuất Excel</strong> <span class="img-num">2</span> · <strong>Danh sách cố định</strong> <span class="img-num">3</span> · <strong>Booking ca</strong> <span class="img-num">4</span> · <strong>+ Phân ca thủ công</strong> <span class="img-num">5</span>. Chú thích màu: Cố định = tự duyệt mỗi ngày · Linh hoạt = tự duyệt ngày đăng ký · <strong>LĐ mới = cần Quản lý duyệt</strong>.</div>
+            <div class="step-multi">🔀 <strong>Chọn nhiều dự án:</strong> bộ lọc <strong>Dự án</strong> <span class="img-num">6</span> cho chọn nhiều dự án (hoặc <strong>Chọn tất cả</strong>) — mỗi dự án hiện thành một khối ca riêng để duyệt tại chỗ.</div>
+            <img class="step-screenshot" src="images/web/phân ca.png" alt="Màn hình Phân ca nhân sự" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Cột <strong>Thao tác</strong> <span class="img-num">9</span> trên dòng lao động (trạng thái <em>Chờ duyệt</em>)</span></div>
+            <div class="step-action">Nhấn <strong>✓ Duyệt</strong> để phân công chính thức, hoặc <strong>🚫 Từ chối</strong> nếu không đủ điều kiện</div>
+            <div class="step-desc">Duyệt thành công → lao động nhận thông báo ca trên app, trạng thái chuyển <strong>Đã phân công</strong>. Lỗi → đọc thông báo chi tiết để biết lao động nào chưa đủ điều kiện (VD "Chưa có hợp đồng đang hoạt động" → tạo hợp đồng rồi duyệt lại).</div>
+            <div class="step-tip">Nếu ứng viên có kết quả <strong>"Không nhận việc"</strong> → hệ thống chặn cả lô. Cần cập nhật lại trạng thái ứng viên trước khi duyệt.</div>
+            <div class="step-note"><strong>⚠️ Hệ thống kiểm tra đủ 7 điều kiện trước khi duyệt — tất cả phải đạt:</strong><ol style="margin:8px 0 0 18px;line-height:2"><li>Lao động tồn tại trong hệ thống</li><li>Lao động đã có <strong>hồ sơ lao động</strong> (mục 6)</li><li>Lao động <strong>không nằm trong danh sách đen</strong> của dự án</li><li>Lao động có <strong>hợp đồng lao động đang hoạt động</strong> (mục 7)</li><li>Lao động đã được <strong>duyệt vào dự án</strong> (mục 4)</li><li>Ngày duyệt nằm trong danh sách ngày đã xác nhận của đăng ký ca</li><li>Lao động <strong>không trùng giờ</strong> với ca khác trong cùng ngày (cross-project)</li></ol></div>
           </div>
         </div>
         <div class="step-row">
           <div class="step-line"></div>
           <div class="step-dot">3</div>
           <div class="step-body">
-            <div class="step-action">Nếu có lỗi → Đọc thông báo chi tiết để biết lao động nào chưa đủ điều kiện</div>
-            <div class="step-desc">Hệ thống báo cụ thể từng lao động và lý do. Ví dụ: <em>"Chưa có hợp đồng đang hoạt động"</em> → Tạo hợp đồng trước → Duyệt lại</div>
-            <div class="step-tip">Nếu ứng viên có kết quả <strong>"Không nhận việc"</strong> → Hệ thống chặn toàn bộ batch. Cần cập nhật lại trạng thái ứng viên trước khi duyệt.</div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Popup "Phân ca thủ công" (nút <strong>+ Phân ca thủ công</strong>)</span></div>
+            <div class="step-action">Lọc Group <span class="img-num">1</span> / Vùng <span class="img-num">2</span> (tuỳ chọn) → chọn <strong>Dự án</strong> <span class="img-num">3</span> ✱ · <strong>Ngày phân ca</strong> <span class="img-num">4</span> ✱ · <strong>Ca làm việc</strong> <span class="img-num">5</span> ✱ · Vị trí → tìm lao động <span class="img-num">6</span> → tick từng người (hoặc "Chọn tất cả") → Nhấn <strong>"Phân ca"</strong> <span class="img-num">7</span></div>
+            <div class="step-desc">Danh sách "Lao động khả dụng" chỉ hiện người đủ điều kiện, kèm loại (Linh hoạt / Cố định / LĐ mới).</div>
+            <div class="step-multi single">☝️ <strong>Chỉ chọn 1 dự án:</strong> popup Phân ca thủ công chỉ phân cho 1 dự án mỗi lần (ô <strong>Dự án</strong> <span class="img-num">3</span> bắt buộc).</div>
+            <img class="step-screenshot" src="images/web/phân ca thủ công.png" alt="Popup phân ca thủ công" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
         <div class="step-row">
           <div class="step-dot">4</div>
           <div class="step-body">
-            <div class="step-action">✅ Duyệt thành công → Lao động được phân công chính thức vào ca</div>
-            <div class="step-desc">Lao động nhận thông báo ca làm việc trên app. Trạng thái chuyển sang <span style="background:#e8f5e9;color:#2e7d32;padding:1px 8px;border-radius:10px;font-size:12px;font-weight:700">Đã phân công</span></div>
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Nút <strong>Danh sách cố định</strong> <span class="img-num">3</span> trên trang Phân ca</span></div>
+            <div class="step-action">Popup "Lao động cố định" có 3 tab: <strong>Danh sách hiện tại</strong> <span class="img-num">1</span> (tìm <span class="img-num">4</span>, lọc ca <span class="img-num">5</span>, sửa/xóa <span class="img-num">6</span>) · <strong>Thêm lao động cố định</strong> <span class="img-num">2</span> · <strong>Nguyện vọng cố định</strong> <span class="img-num">3</span></div>
+            <div class="step-desc">Lao động cố định được gán sẵn ca và các thứ trong tuần (T2–CN) → hệ thống tự duyệt phân ca mỗi ngày, không cần duyệt tay.</div>
+            <img class="step-screenshot" src="images/web/lao động cố định.png" alt="Popup lao động cố định" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-card" id="ql-11">
+      <div class="flow-card-header ql">
+        <div class="flow-num">11</div>
+        <div>
+          <h3>Giám sát quân số &amp; cập nhật thực tế</h3>
+          <p>Nhập số lao động đi làm thực tế, nghỉ việc và sự vụ của từng ca</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Vận hành lao động ➜ Báo cáo quân số</strong></p>
+        </div>
+        <span class="flow-freq freq-daily">Cuối mỗi ca</span>
+      </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Báo cáo quân số</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, BP Xe PM, QL tuyến, HCNS)</span> · <span class="pm-none">Không có quyền: Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương</span></li><li><strong>Dashboard quản lý</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, BP Xe PM, QL tuyến, HCNS)</span> · <span class="pm-none">Không có quyền: Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương</span></li></ul></div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu Vận hành lao động ➜ <strong>Báo cáo quân số</strong></span></div>
+            <div class="step-action">Tìm ca / dự án <span class="img-num">1</span> → chọn ngày (mặc định hôm nay) <span class="img-num">2</span> → xem bảng từng ca: Booking · LĐ thực tế · Tỷ lệ · LĐ nghỉ việc · Sự vụ</div>
+            <div class="step-desc">Đầu trang có thẻ tổng: Tổng Booking · LĐ thực tế đi làm (kèm tỷ lệ) · LĐ nghỉ việc · Sự vụ phát sinh (kèm tiền phạt).</div>
+            <img class="step-screenshot" src="images/web/báo cáo quân số.png" alt="Báo cáo quân số hàng ngày" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Bảng ca của dự án (hình bước 1)</span></div>
+            <div class="step-action">Nhập <strong>LĐ thực tế</strong> và <strong>LĐ nghỉ việc</strong> <span class="img-num">4</span> → nhấn <strong>"Lưu"</strong> từng dòng, hoặc <strong>"Lưu toàn bộ báo cáo"</strong> <span class="img-num">3</span> để lưu cùng lúc</div>
+            <div class="step-desc">Tỷ lệ đi làm tự tính = thực tế / booking.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Cột <strong>Sự vụ</strong> trong bảng ca</span></div>
+            <div class="step-action">Có sự cố → nhấn <strong>"+ Thêm sự vụ"</strong> để ghi nhận tai nạn, vi phạm, vắng không phép, sự cố thiết bị...</div>
+            <div class="step-desc">Vi phạm nghiêm trọng → xử lý tiếp ở mục 14 (Danh sách đen).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-card" id="ql-12">
+      <div class="flow-card-header ql">
+        <div class="flow-num">12</div>
+        <div>
+          <h3>Duyệt nghỉ phép, ứng lương &amp; xử lý khiếu nại</h3>
+          <p>Xử lý các yêu cầu lao động gửi qua app mobile</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>CSKH lao động ➜ Duyệt nghỉ phép / Ứng lương / Khiếu nại</strong></p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
+      </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Duyệt nghỉ phép</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, BP Xe PM, QL tuyến, Kế toán PM, BHXH, Thuế, Tính lương, HCNS)</span> · <span class="pm-none">Không có quyền: Điều phối, Lái xe</span></li><li><strong>Ứng lương</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, GĐ dự án, Leader, Ad-onsite, BP Xe PM, QL tuyến, Kế toán PM, BHXH, Thuế, Tính lương, HCNS)</span> · <span class="pm-none">Không có quyền: TD PM, TD Lead, TD NV, Điều phối, Lái xe</span></li><li><strong>Khiếu nại</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), GĐ dự án, QL PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self), BP Xe PM (team), QL tuyến (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, TD PM, TD Lead, TD NV, Kế toán PM, BHXH, Thuế, Tính lương, HCNS)</span> · <span class="pm-none">Không có quyền: Điều phối, Lái xe</span></li></ul></div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu CSKH lao động ➜ <strong>Duyệt nghỉ phép</strong></span></div>
+            <div class="step-action">Lọc theo tên/SĐT, trạng thái, loại nghỉ <span class="img-num">1</span> → nhấn ⋮ <span class="img-num">2</span> trên đơn <em>Chờ duyệt</em> → <strong>Duyệt / Từ chối</strong></div>
+            <div class="step-desc">Thẻ đầu trang: Chờ duyệt · Đã duyệt · Đã từ chối. Nếu duyệt: trừ ngày phép + cập nhật bảng công tự động.</div>
+            <img class="step-screenshot" src="images/web/danh sách xin nghỉ phép.png" alt="Danh sách duyệt nghỉ phép" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu CSKH lao động ➜ <strong>Ứng lương</strong></span></div>
+            <div class="step-action">Chọn tab trạng thái (Tất cả / Chờ duyệt / Đã duyệt / Đã từ chối) hoặc tìm theo tên/SĐT/CCCD <span class="img-num">1</span> → nhấn ⋮ <span class="img-num">2</span> trên yêu cầu <em>Chờ duyệt</em> → <strong>Duyệt / Từ chối</strong></div>
+            <div class="step-desc">Hệ thống tự ghi nhận để khấu trừ vào phiếu lương tháng. Yêu cầu do lao động tự huỷ hiển thị <em>Đã hủy</em>.</div>
+            <img class="step-screenshot" src="images/web/danh sách ứng lương.png" alt="Danh sách ứng lương" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu CSKH lao động ➜ <strong>Khiếu nại</strong> (trang "Tiếp nhận phản ánh &amp; khiếu nại")</span></div>
+            <div class="step-action">Lọc theo mã ticket / chủ đề / trạng thái <span class="img-num">1</span> → nhấn <strong>"Phản hồi"</strong> <span class="img-num">2</span> trên ticket để trả lời lao động</div>
+            <div class="step-desc">Ticket có mức độ (Cao / Trung bình / Thấp) và tình trạng: Mới gửi → Đã tiếp nhận → Đã giải quyết / Đã đóng (có thể Mở lại).</div>
+            <img class="step-screenshot" src="images/web/danh sách khiếu nại.png" alt="Danh sách khiếu nại" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-card" id="ql-13">
+      <div class="flow-card-header ql">
+        <div class="flow-num">13</div>
+        <div>
+          <h3>Đề xuất tăng / giảm bảo hiểm (BHXH)</h3>
+          <p>Duyệt danh sách lao động đủ điều kiện đóng BHXH theo tháng</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>CSKH lao động ➜ Đề xuất bảo hiểm</strong></p>
+        </div>
+        <span class="flow-freq freq-monthly">Hàng tháng</span>
+      </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Đề xuất bảo hiểm</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM</span> · <span class="pm-scope">Toàn quyền theo phạm vi: Leader (team), Ad-onsite (self)</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, BP Xe PM, QL tuyến, Kế toán PM, BHXH, Thuế, Tính lương, HCNS)</span> · <span class="pm-none">Không có quyền: Điều phối, Lái xe</span></li></ul></div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu CSKH lao động ➜ <strong>Đề xuất bảo hiểm</strong></span></div>
+            <div class="step-action">Chọn <strong>Tháng</strong> và <strong>Dự án</strong> → xem 3 tab: <strong>Đề xuất tăng</strong> · <strong>Đề xuất giảm</strong> · <strong>Nhân viên đóng BHXH</strong></div>
+            <div class="step-desc">Điều kiện đề xuất hiển thị ở đầu trang: Tổng ngày công ≥ 13 hoặc Tổng lương ≥ 2.340.000đ. Nhập <strong>Mức đóng BHXH</strong> ngay trên dòng → nhấn ✓ để duyệt, 🗑 để xóa; tick nhiều dòng rồi <strong>"Duyệt hàng loạt"</strong>. <strong>Xuất file</strong> để gửi cơ quan BHXH.</div>
+            <img class="step-screenshot" src="images/web/danh sách đề xuất bảo hiểm.png" alt="Danh sách đề xuất bảo hiểm" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Nút <strong>"+ Thêm đề xuất"</strong> ở góc trên phải trang Đề xuất bảo hiểm</span></div>
+            <div class="step-action">Popup "Thêm đề xuất thủ công": chọn <strong>Loại</strong> đề xuất ✱ · <strong>Kỳ</strong> ✱ → chọn <strong>Lao động</strong> ✱ (chọn loại và kỳ trước) → nhập <strong>Lý do</strong> ✱ → <strong>Lưu</strong></div>
+            <div class="step-desc">Dùng cho trường hợp lao động không tự động vào danh sách đề xuất.</div>
+            <img class="step-screenshot" src="images/web/thêm đề xuất bảo hiểm thủ công.png" alt="Thêm đề xuất bảo hiểm thủ công" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-card" id="ql-14">
+      <div class="flow-card-header ql">
+        <div class="flow-num">14</div>
+        <div>
+          <h3>Xử lý lao động vi phạm (Danh sách đen)</h3>
+          <p>Ghi nhận vi phạm và chặn tái tuyển dụng lao động xấu</p>
+          <p class="flow-menu">🧭 Vào từ menu: <strong>Pháp lý &amp; rủi ro ➜ Danh sách đen</strong></p>
+        </div>
+        <span class="flow-freq freq-asneeded">Khi phát sinh</span>
+      </div>
+      <div class="flow-perm"><div class="flow-perm-title">🔐 Phân quyền (chuẩn: RBAC_Permission_Matrix.xlsx)</div><ul><li><strong>Danh sách đen</strong> — <span class="pm-all">Toàn quyền: Admin (Sys), QL PM, Leader, Ad-onsite, HCNS</span> · <span class="pm-view">Chỉ xem: đa số vai trò còn lại (Tổng GĐ, GĐ công ty, GĐ dự án, TD PM, TD Lead, TD NV, BP Xe PM, QL tuyến, Điều phối, Lái xe, Kế toán PM, BHXH, Thuế, Tính lương)</span></li></ul></div>
+      <div class="flow-steps">
+        <div class="step-row">
+          <div class="step-line"></div>
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Menu Pháp lý &amp; rủi ro ➜ <strong>Danh sách đen</strong></span></div>
+            <div class="step-action">Tra cứu lao động đang bị blacklist: tìm theo tên/SĐT/CCCD/mã lao động <span class="img-num">1</span>, lọc theo lý do; nút ⋮ <span class="img-num">3</span> để xử lý trên từng dòng</div>
+            <div class="step-desc">Cột "Phạm vi hiệu lực" cho biết áp dụng <strong>Toàn hệ thống</strong> hay theo <strong>số dự án</strong>; "Lý do gần nhất" (Bạo lực, Gian lận, Vi phạm kỷ luật, Vi phạm hợp đồng, Hiệu suất kém, Khác...).</div>
+            <img class="step-screenshot" src="images/web/danh sách đen.png" alt="Quản lý danh sách đen" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <div class="step-where">📍 Ở đâu <span class="where-badge">Nút <strong>"Thêm mới"</strong> <span class="img-num">2</span> ở góc trên phải (hoặc nút "Thêm vào danh sách đen" trong hồ sơ ứng viên)</span></div>
+            <div class="step-action">Popup "Thêm vào danh sách đen": chọn <strong>Lao động</strong> → <strong>Phạm vi áp dụng</strong> (Toàn hệ thống / Theo dự án) → chọn <strong>Lý do</strong> → Ghi chú (≤ 500 ký tự) → Nhấn <strong>"Xác nhận blacklist"</strong></div>
+            <div class="step-desc">Từ lúc này hệ thống tự cảnh báo khi nhập CCCD/SĐT của lao động này, và chặn tạo hồ sơ / duyệt phân ca.</div>
+            <div class="step-multi">🔀 <strong>Chọn nhiều dự án:</strong> khi chọn phạm vi <strong>Theo dự án</strong> có thể chọn một hoặc nhiều dự án (ô "Dự án áp dụng"); popup <em>Gỡ blacklist theo dự án</em> cũng chọn nhiều dự án.</div>
+            <img class="step-screenshot" src="images/web/thêm mới danh sách đen.png" alt="Thêm vào danh sách đen" loading="lazy" onerror="this.style.display='none'" onclick="document.getElementById('ss-big2').src=this.src;document.getElementById('ss-overlay2').classList.add('open')">
           </div>
         </div>
       </div>
@@ -1611,6 +1786,21 @@ function show(id) {
   });
   window.scrollTo({top: 0, behavior:'smooth'});
 }
+
+function qlGo(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({behavior:'smooth', block:'start'});
+  history.replaceState(null, '', '#' + id);
+  el.classList.add('flash');
+  setTimeout(() => el.classList.remove('flash'), 1800);
+}
+
+window.addEventListener('load', () => {
+  const h = location.hash.slice(1);
+  if (h.startsWith('ql-')) { show('quan-ly'); setTimeout(() => qlGo(h), 100); }
+  if (h.startsWith('td-')) { show('tuyen-dung'); setTimeout(() => qlGo(h), 100); }
+});
 
 // Auto-activate tab from URL hash
 const hash = window.location.hash.slice(1);
